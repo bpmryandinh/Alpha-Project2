@@ -1,0 +1,95 @@
+/*
+STUPID CSS
+*/
+
+.root {
+    -fx-accent: #1e74c6;
+    -fx-focus-color: -fx-accent;
+    -fx-base: #373e43;
+    -fx-control-inner-background: derive(-fx-base, 35%);
+    -fx-control-inner-background-alt: -fx-control-inner-background ;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+}
+
+.container {
+    -fx-background-color: #252829;
+}
+
+.home {
+    -fx-background-color: linear-gradient(to bottom left, #3d4548, #252829);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 5;
+}
+
+.mainPanel {
+    -fx-background-color: linear-gradient(to bottom left, #788689, #3d4548);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 5;
+}
+
+.heading1 {
+    -fx-text-fill: #F5F6F2;
+    -fx-font-size: 3.25em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
+}
+
+.heading3 {
+    -fx-text-fill: #F5F6F2;
+    -fx-font-size: 1.25em;
+    -fx-font-weight: bold;
+}
+
+Button {
+    -fx-background-color: #939E99;
+    -fx-background-radius: 5;
+    -fx-text-fill: #F5F6F2;
+    -fx-font-weight: bold;
+}
+
+.submitButton {
+    -fx-font-size: 1.5em;
+    -fx-pref-width: 8em;
+    -fx-pref-height: 2em;
+}
+
+.backButton {
+    -fx-pref-width: 5em;
+    -fx-pref-height: 2em;
+    -fx-font-size: 1.1em;
+}
+
+Button:hover {
+    -fx-background-color: #6a7570;
+}
+
+.fieldContainer {
+    -fx-padding: 40px 0px 0px 0px;
+}
+
+
+.inputField {
+    -fx-font-family: "Montserrat", "Helvetica Neue", sans-serif;
+    -fx-background-color: #F5F6F2, #788689;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0;
+    -fx-text-fill: #F5F6F2;
+    -fx-font-weight: bold;
+    -fx-padding: 4 7 4 15 ;
+}
+.inputField:focused {
+    -fx-background-color: #F5F6F2, rgba(102, 114, 117, 0.9);
+}
+
+.errorField {
+    -fx-text-fill: #c52c2c;
+    -fx-font-weight: bold;
+    -fx-font-size: 1.25em;
+}

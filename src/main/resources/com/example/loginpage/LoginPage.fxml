@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="540" prefWidth="380" spacing="20.0" styleClass="container" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.LoginController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <VBox maxHeight="600.0" maxWidth="480.0" prefHeight="500.0" prefWidth="340.0" styleClass="mainPanel">
+        <padding>
+            <Insets bottom="20.0" left="25.0" right="25.0" />
+        </padding>
+        <VBox>
+            <padding>
+                <Insets bottom="40" top="25" />
+            </padding>
+            <Button mnemonicParsing="false" onAction="#backButtonClick" styleClass="backButton" text="Back" />
+        </VBox>
+        <Label styleClass="heading1" text="LOGIN" />
+        <VBox prefHeight="80.0" styleClass="fieldContainer">
+            <padding>
+                <Insets bottom="20.0" top="20.0" />
+            </padding>
+            <Label styleClass="heading3" text="Email" />
+            <TextField fx:id="emailTxtField" styleClass="inputField" />
+        </VBox>
+        <VBox prefHeight="80.0" styleClass="fieldContainer">
+            <padding>
+                <Insets bottom="20.0" top="20.0" />
+            </padding>
+            <Label styleClass="heading3" text="Password" />
+         <PasswordField fx:id="passwordTxtField" styleClass="inputField" />
+        </VBox>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets bottom="10" top="20" />
+            </padding>
+            <VBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="20" top="10" />
+                </padding>
+                <Label fx:id="errorField" styleClass="errorField" text="" />
+        </VBox>
+            <Button onAction="#submitButtonClick" styleClass="submitButton" text="Log In" textAlignment="CENTER" />
+        </VBox>
+    </VBox>
+</VBox>
