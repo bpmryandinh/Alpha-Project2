@@ -6,5 +6,7 @@ module com.example.loginpage {
 
     opens com.example.loginpage to javafx.fxml;
     exports com.example.loginpage;
+    exports com.example.loginpage.Controllers;
+    opens com.example.loginpage.Controllers to javafx.fxml;
 
 }

@@ -1,5 +1,6 @@
-package com.example.loginpage;
+package com.example.loginpage.Controllers;
 
+import com.example.loginpage.LoginApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

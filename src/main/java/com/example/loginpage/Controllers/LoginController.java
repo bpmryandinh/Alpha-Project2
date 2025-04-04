@@ -1,5 +1,7 @@
-package com.example.loginpage;
+package com.example.loginpage.Controllers;
 
+import com.example.loginpage.LoginApplication;
+import com.example.loginpage.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -56,7 +58,7 @@ public class LoginController {
 
         while (emailFound != true || i > lines.length) {
              fileEmail = lines[i + 1];
-             decryptedEmail = Secure.decrypt(fileEmail, Secure.secret);
+             decryptedEmail = SecureController.decrypt(fileEmail, SecureController.secret);
 
              if (decryptedEmail.equals(inputtedEmail)) {
                  emailFound = true;
@@ -71,13 +73,13 @@ public class LoginController {
         } else {
             // Salt needs to get decoded with this as the default byte conversion was inconsistent
             salt = Base64.getDecoder().decode(lines[i]);
-            String hashedPassword = Secure.getSecurePassword(inputtedPassword, salt);
+            String hashedPassword = SecureController.getSecurePassword(inputtedPassword, salt);
             // A new user object is created and the user is considered logged in if hashes are equal
             if (hashedPassword.equals(lines[i + 3])) {
                 String strSalt = lines[i];
-                String email = Secure.decrypt(lines[i+1], Secure.secret);
-                String name = Secure.decrypt(lines[i+2], Secure.secret);
-                LoginApplication.users = new UserLogin(strSalt, email, name, hashedPassword);
+                String email = SecureController.decrypt(lines[i+1], SecureController.secret);
+                String name = SecureController.decrypt(lines[i+2], SecureController.secret);
+                LoginApplication.users = new UserSession(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
             } else {

@@ -1,4 +1,4 @@
-package com.example.loginpage;
+package com.example.loginpage.Controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 /*
  Used for all encryption and decryption throughout the program
  */
-public abstract class Secure {
+public abstract class SecureController {
     private static SecretKeySpec secretKey;
     private static byte[] key;
     final static String secret = "Tee(Hee)%PEe?Peepu*opoo!";

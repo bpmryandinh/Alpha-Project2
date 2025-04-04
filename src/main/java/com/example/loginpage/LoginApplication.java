@@ -1,5 +1,8 @@
 package com.example.loginpage;
 
+import com.example.loginpage.Controllers.HomeController;
+import com.example.loginpage.Controllers.LoginController;
+import com.example.loginpage.Controllers.SignUpController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +13,7 @@ import java.io.IOException;
 
 public class LoginApplication extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
-    public static UserLogin users;
+    public static UserSession users;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page

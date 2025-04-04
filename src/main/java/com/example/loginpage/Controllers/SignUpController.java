@@ -1,8 +1,7 @@
-package com.example.loginpage;
+package com.example.loginpage.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,7 +13,6 @@ import javax.crypto.NoSuchPaddingException;
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.Base64;
 
 public class SignUpController {
@@ -49,10 +47,10 @@ public class SignUpController {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 
         // Encrypts everything with the secret key or with salt if it is the password
-        byte[] salt = Secure.getSalt();
-        String encryptedEmail = Secure.encrypt(emailTxtField.getText(), Secure.secret);
-        String encryptedName = Secure.encrypt(nameTxtField.getText(), Secure.secret);
-        String hashedPassword = Secure.getSecurePassword(passwordTxtField.getText(), salt);
+        byte[] salt = SecureController.getSalt();
+        String encryptedEmail = SecureController.encrypt(emailTxtField.getText(), SecureController.secret);
+        String encryptedName = SecureController.encrypt(nameTxtField.getText(), SecureController.secret);
+        String hashedPassword = SecureController.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
         writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
