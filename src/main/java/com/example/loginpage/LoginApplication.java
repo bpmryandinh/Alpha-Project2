@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LoginApplication extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
-    public static User users;
+    public static UserLogin users;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page

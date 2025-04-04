@@ -1,13 +1,13 @@
 package com.example.loginpage;
 
 // A virtual user just for holding the users data temporarily and for future use.
-public class User {
+public class UserLogin {
     private String salt;
     private String email;
     private String name;
     private String hashedPassword;
 
-    public User(String salt, String email, String name, String hashedPassword ) {
+    public UserLogin(String salt, String email, String name, String hashedPassword ) {
         this.salt = salt;
         this.email = email;
         this.name = name;

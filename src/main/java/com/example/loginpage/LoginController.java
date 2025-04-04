@@ -77,7 +77,7 @@ public class LoginController {
                 String strSalt = lines[i];
                 String email = Secure.decrypt(lines[i+1], Secure.secret);
                 String name = Secure.decrypt(lines[i+2], Secure.secret);
-                LoginApplication.users = new User(strSalt, email, name, hashedPassword);
+                LoginApplication.users = new UserLogin(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
             } else {
