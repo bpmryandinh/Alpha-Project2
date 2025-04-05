@@ -37,7 +37,7 @@ public class SignUpController {
     @FXML
     public void submitButtonClick(ActionEvent actionEvent) throws IOException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
 
-        String fileName = "src/main/resources/LoginData.txt";
+        String fileName = "src/main/resources/data/userLoginData.csv";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = reader.readLine();
         reader.close();

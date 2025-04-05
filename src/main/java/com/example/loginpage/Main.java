@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginApplication extends Application {
+public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
     public static UserSession users;
 
@@ -23,18 +23,18 @@ public class LoginApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Creation of each fxml page
-        FXMLLoader homePageLoader = new FXMLLoader(LoginApplication.class.getResource("HomePage.fxml"));
+        FXMLLoader homePageLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
         Scene homeScene = new Scene(homePageLoader.load(), 380, 540);
         HomeController HomePageController = homePageLoader.getController();
         HomePageController.setStage(stage);
 
 
-        FXMLLoader loginPageLoader = new FXMLLoader(LoginApplication.class.getResource("LoginPage.fxml"));
+        FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
         LoginController loginPageController = loginPageLoader.getController();
         loginPageController.setStage(stage);
 
-        FXMLLoader signUpPageLoader = new FXMLLoader(LoginApplication.class.getResource("SignUpPage.fxml"));
+        FXMLLoader signUpPageLoader = new FXMLLoader(Main.class.getResource("SignUpPage.fxml"));
         Scene signupScene = new Scene(signUpPageLoader.load(), 380, 540);
         SignUpController SignUpPageController = signUpPageLoader.getController();
         SignUpPageController.setStage(stage);

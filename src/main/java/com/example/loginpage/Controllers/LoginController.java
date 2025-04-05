@@ -1,6 +1,6 @@
 package com.example.loginpage.Controllers;
 
-import com.example.loginpage.LoginApplication;
+import com.example.loginpage.Main;
 import com.example.loginpage.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +47,7 @@ public class LoginController {
         byte[] salt;
         String decryptedEmail;
 
-        String fileName = "src/main/resources/LoginData.txt";
+        String fileName = "src/main/resources/data/userLoginData.csv";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = reader.readLine();
         String[] lines = line.split(",");
@@ -79,7 +79,7 @@ public class LoginController {
                 String strSalt = lines[i];
                 String email = SecureController.decrypt(lines[i+1], SecureController.secret);
                 String name = SecureController.decrypt(lines[i+2], SecureController.secret);
-                LoginApplication.users = new UserSession(strSalt, email, name, hashedPassword);
+                Main.users = new UserSession(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
             } else {
