@@ -1,11 +1,11 @@
-package com.example.loginpage.Controllers;
+package com.example.loginpage.Services;
 
-import com.example.loginpage.Course;
-import com.example.loginpage.User;
+import com.example.loginpage.Structure.Course;
+import com.example.loginpage.Structure.User;
 
 import java.util.HashMap;
 
-public class HashController {
+public class HashService {
     // Key:Value Pairs
     //
     private HashMap<Integer, Course> Courses;

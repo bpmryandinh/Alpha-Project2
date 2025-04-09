@@ -15,7 +15,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-public class SignUpController {
+public class SignupPageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
     private Scene backScene;
@@ -47,10 +47,10 @@ public class SignUpController {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 
         // Encrypts everything with the secret key or with salt if it is the password
-        byte[] salt = SecureController.getSalt();
-        String encryptedEmail = SecureController.encrypt(emailTxtField.getText(), SecureController.secret);
-        String encryptedName = SecureController.encrypt(nameTxtField.getText(), SecureController.secret);
-        String hashedPassword = SecureController.getSecurePassword(passwordTxtField.getText(), salt);
+        byte[] salt = SecureService.getSalt();
+        String encryptedEmail = SecureService.encrypt(emailTxtField.getText(), SecureService.secret);
+        String encryptedName = SecureService.encrypt(nameTxtField.getText(), SecureService.secret);
+        String hashedPassword = SecureService.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
         writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");

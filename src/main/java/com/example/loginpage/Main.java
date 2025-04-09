@@ -1,8 +1,10 @@
 package com.example.loginpage;
 
-import com.example.loginpage.Controllers.HomeController;
-import com.example.loginpage.Controllers.LoginController;
-import com.example.loginpage.Controllers.SignUpController;
+import com.example.loginpage.Controllers.CourseListPageController;
+import com.example.loginpage.Controllers.HomePageController;
+import com.example.loginpage.Controllers.LoginPageController;
+import com.example.loginpage.Controllers.SignupPageController;
+import com.example.loginpage.Structure.UserSession;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,24 +27,30 @@ public class Main extends Application {
         // Creation of each fxml page
         FXMLLoader homePageLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
         Scene homeScene = new Scene(homePageLoader.load(), 380, 540);
-        HomeController HomePageController = homePageLoader.getController();
+        HomePageController HomePageController = homePageLoader.getController();
         HomePageController.setStage(stage);
 
 
         FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
-        LoginController loginPageController = loginPageLoader.getController();
+        LoginPageController loginPageController = loginPageLoader.getController();
         loginPageController.setStage(stage);
 
         FXMLLoader signUpPageLoader = new FXMLLoader(Main.class.getResource("SignUpPage.fxml"));
         Scene signupScene = new Scene(signUpPageLoader.load(), 380, 540);
-        SignUpController SignUpPageController = signUpPageLoader.getController();
+        SignupPageController SignUpPageController = signUpPageLoader.getController();
         SignUpPageController.setStage(stage);
+
+        FXMLLoader courseListPageLoader = new FXMLLoader(Main.class.getResource("CourseListPage.fxml"));
+        Scene courseListScene = new Scene(courseListPageLoader.load(), 800, 600);
+        CourseListPageController CourseListPageController = courseListPageLoader.getController();
+        CourseListPageController.setStage(stage);
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into eachothere for scene swapping
         HomePageController.setSignupScene(signupScene);
         HomePageController.setLoginScene(loginScene);
+        HomePageController.setCourseList(courseListScene);
         loginPageController.setBackScene(homeScene);
         loginPageController.setHomeController(HomePageController);
         SignUpPageController.setBackScene(homeScene);

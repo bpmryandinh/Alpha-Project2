@@ -1,7 +1,7 @@
 package com.example.loginpage.Controllers;
 
 import com.example.loginpage.Main;
-import com.example.loginpage.UserSession;
+import com.example.loginpage.Structure.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -18,11 +18,11 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-public class LoginController {
+public class LoginPageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
     private Scene backScene;
-    private HomeController homeController;
+    private HomePageController homeController;
 
     @FXML
     private TextField emailTxtField;
@@ -58,7 +58,7 @@ public class LoginController {
 
         while (emailFound != true || i > lines.length) {
              fileEmail = lines[i + 1];
-             decryptedEmail = SecureController.decrypt(fileEmail, SecureController.secret);
+             decryptedEmail = SecureService.decrypt(fileEmail, SecureService.secret);
 
              if (decryptedEmail.equals(inputtedEmail)) {
                  emailFound = true;
@@ -73,12 +73,12 @@ public class LoginController {
         } else {
             // Salt needs to get decoded with this as the default byte conversion was inconsistent
             salt = Base64.getDecoder().decode(lines[i]);
-            String hashedPassword = SecureController.getSecurePassword(inputtedPassword, salt);
+            String hashedPassword = SecureService.getSecurePassword(inputtedPassword, salt);
             // A new user object is created and the user is considered logged in if hashes are equal
             if (hashedPassword.equals(lines[i + 3])) {
                 String strSalt = lines[i];
-                String email = SecureController.decrypt(lines[i+1], SecureController.secret);
-                String name = SecureController.decrypt(lines[i+2], SecureController.secret);
+                String email = SecureService.decrypt(lines[i+1], SecureService.secret);
+                String name = SecureService.decrypt(lines[i+2], SecureService.secret);
                 Main.users = new UserSession(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
@@ -98,7 +98,7 @@ public class LoginController {
         this.backScene = scene;
     }
 
-    public void setHomeController(HomeController homeController) {
+    public void setHomeController(HomePageController homeController) {
         this.homeController = homeController;
     }
 

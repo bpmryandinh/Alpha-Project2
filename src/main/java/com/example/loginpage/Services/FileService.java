@@ -1,6 +1,6 @@
-package com.example.loginpage.Controllers;
+package com.example.loginpage.Services;
 
-public class FileController {
+public class FileService {
 
     public static void readCSV(String filename) {
     }

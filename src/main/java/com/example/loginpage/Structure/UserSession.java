@@ -1,4 +1,4 @@
-package com.example.loginpage;
+package com.example.loginpage.Structure;
 
 // A virtual user just for holding the users data temporarily and for future use.
 public class UserSession {
