@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 /*
  Used for all encryption and decryption throughout the program
  */
-public abstract class SecureController {
+public abstract class SecureMiddleware {
     private static SecretKeySpec secretKey;
     private static byte[] key;
     final static String secret = "Tee(Hee)%PEe?Peepu*opoo!";
@@ -55,14 +55,14 @@ public abstract class SecureController {
         return new String(cipher.doFinal(finalByteString));
     }
 
-    static byte[] getSalt() throws NoSuchAlgorithmException {
+    public static byte[] getSalt() throws NoSuchAlgorithmException {
         SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
         random.nextBytes(salt);
         return salt;
     }
 
-    static String getSecurePassword(String passwordToHash, byte[] salt) throws NoSuchAlgorithmException {
+    public static String getSecurePassword(String passwordToHash, byte[] salt) throws NoSuchAlgorithmException {
         String generatedPassword = null;
         MessageDigest md = MessageDigest.getInstance("SHA-512");
         md.update(salt);

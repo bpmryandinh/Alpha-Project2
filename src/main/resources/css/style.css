@@ -41,6 +41,13 @@ STUPID CSS
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
 }
 
+.heading2 {
+    -fx-text-fill: #F5F6F2;
+    -fx-font-size: 2.25em;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 0);
+}
+
 .heading3 {
     -fx-text-fill: #F5F6F2;
     -fx-font-size: 1.25em;

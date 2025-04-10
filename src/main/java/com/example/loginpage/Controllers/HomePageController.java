@@ -12,18 +12,23 @@ import javafx.stage.Stage;
 Home Controller manages navigation between the login page and signup page.
 It also welcomes the user once they are finally logged in.
  */
-public class HomeController {
+public class HomePageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
     private Scene signupScene;
     private Scene loginScene;
+    private Scene courseListScene;
 
     @FXML
     private Label welcomeUserId;
 
-    public void setStage(Stage stage) {
-        this.parentStage = stage;
+    public HomePageController() {
+        this.parentStage = StageController.getInstance().mainScene;
     }
+
+//    public void setStage(Stage stage) {
+//
+//    }
 
     public void setSignupScene(Scene scene) {
         this.signupScene = scene;
@@ -31,6 +36,10 @@ public class HomeController {
 
     public void setLoginScene(Scene scene) {
         this.loginScene = scene;
+    }
+
+    public void setCourseList(Scene scene) {
+        this.courseListScene = scene;
     }
 
     public void signUpClicked(ActionEvent actionEvent) {
@@ -46,5 +55,10 @@ public class HomeController {
         if (Main.users != null) {
             welcomeUserId.setText("Welcome, " + Main.users.getName());
         }
+    }
+
+
+    public void CourseListButtonPressed(ActionEvent actionEvent) {
+        StageController.getInstance().mainScene.setScene(this.courseListScene);
     }
 }
