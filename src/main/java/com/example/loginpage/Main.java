@@ -40,9 +40,9 @@ public class Main extends Application {
         Scene courseListScene = new Scene(courseListPageLoader.load(), 800, 600);
         CourseListPageController courseListPageController = courseListPageLoader.getController();
 
-//        FXMLLoader coursePageLoader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
-//        Scene coursePageScene = new Scene(coursePageLoader.load(), 800, 600);
-//        CoursePageController coursePageController = coursePageLoader.getController();
+        FXMLLoader coursePageLoader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
+        Scene coursePageScene = new Scene(coursePageLoader.load(), 800, 600);
+        CoursePageController coursePageController = coursePageLoader.getController();
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into eachothere for scene swapping
@@ -52,8 +52,8 @@ public class Main extends Application {
         loginPageController.setBackScene(homeScene);
         loginPageController.setHomeController(HomePageController);
         SignUpPageController.setBackScene(homeScene);
-//        courseListPageController.setCourseScene(coursePageScene);
-//        coursePageController.setBackScene(courseListScene);
+        courseListPageController.setCourseScene(coursePageScene);
+        coursePageController.setBackScene(courseListScene);
         stage.setScene(homeScene);
         stage.show();
 

@@ -8,12 +8,13 @@ public class CoursePageController {
     private static CoursePageController instance;
     private final Stage parentStage;
     public Scene backScene;
-    public String courseID;
+    public static String courseID;
 
 
 
     private CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
+        this.courseID = "";
     }
 
     public static CoursePageController getInstance() {
