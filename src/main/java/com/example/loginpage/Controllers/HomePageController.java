@@ -22,9 +22,13 @@ public class HomePageController {
     @FXML
     private Label welcomeUserId;
 
-    public void setStage(Stage stage) {
-        this.parentStage = stage;
+    public HomePageController() {
+        this.parentStage = StageController.getInstance().mainScene;
     }
+
+//    public void setStage(Stage stage) {
+//
+//    }
 
     public void setSignupScene(Scene scene) {
         this.signupScene = scene;
@@ -55,6 +59,6 @@ public class HomePageController {
 
 
     public void CourseListButtonPressed(ActionEvent actionEvent) {
-        this.parentStage.setScene(this.courseListScene);
+        StageController.getInstance().mainScene.setScene(this.courseListScene);
     }
 }

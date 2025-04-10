@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 /*
  Used for all encryption and decryption throughout the program
  */
-public abstract class SecureService {
+public abstract class SecureMiddleware {
     private static SecretKeySpec secretKey;
     private static byte[] key;
     final static String secret = "Tee(Hee)%PEe?Peepu*opoo!";
