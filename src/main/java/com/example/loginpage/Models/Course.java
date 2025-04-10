@@ -1,4 +1,4 @@
-package com.example.loginpage.Structure;
+package com.example.loginpage.Models;
 
 public class Course {
     String courseID;

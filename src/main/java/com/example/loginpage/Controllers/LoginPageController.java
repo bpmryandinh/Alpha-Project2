@@ -1,7 +1,7 @@
 package com.example.loginpage.Controllers;
 
 import com.example.loginpage.Main;
-import com.example.loginpage.Structure.UserSession;
+import com.example.loginpage.Models.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -58,7 +58,7 @@ public class LoginPageController {
 
         while (emailFound != true || i > lines.length) {
              fileEmail = lines[i + 1];
-             decryptedEmail = SecureService.decrypt(fileEmail, SecureService.secret);
+             decryptedEmail = SecureMiddleware.decrypt(fileEmail, SecureMiddleware.secret);
 
              if (decryptedEmail.equals(inputtedEmail)) {
                  emailFound = true;
@@ -73,12 +73,12 @@ public class LoginPageController {
         } else {
             // Salt needs to get decoded with this as the default byte conversion was inconsistent
             salt = Base64.getDecoder().decode(lines[i]);
-            String hashedPassword = SecureService.getSecurePassword(inputtedPassword, salt);
+            String hashedPassword = SecureMiddleware.getSecurePassword(inputtedPassword, salt);
             // A new user object is created and the user is considered logged in if hashes are equal
             if (hashedPassword.equals(lines[i + 3])) {
                 String strSalt = lines[i];
-                String email = SecureService.decrypt(lines[i+1], SecureService.secret);
-                String name = SecureService.decrypt(lines[i+2], SecureService.secret);
+                String email = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
+                String name = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
                 Main.users = new UserSession(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
@@ -90,8 +90,8 @@ public class LoginPageController {
 
         // These classes are for scene managing and swapping between the controller scenes.
     }
-    public void setStage(Stage stage) {
-        this.parentStage = stage;
+    public LoginPageController() {
+        this.parentStage = StageController.getInstance().mainScene;
     }
 
     public void setBackScene(Scene scene) {

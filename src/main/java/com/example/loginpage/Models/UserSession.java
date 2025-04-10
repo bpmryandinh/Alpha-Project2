@@ -1,11 +1,17 @@
-package com.example.loginpage.Structure;
+package com.example.loginpage.Models;
 
 // A virtual user just for holding the users data temporarily and for future use.
 public class UserSession {
+    enum Person {
+        Student,
+        Professor
+    }
+
     private String salt;
     private String email;
     private String name;
     private String hashedPassword;
+//    public Person userType;
 
     public UserSession(String salt, String email, String name, String hashedPassword ) {
         this.salt = salt;

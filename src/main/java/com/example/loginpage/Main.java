@@ -1,10 +1,7 @@
 package com.example.loginpage;
 
-import com.example.loginpage.Controllers.CourseListPageController;
-import com.example.loginpage.Controllers.HomePageController;
-import com.example.loginpage.Controllers.LoginPageController;
-import com.example.loginpage.Controllers.SignupPageController;
-import com.example.loginpage.Structure.UserSession;
+import com.example.loginpage.Controllers.*;
+import com.example.loginpage.Models.UserSession;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,26 +22,27 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Creation of each fxml page
+        StageController.setInstance(new StageController(), stage);
+
         FXMLLoader homePageLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
         Scene homeScene = new Scene(homePageLoader.load(), 380, 540);
         HomePageController HomePageController = homePageLoader.getController();
-        HomePageController.setStage(stage);
-
 
         FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
         LoginPageController loginPageController = loginPageLoader.getController();
-        loginPageController.setStage(stage);
 
         FXMLLoader signUpPageLoader = new FXMLLoader(Main.class.getResource("SignUpPage.fxml"));
         Scene signupScene = new Scene(signUpPageLoader.load(), 380, 540);
         SignupPageController SignUpPageController = signUpPageLoader.getController();
-        SignUpPageController.setStage(stage);
 
         FXMLLoader courseListPageLoader = new FXMLLoader(Main.class.getResource("CourseListPage.fxml"));
         Scene courseListScene = new Scene(courseListPageLoader.load(), 800, 600);
-        CourseListPageController CourseListPageController = courseListPageLoader.getController();
-        CourseListPageController.setStage(stage);
+        CourseListPageController courseListPageController = courseListPageLoader.getController();
+
+        FXMLLoader coursePageLoader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
+        Scene coursePageScene = new Scene(coursePageLoader.load(), 800, 600);
+        CoursePageController coursePageController = coursePageLoader.getController();
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into eachothere for scene swapping
@@ -54,6 +52,8 @@ public class Main extends Application {
         loginPageController.setBackScene(homeScene);
         loginPageController.setHomeController(HomePageController);
         SignUpPageController.setBackScene(homeScene);
+        courseListPageController.setCourseScene(coursePageScene);
+        coursePageController.setBackScene(courseListScene);
         stage.setScene(homeScene);
         stage.show();
 

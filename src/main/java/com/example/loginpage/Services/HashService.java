@@ -1,7 +1,7 @@
 package com.example.loginpage.Services;
 
-import com.example.loginpage.Structure.Course;
-import com.example.loginpage.Structure.User;
+import com.example.loginpage.Models.Course;
+import com.example.loginpage.Models.User;
 
 import java.util.HashMap;
 
@@ -18,13 +18,13 @@ public class HashService {
     }
 
     // Student Session: Sending the user course Data
-    public Course[] findCourses(String[] CourseID) {
+    public static Course[] findCourses(String[] CourseID) {
         Course[] courses = new Course[CourseID.length];
         return courses;
     }
 
     // Professor Session: Sending UserData for a course
-    public String[] findStudents(int[] UserID) {
+    public static String[] findStudents(int[] UserID) {
     String[] students = new String[UserID.length];
     return students;
     }

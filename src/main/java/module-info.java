@@ -10,7 +10,7 @@ module com.example.loginpage {
     opens com.example.loginpage.Controllers to javafx.fxml;
     exports com.example.loginpage.Services;
     opens com.example.loginpage.Services to javafx.fxml;
-    exports com.example.loginpage.Structure;
-    opens com.example.loginpage.Structure to javafx.fxml;
+    exports com.example.loginpage.Models;
+    opens com.example.loginpage.Models to javafx.fxml;
 
 }

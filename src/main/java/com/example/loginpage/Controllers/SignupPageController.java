@@ -47,10 +47,10 @@ public class SignupPageController {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 
         // Encrypts everything with the secret key or with salt if it is the password
-        byte[] salt = SecureService.getSalt();
-        String encryptedEmail = SecureService.encrypt(emailTxtField.getText(), SecureService.secret);
-        String encryptedName = SecureService.encrypt(nameTxtField.getText(), SecureService.secret);
-        String hashedPassword = SecureService.getSecurePassword(passwordTxtField.getText(), salt);
+        byte[] salt = SecureMiddleware.getSalt();
+        String encryptedEmail = SecureMiddleware.encrypt(emailTxtField.getText(), SecureMiddleware.secret);
+        String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
+        String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
         writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
@@ -59,8 +59,11 @@ public class SignupPageController {
     }
 
     // These classes are for scene managing and swapping between the controller scenes.
-    public void setStage(Stage stage) {
-        this.parentStage = stage;
+//    public void setStage(Stage stage) {
+//        this.parentStage = stage;
+//    }
+    public SignupPageController() {
+        this.parentStage = StageController.getInstance().mainScene;
     }
 
     public void setBackScene(Scene scene) {

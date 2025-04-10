@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.Controllers.CourseListPageController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.Controllers.CourseListPageController">
    <children>
       <VBox>
          <children>
-            <Label text="Welcome {User}" />
+            <Label styleClass="heading2" text="Welcome {User}" />
             <Button mnemonicParsing="false" onAction="#createCardButtonPressed" text="Create Card" />
             <ScrollPane prefHeight="416.0" prefWidth="800.0">
                <content>
