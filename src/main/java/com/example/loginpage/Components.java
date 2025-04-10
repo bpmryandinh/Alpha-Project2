@@ -27,12 +27,14 @@ public class Components {
         VBox content = new VBox(5);
 
         Label titleLabel = new Label(title);
-        titleLabel.setFont(Font.font("Arial", 18));
+        titleLabel.setFont(Font.font("Montserrat", 18));
+        titleLabel.setStyle("-fx-font-weight: bold");
         Label authorLabel = new Label(author);
         authorLabel.setStyle("-fx-text-fill: #fffb00;");
         Label descLabel = new Label(description);
-        descLabel.setFont(Font.font("Arial", 12));
+        descLabel.setFont(Font.font("Montserrat", 12));
         descLabel.setStyle("-fx-text-fill: #969191;");
+//        descLabel.setStyle("-fx-font-weight: bold");
 
         content.getChildren().addAll(titleLabel, authorLabel, descLabel);
 
