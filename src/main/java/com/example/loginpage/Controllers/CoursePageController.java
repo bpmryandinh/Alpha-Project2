@@ -12,7 +12,7 @@ public class CoursePageController {
 
 
 
-    private CoursePageController() {
+    public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
         this.courseID = "";
     }

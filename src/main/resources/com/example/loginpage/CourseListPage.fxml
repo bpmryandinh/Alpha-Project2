@@ -7,7 +7,7 @@
    <children>
       <VBox>
          <children>
-            <Label text="Welcome {User}" />
+            <Label styleClass="heading2" text="Welcome {User}" />
             <Button mnemonicParsing="false" onAction="#createCardButtonPressed" text="Create Card" />
             <ScrollPane prefHeight="416.0" prefWidth="800.0">
                <content>
