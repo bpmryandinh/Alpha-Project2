@@ -10,6 +10,10 @@ public class User {
     String address;
     String gender;
 
+    /*
+    * Professor and student options
+    */
+
     public User(String userID, String[] courses, String name, String email, String birthday, String phone, String address, String gender) {
         this.userID = userID;
         Courses = courses;
