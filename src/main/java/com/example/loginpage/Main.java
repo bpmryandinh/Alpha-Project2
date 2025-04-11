@@ -45,7 +45,7 @@ public class Main extends Application {
         CoursePageController coursePageController = coursePageLoader.getController();
         stage.setTitle("Awesome Page");
 
-        // Parses in the scenes into eachothere for scene swapping
+        // Parses in the scenes into each other for scene swapping
         HomePageController.setSignupScene(signupScene);
         HomePageController.setLoginScene(loginScene);
         HomePageController.setCourseList(courseListScene);
