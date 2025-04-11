@@ -100,3 +100,62 @@ Button:hover {
     -fx-font-weight: bold;
     -fx-font-size: 1.25em;
 }
+
+.card {
+    -fx-background-color: #788689;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 0);
+    -fx-border-radius: 10;
+}
+
+.tab-pane {
+    /*-fx-background-color: #2e2e2e;*/
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-padding: 10 0 0 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-padding: 0 20 10 20;
+    -fx-text-fill: #CCCCCC;
+    -fx-border-color: transparent transparent #444444 transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab:hover {
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent transparent #66d9ef transparent;
+}
+
+.tab:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-pane .tab:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.tab-pane .tab {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.tab-pane .tab-label {
+    -fx-padding: 0; /* Remove any weird inset */
+}
+
+.tab-pane .tab:selected {
+    -fx-text-fill: #66d9ef;
+    -fx-border-color: transparent transparent #66d9ef transparent;
+}
