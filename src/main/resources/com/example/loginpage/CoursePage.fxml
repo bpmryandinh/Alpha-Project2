@@ -77,10 +77,6 @@
                               </children></AnchorPane>
                       </content>
                   </Tab>
-                  <Tab text="Students">
-                  <content>
-                  </content>
-                  </Tab>
               </tabs>
             </TabPane>
          </children></VBox>
