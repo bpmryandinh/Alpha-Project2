@@ -13,9 +13,9 @@ public class HashService {
 
     // Key:Value Pairs
     //
-    private HashMap<Integer, Course> Courses;
-    private HashMap<Integer, User> Users;
-    private HashMap<Integer, String[]> CourseData;
+    private static HashMap<Integer, Course> Courses;
+    private static HashMap<Integer, User> Users;
+    private static HashMap<Integer, String[]> CourseData;
 
     public void test(){
         // Takes in an ID returns the course associated to that ID
@@ -24,14 +24,35 @@ public class HashService {
 
     // Student Session: Sending the user course Data
     public static Course[] findCourses(String[] CourseID) {
-        Course[] courses = new Course[CourseID.length];
-        return courses;
+        Course[] CourseReturn = new Course[CourseID.length];
+        for(int i = 0; i >= CourseID.length; i++){
+            CourseReturn[i] = Courses.get(CourseID[i]);
+        }
+        return CourseReturn;
     }
 
     // Professor Session: Sending UserData for a course
-    public static String[] findStudents(int[] UserID) {
-    String[] students = new String[UserID.length];
-    return students;
+    public static User[] findStudents(int[] UserID) {
+        User[] UserReturn = new User[UserID.length];
+        for(int i = 0; i >= UserID.length; i++){
+            UserReturn[i] = Users.get(UserID[i]);
+        }
+        return UserReturn;
     }
 
+    // Method to fill in data for course hashmap
+    public static void writeCourseHashMap(String[][] CourseSData) {
+        for(String[] courseData : CourseSData){
+            Course course = new Course(courseData[0], courseData[1], courseData[2], courseData[3]);
+            Courses.put(Integer.parseInt(courseData[0]), course);
+        }
+    }
+
+    // Method to fill in data for user hashmap
+    public static void writeUserHashMap(String[][] UserSData){
+        for(String[] userData : UserSData){
+            User user = new User(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6], userData[7]);
+            Users.put(Integer.parseInt(userData[0]), user);
+        }
+    }
 }

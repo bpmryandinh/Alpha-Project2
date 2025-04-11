@@ -3,13 +3,13 @@ package com.example.loginpage.Models;
 public class Course {
     String courseID;
     String courseName;
-    String[] userIDs;
+    String userIDs;
     String courseProfessor;
 
-    public Course(String courseID, String courseName, String[] userIDs, String courseProfessor) {
+    public Course(String courseID, String courseName, String courseData, String courseProfessor) {
         this.courseID = courseID;
         this.courseName = courseName;
-        this.userIDs = userIDs;
+        this.userIDs = courseData;
         this.courseProfessor = courseProfessor;
     }
 
@@ -29,11 +29,11 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String[] getUserIDs() {
+    public String getUserIDs() {
         return userIDs;
     }
 
-    public void setUserIDs(String[] userIDs) {
+    public void setUserIDs(String userIDs) {
         this.userIDs = userIDs;
     }
 
