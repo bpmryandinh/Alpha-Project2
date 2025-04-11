@@ -11,7 +11,6 @@ public class CoursePageController {
     public static String courseID;
 
 
-
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
         this.courseID = "";
@@ -30,6 +29,9 @@ public class CoursePageController {
 
 
     public void onBackButtonPressed(ActionEvent actionEvent) {
-            this.parentStage.setScene(this.backScene);
-        }
+        this.parentStage.setScene(this.backScene);
     }
+
+    public void loadCourseData(){}
+    }
+
