@@ -6,6 +6,11 @@ import com.example.loginpage.Models.User;
 import java.util.HashMap;
 
 public class HashService {
+    /*
+    * 2 separate methods to fill in data for course and user hashmaps
+    * Integer = ID of course or user (depending on method)
+    * */
+
     // Key:Value Pairs
     //
     private HashMap<Integer, Course> Courses;
