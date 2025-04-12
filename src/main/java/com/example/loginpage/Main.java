@@ -3,6 +3,7 @@ package com.example.loginpage;
 import com.example.loginpage.Controllers.*;
 import com.example.loginpage.Models.UserSession;
 import com.example.loginpage.Services.FileService;
+import com.example.loginpage.Services.HashService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,7 +61,9 @@ public class Main extends Application {
 
         stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
 
-        FileService.readAllCSV("users");
+
+        HashService.writeUserHashMap(FileService.readAllCSV("users"));
+
 
     }
 

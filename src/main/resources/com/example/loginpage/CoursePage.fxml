@@ -65,12 +65,15 @@
                               <children>
                                   <TableView layoutX="-3.0" layoutY="34.0" prefHeight="337.0" prefWidth="806.0">
                                       <columns>
-                                          <TableColumn prefWidth="124.0" text="First Name" />
-                                          <TableColumn prefWidth="111.0" text="Last Name" />
-                                          <TableColumn prefWidth="106.0" text="Student ID" />
-                                          <TableColumn minWidth="0.0" prefWidth="75.0" text="GPA" />
-                                          <TableColumn prefWidth="200.0" text="Email" />
-                                          <TableColumn prefWidth="186.0" text="Phone Number" />
+                                          <TableColumn prefWidth="90.0" text="Student ID" />
+                                          <TableColumn prefWidth="102.0" text="First Name" />
+                                          <TableColumn prefWidth="107.0" text="Last Name" />
+                                    <TableColumn prefWidth="61.0" text="Gender" />
+                                          <TableColumn prefWidth="111.0" text="Email" />
+                                          <TableColumn minWidth="0.0" prefWidth="51.0" text="GPA" />
+                                    <TableColumn prefWidth="102.0" text="Address" />
+                                          <TableColumn prefWidth="95.0" text="Birthday" />
+                                    <TableColumn prefWidth="85.0" text="Phone" />
 
                                       </columns>
                                   </TableView>
