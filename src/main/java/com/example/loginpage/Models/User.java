@@ -2,7 +2,7 @@ package com.example.loginpage.Models;
 
 public class User {
     String userID;
-    String[] Courses;
+    String Courses;
     String name;
     String email;
     String birthday;
@@ -14,9 +14,9 @@ public class User {
     * Professor and student options
     */
 
-    public User(String userID, String[] courses, String name, String email, String birthday, String phone, String address, String gender) {
+    public User(String userID, String courses, String name, String email, String birthday, String phone, String address, String gender) {
         this.userID = userID;
-        Courses = courses;
+        this.Courses = courses;
         this.name = name;
         this.email = email;
         this.birthday = birthday;
@@ -33,11 +33,11 @@ public class User {
         this.userID = userID;
     }
 
-    public String[] getCourses() {
+    public String getCourses() {
         return Courses;
     }
 
-    public void setCourses(String[] courses) {
+    public void setCourses(String courses) {
         Courses = courses;
     }
 
