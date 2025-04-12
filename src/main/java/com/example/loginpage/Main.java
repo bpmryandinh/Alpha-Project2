@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
-    public static UserSession users;
+    public static UserSession user;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page

@@ -18,7 +18,7 @@
                      </children>
                   </VBox>
                </children></HBox>
-            <TabPane prefHeight="450.0" prefWidth="800.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="500.0" prefWidth="800.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Course Info">
                   <content>
@@ -63,17 +63,20 @@
                       <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
-                                  <TableView layoutX="-3.0" layoutY="40.0" prefHeight="384.0" prefWidth="806.0">
+                                  <TableView layoutX="-3.0" layoutY="34.0" prefHeight="337.0" prefWidth="806.0">
                                       <columns>
-                                          <TableColumn prefWidth="75.0" text="First Name" />
-                                          <TableColumn prefWidth="75.0" text="Last Name" />
-                                          <TableColumn prefWidth="75.0" text="Student ID" />
-                                          <TableColumn prefWidth="100.0" text="Email" />
-                                          <TableColumn prefWidth="75.0" text="GPA" />
-                                          <TableColumn prefWidth="100.0" text="Phone Number" />
+                                          <TableColumn prefWidth="124.0" text="First Name" />
+                                          <TableColumn prefWidth="111.0" text="Last Name" />
+                                          <TableColumn prefWidth="106.0" text="Student ID" />
+                                          <TableColumn minWidth="0.0" prefWidth="75.0" text="GPA" />
+                                          <TableColumn prefWidth="200.0" text="Email" />
+                                          <TableColumn prefWidth="186.0" text="Phone Number" />
 
                                       </columns>
                                   </TableView>
+                                  <Pane layoutY="383.0" prefHeight="48.0" prefWidth="800.0" style="-fx-background-color: #42494f" />
+                              <Button layoutX="743.0" layoutY="395.0" mnemonicParsing="false" styleClass="modButton" text="Add" />
+
                               </children></AnchorPane>
                       </content>
                   </Tab>
