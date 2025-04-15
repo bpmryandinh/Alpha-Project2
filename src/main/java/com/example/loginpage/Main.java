@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -60,8 +61,7 @@ public class Main extends Application {
 
         stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
 
-        FileService.readAllCSV("users");
-
+        FileService.deleteRecordCSV("B002");
     }
 
 
