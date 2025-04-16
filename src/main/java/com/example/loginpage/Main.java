@@ -2,17 +2,20 @@ package com.example.loginpage;
 
 import com.example.loginpage.Controllers.*;
 import com.example.loginpage.Models.UserSession;
+import com.example.loginpage.Services.FileService;
+import com.example.loginpage.Services.HashService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
-    public static UserSession users;
+    public static UserSession user;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page
@@ -45,7 +48,7 @@ public class Main extends Application {
         CoursePageController coursePageController = coursePageLoader.getController();
         stage.setTitle("Awesome Page");
 
-        // Parses in the scenes into eachothere for scene swapping
+        // Parses in the scenes into each other for scene swapping
         HomePageController.setSignupScene(signupScene);
         HomePageController.setLoginScene(loginScene);
         HomePageController.setCourseList(courseListScene);
@@ -58,6 +61,9 @@ public class Main extends Application {
         stage.show();
 
         stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
+
+        FileService.readAllCSV("users");
+
     }
 
 
