@@ -64,7 +64,6 @@ public class Main extends Application {
 
         HashService.writeUserHashMap(FileService.readAllCSV("users"));
 
-
     }
 
 
