@@ -7,7 +7,11 @@
    <children>
       <VBox>
          <children>
-            <Label styleClass="heading2" text="Welcome {User}" />
+            <HBox prefHeight="34.0" prefWidth="806.0">
+               <children>
+                  <Label styleClass="heading2" text="Welcome {User}" />
+               </children>
+            </HBox>
             <Button mnemonicParsing="false" onAction="#createCardButtonPressed" text="Create Card" />
             <ScrollPane prefHeight="500.0" prefWidth="806.0">
                <content>
