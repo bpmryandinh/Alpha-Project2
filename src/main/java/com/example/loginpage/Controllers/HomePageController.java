@@ -14,7 +14,7 @@ It also welcomes the user once they are finally logged in.
  */
 public class HomePageController {
     // Stages and Scenes for the purpose of scene swapping
-    private Stage parentStage;
+    private final Stage parentStage;
     private Scene signupScene;
     private Scene loginScene;
     private Scene courseListScene;
