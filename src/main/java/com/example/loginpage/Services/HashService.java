@@ -25,7 +25,7 @@ public class HashService {
     // Student Session: Sending the user course Data
     public static Course[] findCourses(String[] CourseID) {
         Course[] CourseReturn = new Course[CourseID.length];
-        for(int i = 0; i >= CourseID.length; i++){
+        for(int i = 0; i <= CourseID.length; i++){
             CourseReturn[i] = Courses.get(CourseID[i]);
         }
         return CourseReturn;
