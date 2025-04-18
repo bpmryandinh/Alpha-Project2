@@ -13,7 +13,7 @@ Home Controller manages navigation between the login page and signup page.
 It also welcomes the user once they are finally logged in.
  */
 public class HomePageController {
-    // Stages and Scenes for the purpose of scene swapping
+    // Stages and Scenes for scene swapping
     private final Stage parentStage;
     private Scene signupScene;
     private Scene loginScene;

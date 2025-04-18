@@ -15,6 +15,8 @@ public class CourseListPageController {
 
     private Stage parentStage;
     private Scene courseScene;
+    private CoursePageController coursePageController;
+
 
     @FXML
     private VBox courseVBox;
@@ -40,12 +42,16 @@ public class CourseListPageController {
         Course[] userCourses = HashService.findCourses(userCoursesIDs);
         for(Course userCourse : userCourses){
             String[] userCourseData = userCourse.getCourseData();
-            courseVBox.getChildren().add(Components.createCard(userCourseData[1], userCourseData[2], userCourseData[3], userCourseData[4], userCourseData[5],userCourseData[0], courseScene));
+            courseVBox.getChildren().add(Components.createCard(userCourseData[1], userCourseData[2], userCourseData[3], userCourseData[4], userCourseData[5],userCourseData[0], courseScene, coursePageController));
         }
     }
 
 
     public void setCourseScene(Scene scene) {
         this.courseScene = scene;
+    }
+
+    public void setCoursePageController(CoursePageController coursePageController) {
+        this.coursePageController = coursePageController;
     }
 }

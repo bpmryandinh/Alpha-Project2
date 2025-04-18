@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CoursePageController {
-    private static CoursePageController instance;
+//    private static CoursePageController instance;
     private Stage parentStage;
     private Scene backScene;
     private String courseID;
@@ -51,32 +51,36 @@ public class CoursePageController {
         courseID = "";
     }
 
-    public static CoursePageController getInstance() {
-        if (instance == null) {
-            instance = new CoursePageController();
-        }
-        return instance;
-    }
+//    public static CoursePageController getInstance() {
+//        if (instance == null) {
+//            instance = new CoursePageController();
+//        }
+//        return instance;
+//    }
 
     public void loadPageData() {
-//            String[] studentIDs = {CoursePageController.getInstance().course.getUserIDs()};
-//            User[] Users = HashService.findStudents(studentIDs);
-//            CoursePageController.getInstance().studentTableData.clear();
-//            CoursePageController.getInstance().studentTableData.addAll(Users);
+            String[] studentIDs = {course.getUserIDs()};
+            User[] Users = HashService.findStudents(studentIDs);
+            studentTableData.clear();
+            studentTableData.addAll(Users);
     }
 
     public void setCourseClass() {
-        String[] sendCourse = {CoursePageController.getInstance().getCourseID()};
+        String[] sendCourse = {getCourseID()};
         Course[] courseReturn = HashService.findCourses(sendCourse);
 //        CoursePageController.getInstance().setCourse(courseReturn[0]);
         String[] studentIDs = {courseReturn[0].getUserIDs()};
         List<User> Users = List.of(HashService.findStudents(studentIDs));
-        CoursePageController.getInstance().studentTableData.clear();
-        CoursePageController.getInstance().studentTableData = FXCollections.observableArrayList(Users);
+        studentTableData.clear();
+        studentTableData = FXCollections.observableArrayList(Users);
 //        CoursePageController.getInstance().studentTableData.addAll(Users);
     }
 
     public void initialize() {
+
+    }
+
+    public void refreshPage() {
         userID.setCellValueFactory(new PropertyValueFactory<User, String>("userID"));
         fname.setCellValueFactory(new PropertyValueFactory<User, String>("fname"));
         lname.setCellValueFactory(new PropertyValueFactory<User, String>("lname"));
@@ -86,14 +90,8 @@ public class CoursePageController {
         address.setCellValueFactory(new PropertyValueFactory<User, String>("address"));
         phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
         studentTable.setItems(studentTableData);
-    }
-
-    public void refreshPage() {
         loadPageData();
     }
-
-
-
 
 
     public void setBackScene(Scene backScene) {
@@ -106,15 +104,15 @@ public class CoursePageController {
     }
 
     public String getCourseID() {
-        return CoursePageController.getInstance().courseID;
+        return courseID;
     }
 
     public void setCourseID(String courseID) {
-        CoursePageController.getInstance().courseID = courseID;
+        courseID = courseID;
     }
 
     public Course getCourse() {
-        return CoursePageController.getInstance().course;
+        return course;
     }
 
     public void setCourse(Course course) {

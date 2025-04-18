@@ -60,6 +60,7 @@ public class Main extends Application {
         loginPageController.setHomeController(HomePageController);
         SignUpPageController.setBackScene(homeScene);
         courseListPageController.setCourseScene(coursePageScene);
+        courseListPageController.setCoursePageController(coursePageController);
         coursePageController.setBackScene(courseListScene);
         stage.setScene(homeScene);
         stage.show();

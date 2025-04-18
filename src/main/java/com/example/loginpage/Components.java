@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class Components {
 
-    public static HBox createCard(String title, String coursenum, String description, String students, String professor, String courseID, Scene courseScene) {
+    public static HBox createCard(String title, String coursenum, String description, String students, String professor, String courseID, Scene courseScene, CoursePageController coursePageController) {
 
         HBox card = new HBox(10);
         card.setStyle("-fx-background-color: linear-gradient(to bottom left, #3d4548, #252829); -fx-padding: 15; -fx-border-color: #2c2525; -fx-border-width: 1; -fx-background-radius: 5;");
@@ -52,9 +52,9 @@ public class Components {
         viewBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                CoursePageController.getInstance().setCourseID(courseID);
-                CoursePageController.getInstance().setCourseClass();
-                CoursePageController.getInstance().refreshPage();
+                coursePageController.setCourseID(courseID);
+                coursePageController.setCourseClass();
+                coursePageController.refreshPage();
                 StageController.getInstance().mainScene.setScene(courseScene);
             }
         });
