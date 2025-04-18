@@ -39,3 +39,7 @@ public class Course {
         return courseData;
     }
 }
+
+/*
+Now using the student b numbers from that csv (ex. B1008). I want you to generate 50 students using this format: B1001,C5012;C1024;C3012,John,Doe,Male,john.doe@example.com,3.75,"123 Main St Anytown CA 94102",MATH2004;ENGL1613,Sophomore
+ */

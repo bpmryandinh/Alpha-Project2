@@ -15,9 +15,9 @@ import java.io.IOException;
 
 public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
-    public static UserSession user;
+    public static UserSession LoggedInUser;
 
-    public static String testUserID = "B1001";
+    public static String testUserID = "B1015";
     public static User testUser;
 
     /*
@@ -75,6 +75,8 @@ public class Main extends Application {
         // For testing the CourseListLoader
         User[] user = HashService.findStudents(new String[]{testUserID});
         testUser = user[0];
+//        LoggedInUser.setUserID("B1030");
+//        LoggedInUser.setUser();
 
     }
 

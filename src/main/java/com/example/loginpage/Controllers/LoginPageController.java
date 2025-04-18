@@ -80,7 +80,7 @@ public class LoginPageController {
                 String id = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
                 String email = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
                 String name = SecureMiddleware.decrypt(lines[i+3], SecureMiddleware.secret);
-                Main.user = new UserSession(strSalt, id, email, name, hashedPassword);
+                Main.LoggedInUser = new UserSession(strSalt, id, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
             } else {

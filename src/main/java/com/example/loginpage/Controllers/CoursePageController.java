@@ -42,9 +42,9 @@ public class CoursePageController {
     @FXML
     private TableColumn<User, String> gpa;
     @FXML
-    private TableColumn<User, String> address;
+    private TableColumn<User, String> courses;
     @FXML
-    private TableColumn<User, String> phone;
+    private TableColumn<User, String> year;
 
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
@@ -87,8 +87,8 @@ public class CoursePageController {
         gender.setCellValueFactory(new PropertyValueFactory<User, String>("gender"));
         email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
         gpa.setCellValueFactory(new PropertyValueFactory<User, String>("GPA"));
-        address.setCellValueFactory(new PropertyValueFactory<User, String>("address"));
-        phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
+        courses.setCellValueFactory(new PropertyValueFactory<User, String>("CoursesString"));
+        year.setCellValueFactory(new PropertyValueFactory<User, String>("year"));
         studentTable.setItems(loadPageData());
 //        loadPageData();
     }

@@ -53,8 +53,8 @@ public class HomePageController {
 
     // Is called whenever the user is finally logged in
     public void refresh(){
-        if (Main.user != null) {
-            welcomeUserId.setText("Welcome, " + Main.user.getName());
+        if (Main.LoggedInUser != null) {
+            welcomeUserId.setText("Welcome, " + Main.LoggedInUser.getName());
         }
     }
 

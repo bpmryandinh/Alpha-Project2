@@ -29,6 +29,9 @@ public class UserSession {
             this.user = user[0];
     }
 
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
     public String getName() {
         return name;
     }
@@ -53,5 +56,7 @@ public class UserSession {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-
+    public User getUser() {
+        return this.user;
+    }
 }

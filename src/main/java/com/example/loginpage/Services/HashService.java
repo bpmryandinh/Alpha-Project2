@@ -58,7 +58,7 @@ public class HashService {
     // Method to fill in data for user hashmap
     public static void writeUserHashMap(String[][] UserSData){
         for(String[] userData : UserSData){
-            User user = new User(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7],userData[8],userData[9]);
+            User user = new User(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7],userData[8],userData[9],userData[10]);
             Users.put(userData[0], user);
         }
 
