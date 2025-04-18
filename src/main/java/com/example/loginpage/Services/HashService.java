@@ -52,8 +52,8 @@ public class HashService {
     // does the new String[]{userData[1]} work?
     public static void writeUserHashMap(String[][] UserSData){
         for(String[] userData : UserSData){
-            User user = new User(userData[0], new String[]{userData[1]}, userData[2], userData[3], userData[4], userData[5], userData[6], userData[7]);
-            Users.put(Integer.parseInt(userData[0]), user);
+            User user = new User(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6], userData[7], userData[8],userData[9]);
+            Users.put(userData[0], user);
         }
     }
 }
