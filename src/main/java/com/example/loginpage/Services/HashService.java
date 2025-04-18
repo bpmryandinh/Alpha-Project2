@@ -32,9 +32,9 @@ public class HashService {
     }
 
     // Professor Session: Sending UserData for a course
-    public static User[] findStudents(int[] UserID) {
+    public static User[] findStudents(String[] UserID) {
         User[] UserReturn = new User[UserID.length];
-        for(int i = 0; i >= UserID.length; i++){
+        for(int i = 0; i <= UserID.length; i++){
             UserReturn[i] = Users.get(UserID[i]);
         }
         return UserReturn;
