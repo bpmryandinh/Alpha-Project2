@@ -3,16 +3,20 @@ package com.example.loginpage.Models;
 public class Course {
     String courseID;
     String courseName;
-    String userIDs;
+    String[] userIDs;
     String courseProfessor;
     String[] courseData;
 
-    public Course(String courseID, String courseName, String userIDs, String courseProfessor, String[] courseData) {
+    public Course(String courseID, String courseName, String usersRaw, String courseProfessor, String[] courseData) {
         this.courseID = courseID;
         this.courseName = courseName;
-        this.userIDs = userIDs;
+        this.userIDs = splitUsers(usersRaw);
         this.courseProfessor = courseProfessor;
         this.courseData = courseData;
+    }
+
+    public String[] splitUsers(String usersRaw) {
+        return usersRaw.split(";");
     }
 
     public String getCourseID() {
@@ -23,7 +27,7 @@ public class Course {
         return courseName;
     }
 
-    public String getUserIDs() {
+    public String[] getUserIDs() {
         return userIDs;
     }
     

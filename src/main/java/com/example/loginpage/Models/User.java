@@ -37,4 +37,40 @@ public class User {
     public String[] getCourses() {
         return Courses;
     }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getGPA() {
+        return GPA;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

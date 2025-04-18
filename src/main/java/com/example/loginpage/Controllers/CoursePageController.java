@@ -24,7 +24,7 @@ public class CoursePageController {
     private Scene backScene;
     private String courseID;
     private Course course;
-    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
+//    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
 
 
     @FXML
@@ -58,21 +58,21 @@ public class CoursePageController {
 //        return instance;
 //    }
 
-    public void loadPageData() {
-            String[] studentIDs = {course.getUserIDs()};
+    public ObservableList<User> loadPageData() {
+            String[] studentIDs = course.getUserIDs();
             User[] Users = HashService.findStudents(studentIDs);
-            studentTableData.clear();
-            studentTableData.addAll(Users);
+            return FXCollections.observableArrayList(Users);
     }
 
     public void setCourseClass() {
         String[] sendCourse = {getCourseID()};
         Course[] courseReturn = HashService.findCourses(sendCourse);
+        setCourse(courseReturn[0]);
 //        CoursePageController.getInstance().setCourse(courseReturn[0]);
-        String[] studentIDs = {courseReturn[0].getUserIDs()};
-        List<User> Users = List.of(HashService.findStudents(studentIDs));
-        studentTableData.clear();
-        studentTableData = FXCollections.observableArrayList(Users);
+//        String[] studentIDs = {courseReturn[0].getUserIDs()};
+//        List<User> Users = List.of(HashService.findStudents(studentIDs));
+//        studentTableData.clear();
+//        studentTableData = FXCollections.observableArrayList(Users);
 //        CoursePageController.getInstance().studentTableData.addAll(Users);
     }
 
@@ -86,11 +86,11 @@ public class CoursePageController {
         lname.setCellValueFactory(new PropertyValueFactory<User, String>("lname"));
         gender.setCellValueFactory(new PropertyValueFactory<User, String>("gender"));
         email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-        gpa.setCellValueFactory(new PropertyValueFactory<User, String>("gpa"));
+        gpa.setCellValueFactory(new PropertyValueFactory<User, String>("GPA"));
         address.setCellValueFactory(new PropertyValueFactory<User, String>("address"));
         phone.setCellValueFactory(new PropertyValueFactory<User, String>("phone"));
-        studentTable.setItems(studentTableData);
-        loadPageData();
+        studentTable.setItems(loadPageData());
+//        loadPageData();
     }
 
 
@@ -108,7 +108,7 @@ public class CoursePageController {
     }
 
     public void setCourseID(String courseID) {
-        courseID = courseID;
+        this.courseID = courseID;
     }
 
     public Course getCourse() {
