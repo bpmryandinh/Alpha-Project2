@@ -84,6 +84,11 @@ public class FileService {
         TempFile.renameTo(InputFile);
     }
 
+    public static void updateRecordCSV(String id, String[] data) throws IOException {
+        deleteRecordCSV(id);
+        insertRecordCSV(id, data);
+    }
+
     private static File getFile(String id) {
         File CSVFile;
         boolean isUser = id.startsWith("B");

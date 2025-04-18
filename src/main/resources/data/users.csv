@@ -1,5 +1,5 @@
 B1001,C5012;C1024;C3012,John,Doe,Male,john.doe@example.com,3.75,"123 Main St Anytown CA 94102",1995-05-15,555-123-4567
 B1002,BIO303;CHEM101;PHYS202,Jane,Smith,Female,jane.smith@example.com,3.92,"456 Oak Ave Somewhere NY 10001",1997-08-22,555-987-6543
 B1003,ENG201;HIST101,Robert,Johnson,Male,robert.j@example.com,3.45,"789 Pine Rd Elsewhere TX 75001",1996-03-10,555-456-7890
-B1004,ART105;PSYCH202;SOCIO101,Maria,Garcia,Female,maria.g@example.com,3.88,"321 Elm St Nowhere FL 33101",1998-11-30,555-789-0123
+B1004,ART105;PSYCH202;SOCIO101,Maria,Garcia,Female,maria.g@example.com,3.88,321 Elm St Nowhere FL 33101,1998-11-30,555-789-0123
 B1005,MATH101;CS202;PHYS101,David,Kim,Male,david.kim@example.com,3.67,"555 Cedar Ln Anywhere WA 98001",1995-07-18,555-234-5678
