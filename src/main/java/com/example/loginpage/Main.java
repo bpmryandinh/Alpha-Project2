@@ -1,6 +1,7 @@
 package com.example.loginpage;
 
 import com.example.loginpage.Controllers.*;
+import com.example.loginpage.Models.User;
 import com.example.loginpage.Models.UserSession;
 import com.example.loginpage.Services.FileService;
 import com.example.loginpage.Services.HashService;
@@ -15,6 +16,9 @@ import java.io.IOException;
 public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
     public static UserSession user;
+
+    public static String testUserID = "B1001";
+    public static User testUser;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page
@@ -63,6 +67,13 @@ public class Main extends Application {
 
 
         HashService.writeUserHashMap(FileService.readAllCSV("users"));
+        HashService.writeCourseDataHashMap(FileService.readAllCSV("coursesData"));
+        HashService.writeCourseHashMap(FileService.readAllCSV("courses"));
+
+        // For testing the CourseListLoader
+        User[] user = HashService.findStudents(new String[]{testUserID});
+        testUser = user[0];
+
 
     }
 

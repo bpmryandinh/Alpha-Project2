@@ -1,5 +1,6 @@
 package com.example.loginpage.Controllers;
 
+import com.example.loginpage.Services.HashService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.Random;
 
 public class SignupPageController {
     // Stages and Scenes for the purpose of scene swapping
@@ -45,15 +47,23 @@ public class SignupPageController {
             line = "";
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        Random rand  = new Random();
+        String randomID;
+
+        do {
+             randomID = "B" + rand.nextInt(9000) + 1000;
+        } while (HashService.checkStudentExistence(randomID));
+
 
         // Encrypts everything with the secret key or with salt if it is the password
         byte[] salt = SecureMiddleware.getSalt();
+        String encryptedUserID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
         String encryptedEmail = SecureMiddleware.encrypt(emailTxtField.getText(), SecureMiddleware.secret);
         String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
-        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
+        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedUserID + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         writer.close();
         switchScene();
     }

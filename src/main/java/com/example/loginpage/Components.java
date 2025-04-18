@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class Components {
 
-    public static HBox createCard(String title, String author, String description, int views, int stars, String courseID, Scene courseScene) {
+    public static HBox createCard(String title, String coursenum, String description, String students, String professor, String courseID, Scene courseScene) {
 
         HBox card = new HBox(10);
         card.setStyle("-fx-background-color: linear-gradient(to bottom left, #3d4548, #252829); -fx-padding: 15; -fx-border-color: #2c2525; -fx-border-width: 1; -fx-background-radius: 5;");
@@ -29,7 +29,7 @@ public class Components {
         Label titleLabel = new Label(title);
         titleLabel.setFont(Font.font("Montserrat", 18));
         titleLabel.setStyle("-fx-font-weight: bold");
-        Label authorLabel = new Label(author);
+        Label authorLabel = new Label(coursenum);
         authorLabel.setStyle("-fx-text-fill: #fffb00;");
         Label descLabel = new Label(description);
         descLabel.setFont(Font.font("Montserrat", 12));
@@ -42,8 +42,8 @@ public class Components {
         stats.setStyle("-fx-alignment: center;");
 
         stats.getChildren().addAll(
-                new Label("\uD81A\uDE06 " + views),
-                new Label("⭐ " + stars)
+                new Label("\uD81A\uDE06 " + students),
+                new Label("⭐ " + professor)
         );
 
         Button viewBtn = new Button("View");
@@ -52,7 +52,9 @@ public class Components {
         viewBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                CoursePageController.getInstance().courseID = courseID;
+                CoursePageController.getInstance().setCourseID(courseID);
+                CoursePageController.getInstance().setCourseClass();
+                CoursePageController.getInstance().refreshPage();
                 StageController.getInstance().mainScene.setScene(courseScene);
             }
         });

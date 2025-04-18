@@ -75,16 +75,16 @@
                       <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
-                                  <TableView fx:id="studentTableView" layoutX="-3.0" layoutY="36.0" prefHeight="335.0" prefWidth="806.0">
+                                  <TableView fx:id="studentTable" layoutX="-3.0" layoutY="36.0" prefHeight="335.0" prefWidth="806.0">
                                       <columns>
-                                          <TableColumn fx:id="studentColumn" prefWidth="90.0" text="Student ID" />
-                                          <TableColumn fx:id="fnameColumn" prefWidth="102.0" text="First Name" />
-                                          <TableColumn fx:id="lnameColumn" prefWidth="107.0" text="Last Name" />
-                                          <TableColumn fx:id="genderColumn" prefWidth="61.0" text="Gender" />
-                                          <TableColumn fx:id="emailColumn" prefWidth="123.0" text="Email" />
-                                          <TableColumn fx:id="gpaColumn" minWidth="0.0" prefWidth="58.0" text="GPA" />
-                                          <TableColumn fx:id="addressColumn" prefWidth="138.0" text="Address" />
-                                          <TableColumn fx:id="phoneColumn" prefWidth="124.0" text="Phone" />
+                                          <TableColumn fx:id="userID" prefWidth="90.0" text="Student ID" />
+                                          <TableColumn fx:id="fname" prefWidth="102.0" text="First Name" />
+                                          <TableColumn fx:id="lname" prefWidth="107.0" text="Last Name" />
+                                          <TableColumn fx:id="gender" prefWidth="61.0" text="Gender" />
+                                          <TableColumn fx:id="email" prefWidth="123.0" text="Email" />
+                                          <TableColumn fx:id="gpa" minWidth="0.0" prefWidth="58.0" text="GPA" />
+                                          <TableColumn fx:id="address" prefWidth="138.0" text="Address" />
+                                          <TableColumn fx:id="phone" prefWidth="124.0" text="Phone" />
 
                                       </columns>
                                   </TableView>

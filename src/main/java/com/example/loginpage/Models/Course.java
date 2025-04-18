@@ -5,45 +5,33 @@ public class Course {
     String courseName;
     String userIDs;
     String courseProfessor;
+    String[] courseData;
 
-    public Course(String courseID, String courseName, String courseData, String courseProfessor) {
+    public Course(String courseID, String courseName, String userIDs, String courseProfessor, String[] courseData) {
         this.courseID = courseID;
         this.courseName = courseName;
-        this.userIDs = courseData;
+        this.userIDs = userIDs;
         this.courseProfessor = courseProfessor;
+        this.courseData = courseData;
     }
 
     public String getCourseID() {
         return courseID;
     }
 
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
-    }
-
     public String getCourseName() {
         return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
     }
 
     public String getUserIDs() {
         return userIDs;
     }
-
-    public void setUserIDs(String userIDs) {
-        this.userIDs = userIDs;
-    }
-
+    
     public String getCourseProfessor() {
         return courseProfessor;
     }
 
-    public void setCourseProfessor(String courseProfessor) {
-        this.courseProfessor = courseProfessor;
+    public String[] getCourseData() {
+        return courseData;
     }
-
-
 }

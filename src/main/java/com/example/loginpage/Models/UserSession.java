@@ -1,6 +1,6 @@
 package com.example.loginpage.Models;
 
-// A virtual user just for holding the users data temporarily and for future use.
+import com.example.loginpage.Services.HashService;// A virtual user just for holding the users data temporarily and for future use.
 public class UserSession {
     enum Person {
         Student,
@@ -8,16 +8,25 @@ public class UserSession {
     }
 
     private String salt;
+    private String userID;
     private String email;
     private String name;
     private String hashedPassword;
+    private User user;
     public Person userType;
 
-    public UserSession(String salt, String email, String name, String hashedPassword ) {
+    public UserSession(String salt, String userID, String email, String name, String hashedPassword ) {
         this.salt = salt;
+        this.userID = userID;
         this.email = email;
         this.name = name;
         this.hashedPassword = hashedPassword;
+        setUser();
+    }
+
+    public void setUser() {
+            User[] user = HashService.findStudents(new String[]{userID});
+            this.user = user[0];
     }
 
     public String getName() {

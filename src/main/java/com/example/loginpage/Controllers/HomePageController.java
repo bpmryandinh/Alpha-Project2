@@ -60,5 +60,6 @@ public class HomePageController {
 
     public void CourseListButtonPressed(ActionEvent actionEvent) {
         StageController.getInstance().mainScene.setScene(this.courseListScene);
+//        CourseListPageController.reloadData();
     }
 }
