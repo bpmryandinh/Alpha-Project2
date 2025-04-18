@@ -15,9 +15,8 @@ public class UserSession {
     private User user;
     public Person userType;
 
-    public UserSession(String salt, String userID, String email, String name, String hashedPassword ) {
+    public UserSession(String salt,  String email, String name, String hashedPassword ) {
         this.salt = salt;
-        this.userID = userID;
         this.email = email;
         this.name = name;
         this.hashedPassword = hashedPassword;

@@ -76,11 +76,10 @@ public class LoginPageController {
             String hashedPassword = SecureMiddleware.getSecurePassword(inputtedPassword, salt);
             // A new user object is created and the user is considered logged in if hashes are equal
             if (hashedPassword.equals(lines[i + 3])) {
-                String strSalt = lines[i];
-                String id = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
-                String email = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
-                String name = SecureMiddleware.decrypt(lines[i+3], SecureMiddleware.secret);
-                Main.LoggedInUser = new UserSession(strSalt, id, email, name, hashedPassword);
+                String strSalt = lines[i];;
+                String email = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
+                String name = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
+                Main.LoggedInUser = new UserSession(strSalt, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
             } else {

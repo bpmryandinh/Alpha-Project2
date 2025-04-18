@@ -50,20 +50,16 @@ public class SignupPageController {
         Random rand  = new Random();
         String randomID;
 
-        do {
-             randomID = "B" + rand.nextInt(9000) + 1000;
-        } while (HashService.checkStudentExistence(randomID));
 
 
         // Encrypts everything with the secret key or with salt if it is the password
         byte[] salt = SecureMiddleware.getSalt();
-        String encryptedUserID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
         String encryptedEmail = SecureMiddleware.encrypt(emailTxtField.getText(), SecureMiddleware.secret);
         String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
-        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedUserID + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
+        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         writer.close();
         switchScene();
     }
