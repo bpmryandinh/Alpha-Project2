@@ -99,9 +99,9 @@
                                     <TextField layoutX="484.0" layoutY="12.0" prefHeight="25.0" prefWidth="121.0" promptText="Address" styleClass="tableInput" />
                                     <TextField layoutX="616.0" layoutY="12.0" prefHeight="25.0" prefWidth="118.0" promptText="Phone" styleClass="tableInput" />
                                  </children></Pane>
-                              <Button layoutX="743.0" layoutY="394.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" styleClass="modButton" text="Add" />
+                              <Button layoutX="743.0" layoutY="394.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="49.0" styleClass="modButton" text="Edit" />
                               <Button layoutX="721.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Remove" />
-                              <Button layoutX="650.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Edit" />
+                              <Button layoutX="650.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
 
                               </children></AnchorPane>
                       </content>
