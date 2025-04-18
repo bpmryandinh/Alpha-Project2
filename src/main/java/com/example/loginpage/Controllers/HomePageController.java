@@ -18,6 +18,7 @@ public class HomePageController {
     private Scene signupScene;
     private Scene loginScene;
     private Scene courseListScene;
+    private CourseListPageController courseListPageController;
 
     @FXML
     private Label welcomeUserId;
@@ -25,10 +26,6 @@ public class HomePageController {
     public HomePageController() {
         this.parentStage = StageController.getInstance().mainScene;
     }
-
-//    public void setStage(Stage stage) {
-//
-//    }
 
     public void setSignupScene(Scene scene) {
         this.signupScene = scene;
@@ -40,6 +37,10 @@ public class HomePageController {
 
     public void setCourseList(Scene scene) {
         this.courseListScene = scene;
+    }
+
+    public void setCourseListController(CourseListPageController courseListPageController) {
+        this.courseListPageController = courseListPageController;
     }
 
     public void signUpClicked(ActionEvent actionEvent) {
@@ -57,9 +58,8 @@ public class HomePageController {
         }
     }
 
-
     public void CourseListButtonPressed(ActionEvent actionEvent) {
         StageController.getInstance().mainScene.setScene(this.courseListScene);
-//        CourseListPageController.reloadData();
+        this.courseListPageController.reloadData();
     }
 }
