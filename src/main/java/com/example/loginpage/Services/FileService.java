@@ -12,8 +12,8 @@ public class FileService {
         Scanner read = new Scanner(CSVFile);
 
         ArrayList<String[]> lines = new ArrayList<>();
-        for (String line = read.nextLine(); read.hasNextLine(); line = read.nextLine()) {
-            lines.add(line.split(","));
+        while (read.hasNextLine()) {
+            lines.add(read.nextLine().split(","));
         }
 
         read.close();
