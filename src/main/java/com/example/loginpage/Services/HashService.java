@@ -1,6 +1,7 @@
 package com.example.loginpage.Services;
 
 import com.example.loginpage.Models.Course;
+import com.example.loginpage.Models.Professor;
 import com.example.loginpage.Models.User;
 
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ public class HashService {
     //
     private static final HashMap<String, Course> Courses = new HashMap<>();
     private static final HashMap<String, User> Users = new HashMap<>();
+    private static final HashMap<String, Professor> Professors = new HashMap<>();
     private static final HashMap<String, String[]> CourseData = new HashMap<>();
 
 
@@ -41,10 +43,14 @@ public class HashService {
         return UserReturn;
     }
 
+    public static Professor findProfessor(String professorID) {
+        return Professors.get(professorID);
+    }
+
     // Method to fill in data for course hashmap
     public static void writeCourseHashMap(String[][] CourseSData) {
         for(String[] courseData : CourseSData){
-            Course course = new Course(courseData[0], courseData[1], courseData[2], courseData[3], findCourseData(courseData[0]));
+            Course course = new Course(courseData[0], courseData[1], courseData[2],findCourseData(courseData[0]), findProfessor(courseData[3]));
             Courses.put(courseData[0], course);
         }
     }
@@ -61,8 +67,15 @@ public class HashService {
             User user = new User(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7],userData[8],userData[9],userData[10]);
             Users.put(userData[0], user);
         }
-
     }
+
+    public static void writeProfessorHashMap(String[][] ProfessorSData){
+        for(String[] professorData : ProfessorSData){
+            Professor professor = new Professor(professorData[0],professorData[1],professorData[2],professorData[3],professorData[4],professorData[5],professorData[6],professorData[7],professorData[8]);
+            Professors.put(professorData[0], professor);
+        }
+    }
+
     public static Boolean checkStudentExistence(String CheckID){
         return Users.containsKey(CheckID);
     }

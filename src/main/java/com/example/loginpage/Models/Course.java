@@ -4,15 +4,15 @@ public class Course {
     String courseID;
     String courseName;
     String[] userIDs;
-    String courseProfessor;
+    Professor courseProfessor;
     String[] courseData;
 
-    public Course(String courseID, String courseName, String usersRaw, String courseProfessor, String[] courseData) {
+    public Course(String courseID, String courseName, String usersRaw, String[] courseData, Professor courseProfessor) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.userIDs = splitUsers(usersRaw);
-        this.courseProfessor = courseProfessor;
         this.courseData = courseData;
+        this.courseProfessor = courseProfessor;
     }
 
     public String[] splitUsers(String usersRaw) {
@@ -31,7 +31,7 @@ public class Course {
         return userIDs;
     }
     
-    public String getCourseProfessor() {
+    public Professor getCourseProfessor() {
         return courseProfessor;
     }
 

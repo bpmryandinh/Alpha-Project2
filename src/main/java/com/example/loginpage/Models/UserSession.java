@@ -8,14 +8,15 @@ public class UserSession {
     }
 
     private String salt;
-    private String userID;
+    private String ID;
     private String email;
     private String name;
     private String hashedPassword;
-    private User user;
+    private User student;
+    private Professor professor;
     public Person userType;
 
-    public UserSession(String salt,  String email, String name, String hashedPassword ) {
+    public UserSession(String salt, String email, String name, String hashedPassword ) {
         this.salt = salt;
         this.email = email;
         this.name = name;
@@ -24,12 +25,22 @@ public class UserSession {
     }
 
     public void setUser() {
-            User[] user = HashService.findStudents(new String[]{userID});
+            User[] user = HashService.findStudents(new String[]{ID});
             this.user = user[0];
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setProfessor() {
+        this.professor = HashService.findProfessor(ID);
+    }
+
+    public void get
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
     public String getName() {
         return name;
@@ -55,7 +66,5 @@ public class UserSession {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-    public User getUser() {
-        return this.user;
-    }
+
 }

@@ -47,8 +47,6 @@ public class SignupPageController {
             line = "";
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-        Random rand  = new Random();
-        String randomID;
 
 
 
@@ -58,7 +56,7 @@ public class SignupPageController {
         String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
-        // Everything appends to the past user data and the salt is encoded into a string
+        // Everything appends to the past user data, and the salt is encoded into a string
         writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         writer.close();
         switchScene();

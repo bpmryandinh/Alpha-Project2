@@ -68,6 +68,7 @@ public class Main extends Application {
         stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
 
 
+        HashService.writeProfessorHashMap(FileService.readAllCSV("professors"));
         HashService.writeUserHashMap(FileService.readAllCSV("users"));
         HashService.writeCourseDataHashMap(FileService.readAllCSV("coursesData"));
         HashService.writeCourseHashMap(FileService.readAllCSV("courses"));
