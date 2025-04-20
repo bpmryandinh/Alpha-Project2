@@ -2,9 +2,8 @@ package com.example.loginpage.Services;
 
 import com.example.loginpage.Models.Course;
 import com.example.loginpage.Models.Professor;
-import com.example.loginpage.Models.User;
+import com.example.loginpage.Models.Student;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 public class HashService {
@@ -16,7 +15,7 @@ public class HashService {
     // Key:Value Pairs
     //
     private static final HashMap<String, Course> Courses = new HashMap<>();
-    private static final HashMap<String, User> Users = new HashMap<>();
+    private static final HashMap<String, Student> Users = new HashMap<>();
     private static final HashMap<String, Professor> Professors = new HashMap<>();
     private static final HashMap<String, String[]> CourseData = new HashMap<>();
 
@@ -35,12 +34,12 @@ public class HashService {
     }
 
     // Professor Session: Sending UserData for a course
-    public static User[] findStudents(String[] UserID) {
-        User[] UserReturn = new User[UserID.length];
+    public static Student[] findStudents(String[] UserID) {
+        Student[] studentReturn = new Student[UserID.length];
         for(int i = 0; i < UserID.length; i++){
-            UserReturn[i] = Users.get(UserID[i]);
+            studentReturn[i] = Users.get(UserID[i]);
         }
-        return UserReturn;
+        return studentReturn;
     }
 
     public static Professor findProfessor(String professorID) {
@@ -64,8 +63,8 @@ public class HashService {
     // Method to fill in data for user hashmap
     public static void writeUserHashMap(String[][] UserSData){
         for(String[] userData : UserSData){
-            User user = new User(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7],userData[8],userData[9],userData[10]);
-            Users.put(userData[0], user);
+            Student student = new Student(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7],userData[8],userData[9],userData[10]);
+            Users.put(userData[0], student);
         }
     }
 

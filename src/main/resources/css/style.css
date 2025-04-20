@@ -6,6 +6,7 @@ STUPID CSS
     -fx-accent: #1e74c6;
     -fx-focus-color: -fx-accent;
     -fx-base: #373e43;
+    -fx-login-accent: #884848;
     /*-fx-base: #42494f;*/
     -fx-control-inner-background: derive(-fx-base, 35%);
     -fx-control-inner-background-alt: -fx-control-inner-background ;
@@ -53,6 +54,11 @@ STUPID CSS
     -fx-text-fill: #F5F6F2;
     -fx-font-size: 1.25em;
     -fx-font-weight: bold;
+}
+
+.heading4 {
+    -fx-text-fill: #F5F6F2;
+    -fx-font-size: 1.25em;
 }
 
 .tableInput {
@@ -173,4 +179,30 @@ Button:hover {
 .tab-pane .tab:selected {
     -fx-text-fill: #66d9ef;
     -fx-border-color: transparent transparent #66d9ef transparent;
+}
+
+.navbar {
+    -fx-background-color: #545c5e;
+    /*-fx-border-color: rgba(213, 199, 36, 0.78);*/
+    -fx-border-color: #66d9ef;
+    -fx-border-width: 0 0 2 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+}
+
+.courseBack {
+    -fx-background-color: #545c5e;
+    -fx-background-radius: 0;
+    /*-fx-border-color: #2b3032;*/
+    /*-fx-border-width: 0 2 0 0;*/
+}
+
+.courseBack:hover {
+    -fx-background-color: #2b3032;
+}
+
+scroll-pane:selected {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-margin: 0;
 }

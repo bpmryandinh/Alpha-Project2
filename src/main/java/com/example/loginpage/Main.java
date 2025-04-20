@@ -1,7 +1,7 @@
 package com.example.loginpage;
 
 import com.example.loginpage.Controllers.*;
-import com.example.loginpage.Models.User;
+import com.example.loginpage.Models.Student;
 import com.example.loginpage.Models.UserSession;
 import com.example.loginpage.Services.FileService;
 import com.example.loginpage.Services.HashService;
@@ -18,7 +18,7 @@ public class Main extends Application {
     public static UserSession LoggedInUser;
 
     public static String testUserID = "B1015";
-    public static User testUser;
+    public static Student testStudent;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page
@@ -74,8 +74,9 @@ public class Main extends Application {
         HashService.writeCourseHashMap(FileService.readAllCSV("courses"));
 
         // For testing the CourseListLoader
-        User[] user = HashService.findStudents(new String[]{testUserID});
-        testUser = user[0];
+//        User[] user = HashService.findStudents(new String[]{testUserID});
+//        testUser = user[0];
+        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 

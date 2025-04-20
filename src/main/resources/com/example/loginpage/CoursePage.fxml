@@ -4,31 +4,34 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.Controllers.CoursePageController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.Controllers.CoursePageController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="800.0">
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
+            <HBox prefHeight="50.0" prefWidth="800.0" styleClass="navbar">
+               <children>
+                  <AnchorPane prefHeight="17.0" prefWidth="800.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onBackButtonPressed" prefHeight="17.0" prefWidth="50.0" styleClass="courseBack" text="Back" />
+                        <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
+                        <Button layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                     </children>
+                  </AnchorPane>
+               </children></HBox>
             <HBox prefHeight="150.0" prefWidth="800.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane prefHeight="125.0" prefWidth="101.0">
-                           <children>
-                              <ImageView fitHeight="94.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../images/F2l.png" />
-                                 </image>
-                              </ImageView>
-                              <Button layoutX="29.0" layoutY="87.0" mnemonicParsing="false" onAction="#onBackButtonPressed" text="Back" />
-                           </children>
-                        </AnchorPane>
+                        <ImageView fitHeight="113.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/F2l.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="courseNameLabel" layoutX="119.0" prefHeight="52.0" prefWidth="629.0" styleClass="heading2" text="ALGORITHM DESIGN AND PROGRAMMING II" wrapText="True" />
+                        <Label fx:id="courseProfessorLabel" layoutX="131.0" layoutY="46.0" styleClass="heading3" text="Professor Jeff Maxwell" />
+                        <Label fx:id="courseIDLabel" layoutX="131.0" layoutY="68.0" styleClass="heading3" text="CSCI 1614" />
                      </children>
-                  </VBox>
-                  <VBox prefHeight="125.0" prefWidth="701.0">
-                     <children>
-                        <Label prefHeight="78.0" prefWidth="701.0" styleClass="heading2" text="ALGORITHM DESIGN AND PROGRAMMING II" wrapText="True" />
-                     </children>
-                  </VBox>
+                  </AnchorPane>
                </children></HBox>
             <TabPane prefHeight="500.0" prefWidth="800.0" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -41,6 +44,7 @@
                                     <AnchorPane prefHeight="100.0" prefWidth="725.0">
                                        <children>
                                           <Label layoutX="14.0" layoutY="14.0" styleClass="heading3" text="Course Description" />
+                                          <Label fx:id="courseInfoLabel" alignment="TOP_LEFT" layoutX="22.0" layoutY="43.0" prefHeight="44.0" prefWidth="692.0" text="Label" />
                                        </children>
                                     </AnchorPane>
                                  </children></Pane>
@@ -48,7 +52,8 @@
                                  <children>
                                     <AnchorPane prefHeight="100.0" prefWidth="725.0">
                                        <children>
-                                          <Label layoutX="14.0" layoutY="14.0" styleClass="heading3" text="Instructor Info" />
+                                          <Label layoutX="14.0" layoutY="14.0" styleClass="heading3" text="Professor Info" />
+                                          <Label fx:id="professorInfoLabel" alignment="TOP_LEFT" layoutX="21.0" layoutY="47.0" prefHeight="40.0" prefWidth="693.0" text="Label" textOverrun="WORD_ELLIPSIS" wrapText="true" />
                                        </children></AnchorPane>
                                  </children></Pane>
                            </children></AnchorPane>
@@ -110,4 +115,4 @@
             </TabPane>
          </children></VBox>
    </children>
-</AnchorPane>
+</VBox>

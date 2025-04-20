@@ -12,33 +12,50 @@ public class UserSession {
     private String email;
     private String name;
     private String hashedPassword;
-    private User student;
+    private Student student;
     private Professor professor;
     public Person userType;
 
-    public UserSession(String salt, String email, String name, String hashedPassword ) {
-        this.salt = salt;
-        this.email = email;
-        this.name = name;
-        this.hashedPassword = hashedPassword;
-        setUser();
+    public UserSession(String salt, String ID, String email, String name, String hashedPassword ) {
+        setSalt(salt);
+        setID(ID);
+        setEmail(email);
+        setName(name);
+        setHashedPassword(hashedPassword);
+        setPersonData();
     }
 
-    public void setUser() {
-            User[] user = HashService.findStudents(new String[]{ID});
-            this.user = user[0];
+    public void setPersonData () {
+        if (ID.charAt(0) == 'P')
+        {
+            this.userType = Person.Professor;
+            setProfessor();
+        } else {
+            this.userType = Person.Student;
+            setStudent();
+        }
     }
 
-    public User getUser() {
-        return this.user;
+    public IUser getUser() {
+        if (userType == Person.Student) {
+            return this.student;
+        } else {
+            return this.professor;
+        }
+    }
+
+    public void setStudent() {
+        Student[] student = HashService.findStudents(new String[]{ID});
+        this.student = student[0];
     }
 
     public void setProfessor() {
         this.professor = HashService.findProfessor(ID);
     }
 
-    public void get
-
+    public String getID() {
+        return ID;
+    }
     public void setID(String ID) {
         this.ID = ID;
     }
