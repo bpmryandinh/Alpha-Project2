@@ -25,6 +25,8 @@ public class UserSession {
         setPersonData();
     }
 
+
+
     public void setPersonData () {
         if (ID.charAt(0) == 'P')
         {
