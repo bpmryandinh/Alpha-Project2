@@ -200,7 +200,14 @@ Button:hover {
     -fx-background-color: #2b3032;
 }
 
-scroll-pane:selected {
+ScrollPane:selected, TableView:selected {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+    -fx-margin: 0;
+}
+
+ScrollPane:focused, TableView:focused {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-padding: 0;

@@ -20,6 +20,8 @@ public class Main extends Application {
     public static String testUserID = "B1015";
     public static Student testStudent;
 
+    public static Scene homeScene;
+
     /*
     Creation of all the different fxml pages. Default page is set to home page
     and the scenes are all parsed into each other for the purpose of scene swapping
@@ -31,8 +33,8 @@ public class Main extends Application {
         StageController.setInstance(new StageController(), stage);
 
         FXMLLoader homePageLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
-        Scene homeScene = new Scene(homePageLoader.load(), 380, 540);
-        HomePageController HomePageController = homePageLoader.getController();
+        homeScene = new Scene(homePageLoader.load(), 380, 540);
+        HomePageController homePageController = homePageLoader.getController();
 
         FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
@@ -56,12 +58,12 @@ public class Main extends Application {
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into each other for scene swapping
-        HomePageController.setSignupScene(signupScene);
-        HomePageController.setLoginScene(loginScene);
-        HomePageController.setCourseList(courseListScene);
-        HomePageController.setCourseListController(courseListPageController);
+        homePageController.setSignupScene(signupScene);
+        homePageController.setLoginScene(loginScene);
+        homePageController.setCourseList(courseListScene);
+        homePageController.setCourseListController(courseListPageController);
         loginPageController.setBackScene(homeScene);
-        loginPageController.setHomeController(HomePageController);
+        loginPageController.setHomeController(homePageController);
         SignUpPageController.setBackScene(homeScene);
         courseListPageController.setCourseScene(coursePageScene);
         courseListPageController.setSelfScene(courseListScene);
@@ -92,7 +94,10 @@ public class Main extends Application {
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 
+    }
 
+    public static Scene getHomeScene() {
+        return homeScene;
     }
 
 

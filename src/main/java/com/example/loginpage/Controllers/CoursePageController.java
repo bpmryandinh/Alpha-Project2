@@ -139,7 +139,12 @@ public class CoursePageController {
 
     public void addStudentButtonPressed(ActionEvent actionEvent) {
         StageController.getInstance().mainScene.setScene(listOptionsPageScene);
+        listOptionsPageController.setCourse(this.course);
         listOptionsPageController.setData(this.selfScene, "student");
+    }
+
+    public void onLogoutButtonPressed(ActionEvent actionEvent) {
+        this.parentStage.setScene(Main.getHomeScene());
     }
 
 
