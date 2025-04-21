@@ -81,4 +81,10 @@ public class SignupPageController {
     public void backButtonClick(ActionEvent actionEvent) {
         switchScene();
     }
+
+    private void clearFXML(ActionEvent actionEvent) {
+        emailTxtField.setText("");
+        nameTxtField.setText("");
+        passwordTxtField.setText("");
+    }
 }

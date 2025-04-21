@@ -21,6 +21,7 @@ public class Main extends Application {
     public static Student testStudent;
 
     public static Scene homeScene;
+    public static LoginPageController loginPageController;
 
     /*
     Creation of all the different fxml pages. Default page is set to home page
@@ -38,7 +39,7 @@ public class Main extends Application {
 
         FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
-        LoginPageController loginPageController = loginPageLoader.getController();
+        loginPageController = loginPageLoader.getController();
 
         FXMLLoader signUpPageLoader = new FXMLLoader(Main.class.getResource("SignUpPage.fxml"));
         Scene signupScene = new Scene(signUpPageLoader.load(), 380, 540);
@@ -55,7 +56,7 @@ public class Main extends Application {
         FXMLLoader listOptionsPageLoader = new FXMLLoader(Main.class.getResource("ListOptionsPage.fxml"));
         Scene listOptionsPageScene = new Scene(listOptionsPageLoader.load(), 800, 400);
         ListOptionsPageController listOptionsPageController = listOptionsPageLoader.getController();
-        stage.setTitle("Awesome Page");
+        stage.setTitle("F2L");
 
         // Parses in the scenes into each other for scene swapping
         homePageController.setSignupScene(signupScene);
@@ -63,7 +64,9 @@ public class Main extends Application {
         homePageController.setCourseList(courseListScene);
         homePageController.setCourseListController(courseListPageController);
         loginPageController.setBackScene(homeScene);
+        loginPageController.setCourseList(courseListScene);
         loginPageController.setHomeController(homePageController);
+        loginPageController.setCourseListController(courseListPageController);
         SignUpPageController.setBackScene(homeScene);
         courseListPageController.setCourseScene(coursePageScene);
         courseListPageController.setSelfScene(courseListScene);
@@ -77,7 +80,7 @@ public class Main extends Application {
         stage.setScene(homeScene);
         stage.show();
 
-        stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/images/F2l_bg.png"));
 
 
         HashService.writeProfessorHashMap(FileService.readAllCSV("professors"));
@@ -88,9 +91,8 @@ public class Main extends Application {
         // For testing the CourseListLoader
 //        User[] user = HashService.findStudents(new String[]{testUserID});
 //        testUser = user[0];
-        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
-
-        LoggedInUser.getUser().getFname();
+//        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
+//
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 
@@ -98,6 +100,10 @@ public class Main extends Application {
 
     public static Scene getHomeScene() {
         return homeScene;
+    }
+
+    public static LoginPageController getLoginPageController() {
+        return loginPageController;
     }
 
 

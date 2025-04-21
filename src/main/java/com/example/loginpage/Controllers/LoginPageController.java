@@ -22,7 +22,12 @@ public class LoginPageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
     private Scene backScene;
+    private Scene courseListScene;
     private HomePageController homeController;
+    private CourseListPageController courseListPageController;
+
+    @FXML
+    private TextField idTxtField;
 
     @FXML
     private TextField emailTxtField;
@@ -32,6 +37,7 @@ public class LoginPageController {
 
     @FXML
     private Label errorField;
+
 
     /*
     Reads the loginData and splices the data into a separated string array based on the deliminated commas.
@@ -79,9 +85,10 @@ public class LoginPageController {
                 String strSalt = lines[i];
                 String email = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
                 String name = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
-                Main.LoggedInUser = new UserSession(strSalt,"", email, name, hashedPassword);
+                Main.LoggedInUser = new UserSession(strSalt, idTxtField.getText(), email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
+
             } else {
                 errorField.setText("Incorrect Password");
             }
@@ -94,6 +101,14 @@ public class LoginPageController {
         this.parentStage = StageController.getInstance().mainScene;
     }
 
+    public void setCourseListController(CourseListPageController courseListPageController) {
+        this.courseListPageController = courseListPageController;
+    }
+
+    public void setCourseList(Scene scene) {
+        this.courseListScene = scene;
+    }
+
     public void setBackScene(Scene scene) {
         this.backScene = scene;
     }
@@ -103,11 +118,17 @@ public class LoginPageController {
     }
 
     private void switchScene() {
-        parentStage.setScene(backScene);
+        StageController.getInstance().mainScene.setScene(this.courseListScene);
+        this.courseListPageController.reloadData();
     }
 
     public void backButtonClick(ActionEvent actionEvent) {
-        switchScene();
+        parentStage.setScene(backScene);
+    }
 
+    public void clearFXML() {
+        idTxtField.setText("");
+        emailTxtField.setText("");
+        passwordTxtField.setText("");
     }
 }
