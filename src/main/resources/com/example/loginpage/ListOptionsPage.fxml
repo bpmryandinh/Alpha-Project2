@@ -14,6 +14,10 @@
                 </children>
             </AnchorPane>
         </children></HBox>
-   <TableView layoutX="200.0" layoutY="28.0" prefHeight="372.0" prefWidth="600.0" />
-   <Button layoutX="75.0" layoutY="345.0" mnemonicParsing="false" text="Confirm" />
+   <Button layoutX="365.0" layoutY="212.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="71.0" text="Confirm" />
+   <TableView fx:id="leftTableView" layoutX="14.0" layoutY="72.0" prefHeight="328.0" prefWidth="325.0" />
+   <TableView fx:id="rightTableView" layoutX="461.0" layoutY="72.0" prefHeight="328.0" prefWidth="325.0">
+   </TableView>
+   <Label layoutX="24.0" layoutY="43.0" styleClass="heading3" text="Current Courses" />
+   <Label layoutX="479.0" layoutY="43.0" styleClass="heading3" text="Available Courses" />
 </AnchorPane>

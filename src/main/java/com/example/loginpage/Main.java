@@ -49,6 +49,10 @@ public class Main extends Application {
         FXMLLoader coursePageLoader = new FXMLLoader(Main.class.getResource("CoursePage.fxml"));
         Scene coursePageScene = new Scene(coursePageLoader.load(), 800, 600);
         CoursePageController coursePageController = coursePageLoader.getController();
+
+        FXMLLoader listOptionsPageLoader = new FXMLLoader(Main.class.getResource("ListOptionsPage.fxml"));
+        Scene listOptionsPageScene = new Scene(listOptionsPageLoader.load(), 800, 400);
+        ListOptionsPageController listOptionsPageController = listOptionsPageLoader.getController();
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into each other for scene swapping
@@ -60,8 +64,14 @@ public class Main extends Application {
         loginPageController.setHomeController(HomePageController);
         SignUpPageController.setBackScene(homeScene);
         courseListPageController.setCourseScene(coursePageScene);
+        courseListPageController.setSelfScene(courseListScene);
         courseListPageController.setCoursePageController(coursePageController);
+        courseListPageController.setListOptionsPageScene(listOptionsPageScene);
+        courseListPageController.setListOptionsPageController(listOptionsPageController);
         coursePageController.setBackScene(courseListScene);
+        coursePageController.setSelfScene(coursePageScene);
+        coursePageController.setListOptionsPageScene(listOptionsPageScene);
+        coursePageController.setListOptionsPageController(listOptionsPageController);
         stage.setScene(homeScene);
         stage.show();
 
@@ -77,6 +87,8 @@ public class Main extends Application {
 //        User[] user = HashService.findStudents(new String[]{testUserID});
 //        testUser = user[0];
         LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
+
+        LoggedInUser.getUser().getFname();
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 

@@ -19,7 +19,7 @@
             <AnchorPane prefHeight="64.0" prefWidth="800.0">
                <children>
                   <Label layoutX="24.0" layoutY="13.0" styleClass="heading2" text="Your Courses" />
-                  <Button layoutX="690.0" layoutY="19.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" text="REMOVE" />
+                  <Button onAction="#editCourseListButtonPressed" layoutX="690.0" layoutY="19.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" text="EDIT" />
                </children>
             </AnchorPane>
             <ScrollPane fx:id="courseScrollPane" prefHeight="500.0" prefWidth="800.0">

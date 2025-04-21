@@ -1,5 +1,7 @@
 package com.example.loginpage.Models;
 
+import javafx.scene.control.CheckBox;
+
 public class User {
     private String userID;
     private String[] Courses;
@@ -10,8 +12,9 @@ public class User {
     private String address;
     private String birthday;
     private String phone;
+    private CheckBox select;
 
-    public User(String userID, String coursesRaw,String fname, String lname, String gender, String email, String address, String birthday, String phone) {
+    public User(String userID, String coursesRaw ,String fname, String lname, String gender, String email, String address, String birthday, String phone) {
         this.userID = userID;
         this.Courses = splitCourses(coursesRaw);
         this.fname = fname;
@@ -21,6 +24,7 @@ public class User {
         this.address = address;
         this.birthday = birthday;
         this.phone = phone;
+        this.select = new CheckBox();
     }
 
     public String[] splitCourses(String coursesRaw) {
@@ -52,5 +56,11 @@ public class User {
     }
     public String getPhone() {
         return phone;
+    }
+    public CheckBox getSelect() {
+        return select;
+    }
+    public void setSelect(CheckBox select) {
+        this.select = select;
     }
 }

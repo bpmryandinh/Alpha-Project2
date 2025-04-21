@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 public class CoursePageController {
     private Stage parentStage;
     private Scene backScene;
+    private Scene listOptionsPageScene;
+    private ListOptionsPageController listOptionsPageController;
+    private Scene selfScene;
     private String courseID;
     private Course course;
 //    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
@@ -102,6 +105,17 @@ public class CoursePageController {
         this.backScene = backScene;
     }
 
+    public void setListOptionsPageScene(Scene listOptionsPageScene) {
+        this.listOptionsPageScene = listOptionsPageScene;
+    }
+
+    public void setListOptionsPageController(ListOptionsPageController listOptionsPageController) {
+        this.listOptionsPageController = listOptionsPageController;
+    }
+
+    public void setSelfScene(Scene selfScene) {
+        this.selfScene = selfScene;
+    }
 
     public void onBackButtonPressed(ActionEvent actionEvent) {
         this.parentStage.setScene(this.backScene);
@@ -121,6 +135,11 @@ public class CoursePageController {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void addStudentButtonPressed(ActionEvent actionEvent) {
+        StageController.getInstance().mainScene.setScene(listOptionsPageScene);
+        listOptionsPageController.setData(this.selfScene, "student");
     }
 
 
