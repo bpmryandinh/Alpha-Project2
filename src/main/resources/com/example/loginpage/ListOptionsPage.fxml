@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpage.Controllers.ListOptionsPageController">
+    <HBox prefHeight="28.0" prefWidth="800.0" styleClass="navbar">
+        <children>
+            <AnchorPane prefHeight="28.0" prefWidth="800.0">
+                <children>
+                    <Button mnemonicParsing="false" onAction="#onBackButtonPressed" prefHeight="17.0" prefWidth="50.0" styleClass="courseBack" text="Back" />
+                    <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
+                    <Button layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                </children>
+            </AnchorPane>
+        </children></HBox>
+   <TableView layoutX="200.0" layoutY="28.0" prefHeight="372.0" prefWidth="600.0" />
+   <Button layoutX="75.0" layoutY="345.0" mnemonicParsing="false" text="Confirm" />
+</AnchorPane>

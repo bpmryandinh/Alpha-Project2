@@ -76,7 +76,7 @@ public class Main extends Application {
         // For testing the CourseListLoader
 //        User[] user = HashService.findStudents(new String[]{testUserID});
 //        testUser = user[0];
-        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
+        LoggedInUser = new UserSession("salt", "B1020", "<EMAIL>", "test", "hash");
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 

@@ -7,6 +7,7 @@ import com.example.loginpage.Services.HashService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,6 +19,8 @@ public class CourseListPageController {
     private Scene courseScene;
     private CoursePageController coursePageController;
 
+    @FXML
+    private Label navbarUserText;
     @FXML
     private ScrollPane courseScrollPane;
     @FXML
@@ -40,7 +43,7 @@ public class CourseListPageController {
     }
 
     public void reloadData() {
-        courseScrollPane.setFocusTraversable(false);
+        navbarUserText.setText("Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         String[] userCoursesIDs = Main.LoggedInUser.getUser().getCourses();
         Course[] userCourses = HashService.findCourses(userCoursesIDs);
         for(Course userCourse : userCourses){

@@ -10,7 +10,7 @@
          <children>
             <HBox prefHeight="50.0" prefWidth="800.0" styleClass="navbar">
                <children>
-                  <AnchorPane prefHeight="17.0" prefWidth="800.0">
+                  <AnchorPane prefHeight="28.0" prefWidth="800.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#onBackButtonPressed" prefHeight="17.0" prefWidth="50.0" styleClass="courseBack" text="Back" />
                         <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
