@@ -49,10 +49,18 @@ public class SignupPageController {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         Random rand  = new Random();
         String randomID;
+        String profID;
 
+        // if-else for if user chooses students or professor
+        // Student ID "B"
         do {
              randomID = "B" + rand.nextInt(9000) + 1000;
         } while (HashService.checkStudentExistence(randomID));
+
+        //Professor ID "P"
+        do{
+            profID = "P" +rand.nextInt(9000) + 1000;
+        } while (HashService.checkProfessorExistence(profID));
 
 
         // Encrypts everything with the secret key or with salt if it is the password
@@ -65,7 +73,7 @@ public class SignupPageController {
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
         // Everything appends to the past user data and the salt is encoded into a string
-        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedUserID + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
+        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedUserProfID + "," + encryptedUserID + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         writer.close();
         switchScene();
     }
