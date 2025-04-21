@@ -1,6 +1,6 @@
 package com.example.loginpage.Models;
 
-public class Student extends IUser {
+public class Student extends User {
     private String GPA;
     private String year;
     private String CoursesString;

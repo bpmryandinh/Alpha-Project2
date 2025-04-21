@@ -1,6 +1,6 @@
 package com.example.loginpage.Models;
 
-public class IUser {
+public class User {
     private String userID;
     private String[] Courses;
     private String fname;
@@ -11,7 +11,7 @@ public class IUser {
     private String birthday;
     private String phone;
 
-    public IUser(String userID, String coursesRaw,String fname, String lname, String gender, String email, String address, String birthday, String phone) {
+    public User(String userID, String coursesRaw,String fname, String lname, String gender, String email, String address, String birthday, String phone) {
         this.userID = userID;
         this.Courses = splitCourses(coursesRaw);
         this.fname = fname;
