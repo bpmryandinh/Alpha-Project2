@@ -56,8 +56,10 @@ public class SignupPageController {
 
 
         // Encrypts everything with the secret key or with salt if it is the password
+        // Find a method to create a randomID for Professors with "P"
         byte[] salt = SecureMiddleware.getSalt();
         String encryptedUserID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
+        String encryptedUserProfID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
         String encryptedEmail = SecureMiddleware.encrypt(emailTxtField.getText(), SecureMiddleware.secret);
         String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);

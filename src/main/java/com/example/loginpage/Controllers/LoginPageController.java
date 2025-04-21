@@ -75,11 +75,14 @@ public class LoginPageController {
             salt = Base64.getDecoder().decode(lines[i]);
             String hashedPassword = SecureMiddleware.getSecurePassword(inputtedPassword, salt);
             // A new user object is created and the user is considered logged in if hashes are equal
-            if (hashedPassword.equals(lines[i + 3])) {
+            // profID needs to be a separated from LoggedInUser
+            // change LoggedInUser to studentLoginUser and professorLoginUser
+            if (hashedPassword.equals(lines[i + 4])) {
                 String strSalt = lines[i];
                 String id = SecureMiddleware.decrypt(lines[i+1], SecureMiddleware.secret);
-                String email = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
-                String name = SecureMiddleware.decrypt(lines[i+3], SecureMiddleware.secret);
+                String profID = SecureMiddleware.decrypt(lines[i+2], SecureMiddleware.secret);
+                String email = SecureMiddleware.decrypt(lines[i+3], SecureMiddleware.secret);
+                String name = SecureMiddleware.decrypt(lines[i+4], SecureMiddleware.secret);
                 Main.LoggedInUser = new UserSession(strSalt, id, email, name, hashedPassword);
                 switchScene();
                 homeController.refresh();
