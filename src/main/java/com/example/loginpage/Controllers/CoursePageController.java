@@ -92,7 +92,7 @@ public class CoursePageController {
 
     public void setPageValues() {
         Professor professor = course.getCourseProfessor();
-        navbarUserText.setText("Professor View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
+        navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         courseNameLabel.setText(course.getCourseName());
         courseProfessorLabel.setText("Professor " + professor.getFname() + " " + professor.getLname());
         courseIDLabel.setText(course.getCourseData()[2]);

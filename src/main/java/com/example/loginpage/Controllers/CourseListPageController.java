@@ -46,7 +46,7 @@ public class CourseListPageController {
     }
 
     public void reloadData() {
-        navbarUserText.setText("Professor View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
+        navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         String[] userCoursesIDs = Main.LoggedInUser.getUser().getCourses();
         Course[] userCourses = HashService.findCourses(userCoursesIDs);
         courseVBox.getChildren().clear();

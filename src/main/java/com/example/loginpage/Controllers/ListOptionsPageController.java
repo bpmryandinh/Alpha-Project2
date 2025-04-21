@@ -24,6 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ListOptionsPageController {
+
+
+
     enum ListOptions {
         Course,
         Student
@@ -36,6 +39,8 @@ public class ListOptionsPageController {
     private ObservableList<Object> leftTableData = FXCollections.observableArrayList();
     private ObservableList<Object> rightTableData = FXCollections.observableArrayList();
 
+    @FXML
+    private Label navbarUserText;
     @FXML
     private Label leftTableLabel;
     @FXML
@@ -63,6 +68,7 @@ public class ListOptionsPageController {
     }
 
     public void setData(Scene rootScene, String pageType) {
+        navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         this.rootScene = rootScene;
         leftTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         rightTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
