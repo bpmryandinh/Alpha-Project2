@@ -21,7 +21,7 @@ public class Components {
     public static HBox createCard(String title, String coursenum, String description, String students, String professor, String courseID, Scene courseScene, CoursePageController coursePageController) {
 
         HBox card = new HBox(10);
-        card.setStyle("-fx-background-color: linear-gradient(to bottom left, #3d4548, #252829); -fx-padding: 15; -fx-border-color: #2c2525; -fx-border-width: 1; -fx-background-radius: 5;");
+        card.setStyle("-fx-background-color: linear-gradient(to bottom left, #535b5d, #3a3f44); -fx-padding: 15; -fx-border-color: #2c2525; -fx-border-width: 1; -fx-background-radius: 5;");
         card.setPrefHeight(80);
 
         VBox content = new VBox(5);
@@ -30,7 +30,7 @@ public class Components {
         titleLabel.setFont(Font.font("Montserrat", 18));
         titleLabel.setStyle("-fx-font-weight: bold");
         Label authorLabel = new Label(coursenum);
-        authorLabel.setStyle("-fx-text-fill: #fffb00;");
+        authorLabel.setStyle("-fx-text-fill: #66d9ef;");
         Label descLabel = new Label(description);
         descLabel.setFont(Font.font("Montserrat", 12));
         descLabel.setStyle("-fx-text-fill: #969191;");

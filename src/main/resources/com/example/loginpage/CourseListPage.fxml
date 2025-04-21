@@ -7,15 +7,24 @@
    <children>
       <VBox>
          <children>
-            <HBox prefHeight="34.0" prefWidth="806.0">
+            <HBox prefHeight="28.0" prefWidth="800.0" styleClass="navbar">
                <children>
-                  <Label styleClass="heading2" text="Welcome {User}" />
+                  <AnchorPane prefHeight="23.0" prefWidth="800.0">
+                     <children>
+                        <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
+                        <Button layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                     </children>
+                  </AnchorPane>
+               </children></HBox>
+            <AnchorPane prefHeight="64.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="13.0" styleClass="heading2" text="Your Courses" />
+                  <Button onAction="#editCourseListButtonPressed" layoutX="690.0" layoutY="19.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" text="EDIT" />
                </children>
-            </HBox>
-            <Button mnemonicParsing="false" onAction="#createCardButtonPressed" text="Create Card" />
-            <ScrollPane prefHeight="500.0" prefWidth="806.0">
+            </AnchorPane>
+            <ScrollPane fx:id="courseScrollPane" prefHeight="500.0" prefWidth="800.0">
                <content>
-                  <VBox fx:id="courseVBox" prefWidth="800.0" />
+                  <VBox fx:id="courseVBox" prefWidth="795.0" />
                </content>
             </ScrollPane>
          </children></VBox>

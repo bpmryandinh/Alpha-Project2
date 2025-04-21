@@ -1,96 +1,103 @@
 package com.example.loginpage.Controllers;
 
+import com.example.loginpage.Main;
 import com.example.loginpage.Models.Course;
-import com.example.loginpage.Models.User;
+import com.example.loginpage.Models.Professor;
+import com.example.loginpage.Models.Student;
 import com.example.loginpage.Services.HashService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-
 public class CoursePageController {
-//    private static CoursePageController instance;
     private Stage parentStage;
     private Scene backScene;
+    private Scene listOptionsPageScene;
+    private ListOptionsPageController listOptionsPageController;
+    private Scene selfScene;
     private String courseID;
     private Course course;
 //    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
 
+    @FXML
+    private Label navbarUserText;
+    @FXML
+    private Label courseNameLabel;
+    @FXML
+    private Label courseProfessorLabel;
+    @FXML
+    private Label courseIDLabel;
+    @FXML
+    private Label courseInfoLabel;
+    @FXML
+    private Label professorInfoLabel;
 
     @FXML
-    private TableView<User> studentTable;
+    private TableView<Student> studentTable;
     @FXML
-    private TableColumn<User, String> userID;
+    private TableColumn<Student, String> userID;
     @FXML
-    private TableColumn<User, String> fname;
+    private TableColumn<Student, String> fname;
     @FXML
-    private TableColumn<User, String> lname;
+    private TableColumn<Student, String> lname;
     @FXML
-    private TableColumn<User, String> gender;
+    private TableColumn<Student, String> gender;
     @FXML
-    private TableColumn<User, String> email;
+    private TableColumn<Student, String> email;
     @FXML
-    private TableColumn<User, String> gpa;
+    private TableColumn<Student, String> gpa;
     @FXML
-    private TableColumn<User, String> courses;
+    private TableColumn<Student, String> courses;
     @FXML
-    private TableColumn<User, String> year;
+    private TableColumn<Student, String> year;
 
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
         courseID = "";
     }
 
-//    public static CoursePageController getInstance() {
-//        if (instance == null) {
-//            instance = new CoursePageController();
-//        }
-//        return instance;
-//    }
 
-    public ObservableList<User> loadPageData() {
+    public ObservableList<Student> loadPageData() {
             String[] studentIDs = course.getUserIDs();
-            User[] Users = HashService.findStudents(studentIDs);
-            return FXCollections.observableArrayList(Users);
+            Student[] students = HashService.findStudents(studentIDs);
+            return FXCollections.observableArrayList(students);
     }
 
     public void setCourseClass() {
         String[] sendCourse = {getCourseID()};
         Course[] courseReturn = HashService.findCourses(sendCourse);
         setCourse(courseReturn[0]);
-//        CoursePageController.getInstance().setCourse(courseReturn[0]);
-//        String[] studentIDs = {courseReturn[0].getUserIDs()};
-//        List<User> Users = List.of(HashService.findStudents(studentIDs));
-//        studentTableData.clear();
-//        studentTableData = FXCollections.observableArrayList(Users);
-//        CoursePageController.getInstance().studentTableData.addAll(Users);
     }
 
-    public void initialize() {
-
-    }
 
     public void refreshPage() {
-        userID.setCellValueFactory(new PropertyValueFactory<User, String>("userID"));
-        fname.setCellValueFactory(new PropertyValueFactory<User, String>("fname"));
-        lname.setCellValueFactory(new PropertyValueFactory<User, String>("lname"));
-        gender.setCellValueFactory(new PropertyValueFactory<User, String>("gender"));
-        email.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-        gpa.setCellValueFactory(new PropertyValueFactory<User, String>("GPA"));
-        courses.setCellValueFactory(new PropertyValueFactory<User, String>("CoursesString"));
-        year.setCellValueFactory(new PropertyValueFactory<User, String>("year"));
+        userID.setCellValueFactory(new PropertyValueFactory<Student, String>("userID"));
+        fname.setCellValueFactory(new PropertyValueFactory<Student, String>("fname"));
+        lname.setCellValueFactory(new PropertyValueFactory<Student, String>("lname"));
+        gender.setCellValueFactory(new PropertyValueFactory<Student, String>("gender"));
+        email.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+        gpa.setCellValueFactory(new PropertyValueFactory<Student, String>("GPA"));
+        courses.setCellValueFactory(new PropertyValueFactory<Student, String>("CoursesString"));
+        year.setCellValueFactory(new PropertyValueFactory<Student, String>("year"));
         studentTable.setItems(loadPageData());
-//        loadPageData();
+        setPageValues();
+    }
+
+    public void setPageValues() {
+        Professor professor = course.getCourseProfessor();
+        navbarUserText.setText("Professor View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
+        courseNameLabel.setText(course.getCourseName());
+        courseProfessorLabel.setText("Professor " + professor.getFname() + " " + professor.getLname());
+        courseIDLabel.setText(course.getCourseData()[2]);
+        courseInfoLabel.setText(course.getCourseData()[3]);
+        professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
     }
 
 
@@ -98,6 +105,17 @@ public class CoursePageController {
         this.backScene = backScene;
     }
 
+    public void setListOptionsPageScene(Scene listOptionsPageScene) {
+        this.listOptionsPageScene = listOptionsPageScene;
+    }
+
+    public void setListOptionsPageController(ListOptionsPageController listOptionsPageController) {
+        this.listOptionsPageController = listOptionsPageController;
+    }
+
+    public void setSelfScene(Scene selfScene) {
+        this.selfScene = selfScene;
+    }
 
     public void onBackButtonPressed(ActionEvent actionEvent) {
         this.parentStage.setScene(this.backScene);
@@ -117,6 +135,11 @@ public class CoursePageController {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void addStudentButtonPressed(ActionEvent actionEvent) {
+        StageController.getInstance().mainScene.setScene(listOptionsPageScene);
+        listOptionsPageController.setData(this.selfScene, "student");
     }
 
 

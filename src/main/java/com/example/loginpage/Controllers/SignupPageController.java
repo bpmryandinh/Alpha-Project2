@@ -51,20 +51,9 @@ public class SignupPageController {
         String randomID;
         String profID;
 
-        // if-else for if user chooses students or professor
-        // Student ID "B"
-        do {
-             randomID = "B" + rand.nextInt(9000) + 1000;
-        } while (HashService.checkStudentExistence(randomID));
-
-        //Professor ID "P"
-        do{
-            profID = "P" +rand.nextInt(9000) + 1000;
-        } while (HashService.checkProfessorExistence(profID));
 
 
         // Encrypts everything with the secret key or with salt if it is the password
-        // Find a method to create a randomID for Professors with "P"
         byte[] salt = SecureMiddleware.getSalt();
         String encryptedUserID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
         String encryptedUserProfID = SecureMiddleware.encrypt(randomID, SecureMiddleware.secret);
@@ -72,6 +61,8 @@ public class SignupPageController {
         String encryptedName = SecureMiddleware.encrypt(nameTxtField.getText(), SecureMiddleware.secret);
         String hashedPassword = SecureMiddleware.getSecurePassword(passwordTxtField.getText(), salt);
 
+        // Everything appends to the past user data, and the salt is encoded into a string
+        writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         // Everything appends to the past user data and the salt is encoded into a string
         writer.write(line + Base64.getEncoder().encodeToString(salt) + "," + encryptedUserProfID + "," + encryptedUserID + "," + encryptedEmail + "," + encryptedName + "," + hashedPassword + ",");
         writer.close();

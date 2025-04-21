@@ -7,6 +7,8 @@ import com.example.loginpage.Services.HashService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,10 +16,16 @@ public class CourseListPageController {
 //    private static CourseListPageController instance;
 
     private Stage parentStage;
+    private Scene selfScene;
     private Scene courseScene;
     private CoursePageController coursePageController;
+    private Scene listOptionsPageScene;
+    private ListOptionsPageController listOptionsPageController;
 
-
+    @FXML
+    private Label navbarUserText;
+    @FXML
+    private ScrollPane courseScrollPane;
     @FXML
     private VBox courseVBox;
 
@@ -38,7 +46,8 @@ public class CourseListPageController {
     }
 
     public void reloadData() {
-        String[] userCoursesIDs = Main.testUser.getCourses();
+        navbarUserText.setText("Professor View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
+        String[] userCoursesIDs = Main.LoggedInUser.getUser().getCourses();
         Course[] userCourses = HashService.findCourses(userCoursesIDs);
         for(Course userCourse : userCourses){
             String[] userCourseData = userCourse.getCourseData();
@@ -53,5 +62,22 @@ public class CourseListPageController {
 
     public void setCoursePageController(CoursePageController coursePageController) {
         this.coursePageController = coursePageController;
+    }
+
+    public void setListOptionsPageScene(Scene listOptionsPageScene) {
+        this.listOptionsPageScene = listOptionsPageScene;
+    }
+
+    public void editCourseListButtonPressed(ActionEvent actionEvent) {
+        StageController.getInstance().mainScene.setScene(listOptionsPageScene);
+        listOptionsPageController.setData(this.selfScene, "courses");
+    }
+
+    public void setListOptionsPageController(ListOptionsPageController listOptionsPageController) {
+        this.listOptionsPageController = listOptionsPageController;
+    }
+
+    public void setSelfScene(Scene courseListScene) {
+        this.selfScene = courseListScene;
     }
 }

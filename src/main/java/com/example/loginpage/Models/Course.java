@@ -1,18 +1,24 @@
 package com.example.loginpage.Models;
 
-public class Course {
-    String courseID;
-    String courseName;
-    String[] userIDs;
-    String courseProfessor;
-    String[] courseData;
+import javafx.scene.control.CheckBox;
 
-    public Course(String courseID, String courseName, String usersRaw, String courseProfessor, String[] courseData) {
+public class Course {
+    private String courseID;
+    private String courseName;
+    private String[] userIDs;
+    private Professor courseProfessor;
+    private String[] courseData;
+    private String courseClassify;
+    private CheckBox select;
+
+    public Course(String courseID, String courseName, String usersRaw, String[] courseData, Professor courseProfessor) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.userIDs = splitUsers(usersRaw);
-        this.courseProfessor = courseProfessor;
         this.courseData = courseData;
+        this.courseClassify = courseData[2];
+        this.courseProfessor = courseProfessor;
+        this.select = new CheckBox();
     }
 
     public String[] splitUsers(String usersRaw) {
@@ -31,12 +37,24 @@ public class Course {
         return userIDs;
     }
     
-    public String getCourseProfessor() {
+    public Professor getCourseProfessor() {
         return courseProfessor;
     }
 
     public String[] getCourseData() {
         return courseData;
+    }
+
+    public String getCourseClassify() {
+        return courseClassify;
+    }
+
+    public CheckBox getSelect() {
+        return select;
+    }
+
+    public void setSelect(CheckBox select) {
+        this.select = select;
     }
 }
 

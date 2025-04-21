@@ -8,29 +8,56 @@ public class UserSession {
     }
 
     private String salt;
-    private String userID;
+    private String ID;
     private String email;
     private String name;
     private String hashedPassword;
-    private User user;
+    private Student student;
+    private Professor professor;
     public Person userType;
 
-    public UserSession(String salt, String userID, String email, String name, String hashedPassword ) {
-        this.salt = salt;
-        this.userID = userID;
-        this.email = email;
-        this.name = name;
-        this.hashedPassword = hashedPassword;
-        setUser();
+    public UserSession(String salt, String ID, String email, String name, String hashedPassword ) {
+        setSalt(salt);
+        setID(ID);
+        setEmail(email);
+        setName(name);
+        setHashedPassword(hashedPassword);
+        setPersonData();
     }
 
-    public void setUser() {
-            User[] user = HashService.findStudents(new String[]{userID});
-            this.user = user[0];
+    public void setPersonData () {
+        if (ID.charAt(0) == 'P')
+        {
+            this.userType = Person.Professor;
+            setProfessor();
+        } else {
+            this.userType = Person.Student;
+            setStudent();
+        }
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public User getUser() {
+        if (userType == Person.Student) {
+            return this.student;
+        } else {
+            return this.professor;
+        }
+    }
+
+    public void setStudent() {
+        Student[] student = HashService.findStudents(new String[]{ID});
+        this.student = student[0];
+    }
+
+    public void setProfessor() {
+        this.professor = HashService.findProfessor(ID);
+    }
+
+    public String getID() {
+        return ID;
+    }
+    public void setID(String ID) {
+        this.ID = ID;
     }
     public String getName() {
         return name;
@@ -56,7 +83,5 @@ public class UserSession {
     public void setSalt(String salt) {
         this.salt = salt;
     }
-    public User getUser() {
-        return this.user;
-    }
+
 }
