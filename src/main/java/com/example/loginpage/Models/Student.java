@@ -17,6 +17,11 @@ public class Student extends User {
         this.year = year;
     }
 
+    public String[] getAllData() {
+        String[] data = {getUserID(), combineStrings(getCourses()), getFname(), getLname(), getGender(), getEmail(), getGPA(), getAddress(), getBirthday(), getPhone(), getYear()};
+        return data;
+    }
+
     public void setCoursesString() {
         String result = "";
         for (String course : getCourses()) {
@@ -36,4 +41,6 @@ public class Student extends User {
     public String getCoursesString() {
         return CoursesString;
     }
+
+
 }

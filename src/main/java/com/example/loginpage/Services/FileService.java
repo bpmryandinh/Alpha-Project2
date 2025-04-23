@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("ALL")
 public class FileService {
+
     public static String[][] readAllCSV(String filename) throws FileNotFoundException {
         File CSVFile = new File("src/main/resources/data/" + filename + ".csv");
         Scanner read = new Scanner(CSVFile);

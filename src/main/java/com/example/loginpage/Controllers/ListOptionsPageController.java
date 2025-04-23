@@ -122,26 +122,18 @@ public class ListOptionsPageController {
         }
 
         TableColumn leftselectColumn = new TableColumn<>("select");
-        leftselectColumn.setMinWidth(45);
-        leftselectColumn.setText("Remove");
-        leftselectColumn.setStyle("-fx-alignment: CENTER;");
+        setProperties(leftselectColumn, 45, "Remove", true);
         TableColumn leftNameColumn = new TableColumn<>(name);
-        leftNameColumn.setMinWidth(180);
-        leftNameColumn.setText(listOptions.name() + " Name ");
+        setProperties(leftNameColumn, 180, listOptions.name() + " Name ", false);
         TableColumn leftClassifyColumn = new TableColumn<>(classify);
-        leftClassifyColumn.setMinWidth(80);
-        leftClassifyColumn.setText(listOptions.name() + " ID");
+        setProperties(leftClassifyColumn, 80, listOptions.name() + " ID", false);
 
         TableColumn rightselectColumn = new TableColumn<>("select");
-        rightselectColumn.setMinWidth(45);
-        rightselectColumn.setText("Add");
-        rightselectColumn.setStyle("-fx-alignment: CENTER;");
+        setProperties(rightselectColumn, 45, "Add", true);
         TableColumn rightNameColumn = new TableColumn<>(name);
-        rightNameColumn.setMinWidth(180);
-        rightNameColumn.setText(listOptions.name() + " Name ");
+        setProperties(rightNameColumn, 180, listOptions.name() + " Name ", false);
         TableColumn rightClassifyColumn = new TableColumn<>(classify);
-        rightClassifyColumn.setMinWidth(80);
-        rightClassifyColumn.setText(listOptions.name() + " ID");
+        setProperties(rightClassifyColumn, 80, listOptions.name() + " ID", false);
 
 
         leftTableLabel.setText("Current " + listOptions.name() + "s");
@@ -206,4 +198,12 @@ public class ListOptionsPageController {
         }
 
         }
+
+    public void setProperties(TableColumn column, int width, String text, boolean centered) {
+        column.setMinWidth(width);
+        column.setText(text);
+        if (centered) {
+            column.setStyle("-fx-alignment: CENTER;");
+        }
+    }
 }

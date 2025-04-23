@@ -27,7 +27,20 @@ public class User {
         this.select = new CheckBox();
     }
 
-    public String[] splitCourses(String coursesRaw) {
+    public String[] getAllData() {
+        String[] data = {getUserID(), combineStrings(getCourses()), getFname(), getLname(), getGender(), getEmail(), getAddress(), getBirthday(), getPhone()};
+        return data;
+    }
+
+    public String combineStrings(String[] string) {
+        String combined = "";
+        for (String s : string) {
+            combined += s + ";";
+        }
+        return combined;
+    }
+
+    private String[] splitCourses(String coursesRaw) {
         return coursesRaw.split(";");
     }
     public String[] getCourses() {
