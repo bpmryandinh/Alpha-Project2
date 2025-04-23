@@ -19,6 +19,7 @@ public class FileService {
         read.close();
         return lines.toArray(new String[lines.size()][]);
     }
+
     public static String[] readLineCSV(String filename) throws FileNotFoundException {
         File CSVFile = new File("src/main/resources/data/" + filename + ".csv");
         Scanner read = new Scanner(CSVFile);
@@ -109,7 +110,10 @@ public class FileService {
         return CSVFile;
     }
 
+
+
 }
+
 /*
 if (ID starts w/ B) {
     File = user.csv
