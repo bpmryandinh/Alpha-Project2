@@ -56,7 +56,7 @@ public class Main extends Application {
         FXMLLoader listOptionsPageLoader = new FXMLLoader(Main.class.getResource("ListOptionsPage.fxml"));
         Scene listOptionsPageScene = new Scene(listOptionsPageLoader.load(), 800, 400);
         ListOptionsPageController listOptionsPageController = listOptionsPageLoader.getController();
-        stage.setTitle("F2L");
+        stage.setTitle("Awesome Page");
 
         // Parses in the scenes into each other for scene swapping
         homePageController.setSignupScene(signupScene);
@@ -80,7 +80,7 @@ public class Main extends Application {
         stage.setScene(homeScene);
         stage.show();
 
-        stage.getIcons().add(new Image("file:src/main/resources/images/F2l_bg.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/images/smiley.png"));
 
 
         HashService.writeProfessorHashMap(FileService.readAllCSV("professors"));
