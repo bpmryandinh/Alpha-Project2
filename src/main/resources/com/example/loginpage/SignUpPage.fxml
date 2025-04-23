@@ -12,28 +12,28 @@
         <padding>
             <Insets bottom="20.0" left="25.0" right="25.0" />
         </padding>
-        <VBox>
+        <VBox prefHeight="86.0" prefWidth="290.0">
             <padding>
                 <Insets bottom="40" top="25" />
             </padding>
-            <Button onAction="#backButtonClick" mnemonicParsing="false" styleClass="backButton" text="Back" />
+            <Button mnemonicParsing="false" onAction="#backButtonClick" styleClass="backButton" text="Back" />
         </VBox>
         <Label styleClass="heading1" text="SIGNUP" />
-        <VBox prefHeight="80.0" styleClass="fieldContainer">
+        <VBox prefHeight="70.0" styleClass="fieldContainer">
             <padding>
                 <Insets bottom="20.0" top="20.0" />
             </padding>
             <Label styleClass="heading3" text="Email" />
             <TextField fx:id="emailTxtField" styleClass="inputField" />
         </VBox>
-        <VBox prefHeight="80.0" styleClass="fieldContainer">
+        <VBox prefHeight="70.0" styleClass="fieldContainer">
             <padding>
-                <Insets bottom="20.0" top="20.0" />
+                <Insets bottom="15.0" top="15.0" />
             </padding>
             <Label styleClass="heading3" text="Name" />
             <TextField fx:id="nameTxtField" styleClass="inputField" />
         </VBox>
-        <VBox prefHeight="80.0" styleClass="fieldContainer">
+        <VBox prefHeight="70.0" styleClass="fieldContainer">
             <padding>
                 <Insets bottom="20.0" top="20.0" />
             </padding>

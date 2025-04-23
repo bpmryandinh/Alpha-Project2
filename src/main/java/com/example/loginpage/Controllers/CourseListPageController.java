@@ -46,9 +46,10 @@ public class CourseListPageController {
     }
 
     public void reloadData() {
-        navbarUserText.setText("Professor View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
+        navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         String[] userCoursesIDs = Main.LoggedInUser.getUser().getCourses();
         Course[] userCourses = HashService.findCourses(userCoursesIDs);
+        courseVBox.getChildren().clear();
         for(Course userCourse : userCourses){
             String[] userCourseData = userCourse.getCourseData();
             courseVBox.getChildren().add(Components.createCard(userCourseData[1], userCourseData[2], userCourseData[3], userCourseData[4], userCourseData[5],userCourseData[0], courseScene, coursePageController));
@@ -79,5 +80,9 @@ public class CourseListPageController {
 
     public void setSelfScene(Scene courseListScene) {
         this.selfScene = courseListScene;
+    }
+
+    public void onLogoutButtonPressed(ActionEvent actionEvent) {
+        this.parentStage.setScene(Main.getHomeScene());
     }
 }

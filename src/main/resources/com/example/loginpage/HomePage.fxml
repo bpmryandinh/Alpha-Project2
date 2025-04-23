@@ -10,10 +10,10 @@
     </padding>
     <VBox alignment="CENTER" maxHeight="600.0" maxWidth="480.0" prefHeight="500.0" prefWidth="340.0" styleClass="home">
         <padding>
-            <Insets bottom="20.0" left="25.0" right="25.0" />
+            <Insets bottom="40.0" left="25.0" right="25.0" />
         </padding>
-      <Button mnemonicParsing="false" text="CourseListTest" onAction="#CourseListButtonPressed" />
-        <VBox alignment="CENTER" prefHeight="80.0" styleClass="fieldContainer">
+      <Button maxHeight="1.0" mnemonicParsing="false" onAction="#CourseListButtonPressed" text="Continue" visible="false" />
+        <VBox alignment="CENTER" prefHeight="163.0" prefWidth="290.0" styleClass="fieldContainer">
             <padding>
                 <Insets bottom="20.0" top="20.0" />
             </padding>
@@ -28,14 +28,14 @@
                 <padding>
                     <Insets bottom="10" top="10" />
                 </padding>
-                <Button onAction="#signUpClicked" styleClass="signUpButton" text="Sign Up" textAlignment="CENTER" />
+                <Button disable="true" onAction="#signUpClicked" styleClass="signUpButton" text="Sign Up" textAlignment="CENTER" />
             </VBox>
         </VBox>
-        <VBox alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="290.0">
             <padding>
                 <Insets bottom="10" top="20" />
             </padding>
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="45.0" prefWidth="290.0">
                 <padding>
                     <Insets bottom="10" top="10" />
                 </padding>

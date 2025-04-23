@@ -21,8 +21,21 @@ public class Course {
         this.select = new CheckBox();
     }
 
+    public String[] getAllData() {
+        String[] data = {getCourseID(), getCourseName(), combineStrings(getUserIDs()), combineStrings(getCourseData()), getCourseProfessor().getUserID()};
+        return data;
+    }
+
     public String[] splitUsers(String usersRaw) {
         return usersRaw.split(";");
+    }
+
+    private String combineStrings(String[] string) {
+        String combined = "";
+        for (String s : string) {
+            combined += s + ";";
+        }
+        return combined;
     }
 
     public String getCourseID() {

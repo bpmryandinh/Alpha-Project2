@@ -14,7 +14,7 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#onBackButtonPressed" prefHeight="17.0" prefWidth="50.0" styleClass="courseBack" text="Back" />
                         <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
-                        <Button layoutX="743.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                        <Button onAction="#onLogoutButtonPressed" layoutX="743.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
                      </children>
                   </AnchorPane>
                </children></HBox>
@@ -104,9 +104,8 @@
                                     <TextField layoutX="484.0" layoutY="12.0" prefHeight="25.0" prefWidth="121.0" promptText="Courses" styleClass="tableInput" />
                                     <TextField layoutX="616.0" layoutY="12.0" prefHeight="25.0" prefWidth="118.0" promptText="Year" styleClass="tableInput" />
                                  </children></Pane>
-                              <Button onAction="#addStudentButtonPressed" layoutX="743.0" layoutY="383.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" styleClass="modButton" text="Save" />
-                              <Button layoutX="721.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Remove" />
-                              <Button layoutX="650.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
+                              <Button layoutX="743.0" layoutY="383.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="50.0" styleClass="modButton" text="Save" />
+                              <Button layoutX="722.0" layoutY="5.0" mnemonicParsing="false" onAction="#addStudentButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Edit" />
 
                               </children></AnchorPane>
                       </content>

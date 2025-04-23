@@ -79,6 +79,10 @@ public class HashService {
         return Courses.values().toArray(new Course[Courses.size()]);
     }
 
+    public static Student[] getUsers() {
+        return Users.values().toArray(new Student[Users.size()]);
+    }
+
     public static Boolean checkStudentExistence(String CheckID){
         return Users.containsKey(CheckID);
     }

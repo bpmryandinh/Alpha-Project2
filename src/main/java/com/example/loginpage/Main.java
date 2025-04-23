@@ -20,6 +20,9 @@ public class Main extends Application {
     public static String testUserID = "B1015";
     public static Student testStudent;
 
+    public static Scene homeScene;
+    public static LoginPageController loginPageController;
+
     /*
     Creation of all the different fxml pages. Default page is set to home page
     and the scenes are all parsed into each other for the purpose of scene swapping
@@ -31,12 +34,12 @@ public class Main extends Application {
         StageController.setInstance(new StageController(), stage);
 
         FXMLLoader homePageLoader = new FXMLLoader(Main.class.getResource("HomePage.fxml"));
-        Scene homeScene = new Scene(homePageLoader.load(), 380, 540);
-        HomePageController HomePageController = homePageLoader.getController();
+        homeScene = new Scene(homePageLoader.load(), 380, 540);
+        HomePageController homePageController = homePageLoader.getController();
 
         FXMLLoader loginPageLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Scene loginScene = new Scene(loginPageLoader.load(), 380, 540);
-        LoginPageController loginPageController = loginPageLoader.getController();
+        loginPageController = loginPageLoader.getController();
 
         FXMLLoader signUpPageLoader = new FXMLLoader(Main.class.getResource("SignUpPage.fxml"));
         Scene signupScene = new Scene(signUpPageLoader.load(), 380, 540);
@@ -56,12 +59,14 @@ public class Main extends Application {
         stage.setTitle("Awesome Page");
 
         // Parses in the scenes into each other for scene swapping
-        HomePageController.setSignupScene(signupScene);
-        HomePageController.setLoginScene(loginScene);
-        HomePageController.setCourseList(courseListScene);
-        HomePageController.setCourseListController(courseListPageController);
+        homePageController.setSignupScene(signupScene);
+        homePageController.setLoginScene(loginScene);
+        homePageController.setCourseList(courseListScene);
+        homePageController.setCourseListController(courseListPageController);
         loginPageController.setBackScene(homeScene);
-        loginPageController.setHomeController(HomePageController);
+        loginPageController.setCourseList(courseListScene);
+        loginPageController.setHomeController(homePageController);
+        loginPageController.setCourseListController(courseListPageController);
         SignUpPageController.setBackScene(homeScene);
         courseListPageController.setCourseScene(coursePageScene);
         courseListPageController.setSelfScene(courseListScene);
@@ -86,13 +91,19 @@ public class Main extends Application {
         // For testing the CourseListLoader
 //        User[] user = HashService.findStudents(new String[]{testUserID});
 //        testUser = user[0];
-        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
-
-        LoggedInUser.getUser().getFname();
+//        LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
+//
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 
+    }
 
+    public static Scene getHomeScene() {
+        return homeScene;
+    }
+
+    public static LoginPageController getLoginPageController() {
+        return loginPageController;
     }
 
 

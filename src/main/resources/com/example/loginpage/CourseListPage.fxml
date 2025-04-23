@@ -12,7 +12,7 @@
                   <AnchorPane prefHeight="23.0" prefWidth="800.0">
                      <children>
                         <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
-                        <Button layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                        <Button onAction="#onLogoutButtonPressed" layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
                      </children>
                   </AnchorPane>
                </children></HBox>
@@ -24,7 +24,7 @@
             </AnchorPane>
             <ScrollPane fx:id="courseScrollPane" prefHeight="500.0" prefWidth="800.0">
                <content>
-                  <VBox fx:id="courseVBox" prefWidth="795.0" />
+                  <VBox fx:id="courseVBox" prefWidth="800.0" />
                </content>
             </ScrollPane>
          </children></VBox>

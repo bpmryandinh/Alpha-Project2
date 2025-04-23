@@ -48,14 +48,15 @@ public class HomePageController {
     }
 
     public void logInClicked(ActionEvent actionEvent) {
+        Main.getLoginPageController().clearFXML();
         this.parentStage.setScene(this.loginScene);
     }
 
     // Is called whenever the user is finally logged in
     public void refresh(){
-        if (Main.LoggedInUser != null) {
-            welcomeUserId.setText("Welcome, " + Main.LoggedInUser.getName());
-        }
+//        if (Main.LoggedInUser != null) {
+//          welcomeUserId.setText("Welcome, " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname());
+//        }
     }
 
     public void CourseListButtonPressed(ActionEvent actionEvent) {

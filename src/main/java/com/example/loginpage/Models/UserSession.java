@@ -14,7 +14,7 @@ public class UserSession {
     private String hashedPassword;
     private Student student;
     private Professor professor;
-    public Person userType;
+    private Person userType;
 
     public UserSession(String salt, String ID, String email, String name, String hashedPassword ) {
         setSalt(salt);
@@ -86,4 +86,7 @@ public class UserSession {
         this.salt = salt;
     }
 
+    public String getuserType() {
+        return this.userType.name();
+    }
 }

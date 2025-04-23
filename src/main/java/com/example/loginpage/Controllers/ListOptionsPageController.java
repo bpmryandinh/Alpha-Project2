@@ -4,32 +4,47 @@ import com.example.loginpage.Main;
 import com.example.loginpage.Models.Course;
 import com.example.loginpage.Models.User;
 import com.example.loginpage.Services.HashService;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ListOptionsPageController {
-//    enum ListOptions {
-//        ADD_OPTION,
-//        REMOVE_OPTION
-//    }
+
+
+
+    enum ListOptions {
+        Course,
+        Student
+    }
 
     private Stage parentStage;
     private Scene rootScene;
-//    private ListOptions listOptions;
+    private Course course;
+    private ListOptions listOptions;
     private ObservableList<Object> leftTableData = FXCollections.observableArrayList();
     private ObservableList<Object> rightTableData = FXCollections.observableArrayList();
+
+    @FXML
+    private Label navbarUserText;
+    @FXML
+    private Label leftTableLabel;
+    @FXML
+    private Label rightTableLabel;
 
     @FXML
     private TableView<Object> leftTableView;
@@ -44,65 +59,151 @@ public class ListOptionsPageController {
         StageController.getInstance().mainScene.setScene(rootScene);
     }
 
+    public void onLogoutButtonPressed(ActionEvent actionEvent) {
+        this.parentStage.setScene(Main.getHomeScene());
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
     public void setData(Scene rootScene, String pageType) {
+        navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         this.rootScene = rootScene;
         leftTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         rightTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         if (pageType.equals("student")) {
+            listOptions = ListOptions.Student;
         } else if (pageType.equals("courses")) {
+            listOptions = ListOptions.Course;
+        }
         loadTableData();
         createCourseOptions();
-        }
     }
 
     public void loadTableData() {
-        String[] userCoursesIDs = Main.LoggedInUser.getUser().getCourses();
-        Course[] enrolledCourses = HashService.findCourses(userCoursesIDs);
-        leftTableData.setAll(enrolledCourses);
+        String[] ids;
+        Object[] options;
+        Object[] availableOptions;
 
-        Course[] availableCourses = HashService.getCourses();
+        if (listOptions == ListOptions.Course) {
+            ids = Main.LoggedInUser.getUser().getCourses();
+            options = HashService.findCourses(ids);
+        } else {
+            ids = this.course.getUserIDs();
+            options = HashService.findStudents(ids);
+        }
 
-        List<Course> enrolledCoursesArr = new ArrayList<>(Arrays.asList(enrolledCourses));
-        List<Course> availableCoursesArr = new ArrayList<>(Arrays.asList(availableCourses));
+        leftTableData.setAll(options);
 
-        availableCoursesArr.removeAll(enrolledCoursesArr);
-        rightTableData.setAll(availableCoursesArr);
+        if (listOptions == ListOptions.Course) {
+            availableOptions = HashService.getCourses();
+        } else {
+            availableOptions = HashService.getUsers();
+        }
+
+        List<Object> enrolledArr = new ArrayList<>(Arrays.asList(options));
+        List<Object> availableArr = new ArrayList<>(Arrays.asList(availableOptions));
+
+        availableArr.removeAll(enrolledArr);
+        rightTableData.setAll(availableArr);
     }
 
     public void createCourseOptions() {
+        String name;
+        String classify;
+
+        if (listOptions == ListOptions.Course) {
+            name = "courseName";
+            classify = "courseClassify";
+        } else {
+            name = "email";
+            classify = "userID";
+        }
+
         TableColumn leftselectColumn = new TableColumn<>("select");
-        leftselectColumn.setMinWidth(40);
-        leftselectColumn.setText("Remove");
-        leftselectColumn.setStyle("-fx-alignment: CENTER;");
-        TableColumn leftcourseNameColumn = new TableColumn<>("courseName");
-        leftcourseNameColumn.setMinWidth(180);
-        leftcourseNameColumn.setText("Course Name ");
-        TableColumn leftcourseClassifyColumn = new TableColumn<>("courseClassify");
-        leftcourseClassifyColumn.setMinWidth(80);
-        leftcourseClassifyColumn.setText("Course ID");
+        setProperties(leftselectColumn, 45, "Remove", true);
+        TableColumn leftNameColumn = new TableColumn<>(name);
+        setProperties(leftNameColumn, 180, listOptions.name() + " Name ", false);
+        TableColumn leftClassifyColumn = new TableColumn<>(classify);
+        setProperties(leftClassifyColumn, 80, listOptions.name() + " ID", false);
 
         TableColumn rightselectColumn = new TableColumn<>("select");
-        rightselectColumn.setMinWidth(60);
-        rightselectColumn.setText("Add");
-        rightselectColumn.setStyle("-fx-alignment: CENTER;");
-        TableColumn rightcourseNameColumn = new TableColumn<>("courseName");
-        rightcourseNameColumn.setMinWidth(180);
-        rightcourseNameColumn.setText("Course Name ");
-        TableColumn rightcourseClassifyColumn = new TableColumn<>("courseClassify");
-        rightcourseClassifyColumn.setMinWidth(85);
-        rightcourseClassifyColumn.setText("Course ID");
+        setProperties(rightselectColumn, 45, "Add", true);
+        TableColumn rightNameColumn = new TableColumn<>(name);
+        setProperties(rightNameColumn, 180, listOptions.name() + " Name ", false);
+        TableColumn rightClassifyColumn = new TableColumn<>(classify);
+        setProperties(rightClassifyColumn, 80, listOptions.name() + " ID", false);
 
 
-        leftTableView.getColumns().setAll(leftselectColumn, leftcourseNameColumn, leftcourseClassifyColumn);
-        rightTableView.getColumns().setAll(rightselectColumn, rightcourseNameColumn, rightcourseClassifyColumn);
+        leftTableLabel.setText("Current " + listOptions.name() + "s");
+        rightTableLabel.setText("Available " + listOptions.name() + "s");
+        leftTableView.getColumns().setAll(leftselectColumn, leftNameColumn, leftClassifyColumn);
+        rightTableView.getColumns().setAll(rightselectColumn, rightNameColumn, rightClassifyColumn);
 
-        leftselectColumn.setCellValueFactory(new PropertyValueFactory<User, String>("select"));
-        leftcourseNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("courseName"));
-        leftcourseClassifyColumn.setCellValueFactory(new PropertyValueFactory<User, String>("courseClassify"));
-        rightselectColumn.setCellValueFactory(new PropertyValueFactory<User, String>("select"));
-        rightcourseNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("courseName"));
-        rightcourseClassifyColumn.setCellValueFactory(new PropertyValueFactory<User, String>("courseClassify"));
+        leftselectColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("select"));
+        leftNameColumn.setCellValueFactory(new PropertyValueFactory<Object, String>(name));
+        leftClassifyColumn.setCellValueFactory(new PropertyValueFactory<Object, String>(classify));
+        rightselectColumn.setCellValueFactory(new PropertyValueFactory<Object, String>("select"));
+        rightNameColumn.setCellValueFactory(new PropertyValueFactory<Object, String>(name));
+        rightClassifyColumn.setCellValueFactory(new PropertyValueFactory<Object, String>(classify));
         leftTableView.setItems(leftTableData);
         rightTableView.setItems(rightTableData);
+    }
+
+    public void onConfirmButtonPressed(ActionEvent actionEvent) {
+        ArrayList<Object> moveRight = new ArrayList<>();
+        ArrayList<Object> moveLeft = new ArrayList<>();
+
+        if (listOptions == ListOptions.Course) {
+            for (Object item : leftTableView.getItems()) {
+                Course course = (Course) item;
+                if (course.getSelect().isSelected()) {
+                    moveRight.add(course);
+                    course.getSelect().setSelected(false);
+                }
+            }
+            for (Object item : rightTableView.getItems()) {
+                Course course = (Course) item;
+                if (course.getSelect().isSelected()) {
+                    moveLeft.add(course);
+                    course.getSelect().setSelected(false);
+
+                }
+            }
+            rightTableData.addAll(moveRight);
+            leftTableData.removeAll(moveRight);
+            rightTableData.removeAll(moveLeft);
+            leftTableData.addAll(moveLeft);
+
+        } else {
+            for (Object item : leftTableView.getItems()) {
+                User user = (User) item;
+                if (user.getSelect().isSelected()) {
+                    moveRight.add(user);
+                    user.getSelect().setSelected(false);
+                }
+            }
+            for (Object item : rightTableView.getItems()) {
+                User user = (User) item;
+                if (user.getSelect().isSelected()) {
+                    moveLeft.add(user);
+                    user.getSelect().setSelected(false);
+                }
+            }
+            rightTableData.addAll(moveRight);
+            leftTableData.removeAll(moveRight);
+            rightTableData.removeAll(moveLeft);
+            leftTableData.addAll(moveLeft);
+        }
+
+        }
+
+    public void setProperties(TableColumn column, int width, String text, boolean centered) {
+        column.setMinWidth(width);
+        column.setText(text);
+        if (centered) {
+            column.setStyle("-fx-alignment: CENTER;");
+        }
     }
 }

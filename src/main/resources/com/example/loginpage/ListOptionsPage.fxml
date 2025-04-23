@@ -10,14 +10,14 @@
                 <children>
                     <Button mnemonicParsing="false" onAction="#onBackButtonPressed" prefHeight="17.0" prefWidth="50.0" styleClass="courseBack" text="Back" />
                     <Label fx:id="navbarUserText" alignment="CENTER_RIGHT" layoutX="473.0" layoutY="4.0" prefHeight="17.0" prefWidth="265.0" text="Professor View | Welcome User" />
-                    <Button layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
+                    <Button onAction="#onLogoutButtonPressed" layoutX="743.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="57.0" styleClass="courseBack" text="Logout" />
                 </children>
             </AnchorPane>
         </children></HBox>
-   <Button layoutX="365.0" layoutY="212.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="71.0" text="Confirm" />
+   <Button onAction="#onConfirmButtonPressed" layoutX="365.0" layoutY="212.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="71.0" text="Confirm" />
    <TableView fx:id="leftTableView" layoutX="14.0" layoutY="72.0" prefHeight="328.0" prefWidth="325.0" />
    <TableView fx:id="rightTableView" layoutX="461.0" layoutY="72.0" prefHeight="328.0" prefWidth="325.0">
    </TableView>
-   <Label layoutX="24.0" layoutY="43.0" styleClass="heading3" text="Current Courses" />
-   <Label layoutX="479.0" layoutY="43.0" styleClass="heading3" text="Available Courses" />
+   <Label fx:id="leftTableLabel" layoutX="24.0" layoutY="43.0" styleClass="heading3" text="Current Courses" />
+   <Label fx:id="rightTableLabel" layoutX="479.0" layoutY="43.0" styleClass="heading3" text="Available Courses" />
 </AnchorPane>
