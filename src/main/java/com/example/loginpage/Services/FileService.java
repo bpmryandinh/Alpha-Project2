@@ -91,14 +91,21 @@ public class FileService {
 
     private static File getFile(String id) {
         File CSVFile;
-        boolean isUser = id.startsWith("B");
+        String idType = id.substring(0,0);
 
-        if (isUser) {
-            CSVFile = new File("src/main/resources/data/users.csv");
-        } else {
-            CSVFile = new File("src/main/resources/data/courses.csv");
+        switch (idType) {
+            case "B":
+                CSVFile = new File("src/main/resources/data/students.csv");
+                break;
+            case "P":
+                CSVFile = new File("src/main/resources/data/professors.csv");
+                break;
+            case "C":
+                CSVFile = new File("src/main/resources/data/courses.csv");
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + idType);
         }
-
         return CSVFile;
     }
 
