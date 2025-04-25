@@ -46,6 +46,8 @@ public class HashService {
         return Professors.get(professorID);
     }
 
+    public static Student findStudent(String studentID) { return Users.get(studentID);}
+
     // Method to fill in data for course hashmap
     public static void writeCourseHashMap(String[][] CourseSData) {
         for(String[] courseData : CourseSData){

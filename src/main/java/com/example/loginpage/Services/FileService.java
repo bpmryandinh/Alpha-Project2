@@ -20,6 +20,7 @@ public class FileService {
         read.close();
         return lines.toArray(new String[lines.size()][]);
     }
+
     public static String[] readLineCSV(String filename) throws FileNotFoundException {
         File CSVFile = new File("src/main/resources/data/" + filename + ".csv");
         Scanner read = new Scanner(CSVFile);
@@ -64,13 +65,12 @@ public class FileService {
         idInt = idInt - 1;
         String idBefore = String.valueOf(idInt);
 
-        if (idInt + 1 == 1001){
+        if (idInt == 1000){
             writer.write(writableData + "\n");
         }
-
         do {
             String line = read.nextLine();
-            if (line.contains(idBefore)) {
+            if (line.contains(idBefore) && idInt != 1000) {
                 writer.write(line + "\n");
                 writer.write(writableData + "\n");
             } else {
@@ -92,18 +92,28 @@ public class FileService {
 
     private static File getFile(String id) {
         File CSVFile;
-        boolean isUser = id.startsWith("B");
+        String idType = id.substring(0,1);
 
-        if (isUser) {
-            CSVFile = new File("src/main/resources/data/users.csv");
-        } else {
-            CSVFile = new File("src/main/resources/data/courses.csv");
+        switch (idType) {
+            case "B":
+                CSVFile = new File("src/main/resources/data/users.csv");
+                break;
+            case "P":
+                CSVFile = new File("src/main/resources/data/professors.csv");
+                break;
+            case "C":
+                CSVFile = new File("src/main/resources/data/courses.csv");
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + idType);
         }
-
         return CSVFile;
     }
 
+
+
 }
+
 /*
 if (ID starts w/ B) {
     File = user.csv

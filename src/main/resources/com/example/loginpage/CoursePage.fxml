@@ -95,14 +95,13 @@
                                   </TableView>
                                   <Pane layoutY="372.0" prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #42494f">
                                  <children>
-                                    <TextField layoutX="5.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="Student ID" styleClass="tableInput" />
-                                    <TextField layoutX="91.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="First Name" styleClass="tableInput" />
-                                    <TextField layoutX="178.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="Last Name" styleClass="tableInput" />
-                                    <TextField layoutX="265.0" layoutY="12.0" prefHeight="25.0" prefWidth="54.0" promptText="Gender" styleClass="tableInput" />
-                                    <TextField layoutX="328.0" layoutY="12.0" prefHeight="25.0" prefWidth="94.0" promptText="Email" styleClass="tableInput" />
-                                    <TextField layoutX="431.0" layoutY="12.0" prefHeight="25.0" prefWidth="43.0" promptText="GPA" styleClass="tableInput" />
-                                    <TextField layoutX="484.0" layoutY="12.0" prefHeight="25.0" prefWidth="121.0" promptText="Courses" styleClass="tableInput" />
+                                    <TextField fx:id="fnameTextField" layoutX="91.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="First Name" styleClass="tableInput" />
+                                    <TextField fx:id="lnameTextField" layoutX="178.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="Last Name" styleClass="tableInput" />
+                                    <TextField fx:id="genderTextField" layoutX="265.0" layoutY="12.0" prefHeight="25.0" prefWidth="54.0" promptText="Gender" styleClass="tableInput" />
+                                    <TextField fx:id="emailTextField" layoutX="328.0" layoutY="12.0" prefHeight="25.0" prefWidth="94.0" promptText="Email" styleClass="tableInput" />
+                                    <TextField fx:id="gpaTextField" layoutX="431.0" layoutY="12.0" prefHeight="25.0" prefWidth="43.0" promptText="GPA" styleClass="tableInput" />
                                     <TextField layoutX="616.0" layoutY="12.0" prefHeight="25.0" prefWidth="118.0" promptText="Year" styleClass="tableInput" />
+                                    <Label fx:id="studentIdLabel" layoutX="21.0" layoutY="15.0" prefHeight="17.0" prefWidth="57.0" text="Student ID" />
                                  </children></Pane>
                               <Button layoutX="743.0" layoutY="383.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="50.0" styleClass="modButton" text="Save" />
                               <Button layoutX="722.0" layoutY="5.0" mnemonicParsing="false" onAction="#addStudentButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Edit" />

@@ -28,8 +28,13 @@ public class Main extends Application {
     and the scenes are all parsed into each other for the purpose of scene swapping
     in the future.
      */
+
+
     @Override
     public void start(Stage stage) throws IOException {
+
+        LoggedInUser = new UserSession("salt", "B1001", "<EMAIL>", "test", "hash");
+
         // Creation of each fxml page
         StageController.setInstance(new StageController(), stage);
 
