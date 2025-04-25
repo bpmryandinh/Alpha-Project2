@@ -18,6 +18,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
+/* Controller that manages user authentication and login process.
+   Handles credential verification, secure login, and session creation. */
 public class LoginPageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
@@ -39,12 +41,8 @@ public class LoginPageController {
     private Label errorField;
 
 
-    /*
-    Reads the loginData and splices the data into a separated string array based on the deliminated commas.
-    It then loops through and checks the second index of each chunk through decryption to see if the user
-    typed email is available. Based on availability errors or shown or the passwords are doublechecked
-    through the secure methods. If information is correct user is logged on.
-     */
+    /* Processes login form submission and authenticates user credentials.
+       Verifies email/password combination and creates user session on success. */
     @FXML
     public void submitButtonClick(ActionEvent actionEvent) throws IOException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         String inputtedEmail = emailTxtField.getText();
@@ -101,31 +99,45 @@ public class LoginPageController {
         this.parentStage = StageController.getInstance().mainScene;
     }
 
+    /* Links the course list controller for post-login navigation.
+       Enables access to course management interface. */
     public void setCourseListController(CourseListPageController courseListPageController) {
         this.courseListPageController = courseListPageController;
     }
 
+    /* Sets up the course list view for successful login.
+       Prepares the main application interface. */
     public void setCourseList(Scene scene) {
         this.courseListScene = scene;
     }
 
+    /* Sets the scene to return to when canceling login.
+       Part of the navigation flow management. */
     public void setBackScene(Scene scene) {
         this.backScene = scene;
     }
 
+    /* Links the home controller for navigation purposes.
+       Enables communication with the home page interface. */
     public void setHomeController(HomePageController homeController) {
         this.homeController = homeController;
     }
 
+    /* Handles transition to course list after successful login.
+       Updates the view and refreshes course data. */
     private void switchScene() {
         StageController.getInstance().mainScene.setScene(this.courseListScene);
         this.courseListPageController.reloadData();
     }
 
+    /* Handles navigation back to previous screen.
+       Cancels the login process. */
     public void backButtonClick(ActionEvent actionEvent) {
         parentStage.setScene(backScene);
     }
 
+    /* Resets all input fields to empty state.
+       Used when clearing the login form. */
     public void clearFXML() {
         idTxtField.setText("");
         emailTxtField.setText("");

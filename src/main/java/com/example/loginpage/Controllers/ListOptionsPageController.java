@@ -25,9 +25,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/* Controller for managing course and student list modifications */
 public class ListOptionsPageController {
-
-
 
     enum ListOptions {
         Course,
@@ -59,26 +58,32 @@ public class ListOptionsPageController {
         this.parentStage = StageController.getInstance().mainScene;
     }
 
+    /* Returns to previous screen */
     public void onBackButtonPressed(ActionEvent actionEvent) {
         StageController.getInstance().mainScene.setScene(rootScene);
     }
 
+    /* Handles user logout */
     public void onLogoutButtonPressed(ActionEvent actionEvent) {
         this.parentStage.setScene(Main.getHomeScene());
     }
 
+    /* Sets the current course */
     public void setCourse(Course course) {
         this.course = course;
     }
 
+    /* Sets the course list controller reference */
     public void setCourseListPageController(CourseListPageController courseListPageController) {
         this.courseListPageController = courseListPageController;
     }
 
+    /* Sets the course page controller reference */
     public void setCoursePageController(CoursePageController coursePageController) {
         this.coursePageController = coursePageController;
     }
 
+    /* Initializes page data and layout */
     public void setData(Scene rootScene, String pageType) {
         navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
         this.rootScene = rootScene;
@@ -93,6 +98,7 @@ public class ListOptionsPageController {
         createCourseOptions();
     }
 
+    /* Loads data into the tables */
     public void loadTableData() {
         String[] ids;
         Object[] options;
@@ -121,6 +127,7 @@ public class ListOptionsPageController {
         rightTableData.setAll(availableArr);
     }
 
+    /* Creates and configures table columns */
     public void createCourseOptions() {
         String name;
         String classify;
@@ -147,7 +154,6 @@ public class ListOptionsPageController {
         TableColumn rightClassifyColumn = new TableColumn<>(classify);
         setProperties(rightClassifyColumn, 80, listOptions.name() + " ID", false);
 
-
         leftTableLabel.setText("Current " + listOptions.name() + "s");
         rightTableLabel.setText("Available " + listOptions.name() + "s");
         leftTableView.getColumns().setAll(leftselectColumn, leftNameColumn, leftClassifyColumn);
@@ -163,6 +169,7 @@ public class ListOptionsPageController {
         rightTableView.setItems(rightTableData);
     }
 
+    /* Handles confirmation of list changes */
     public void onConfirmButtonPressed(ActionEvent actionEvent) throws IOException {
         ArrayList<Object> moveRight = new ArrayList<>();
         ArrayList<Object> moveLeft = new ArrayList<>();
@@ -180,14 +187,12 @@ public class ListOptionsPageController {
                 if (course.getSelect().isSelected()) {
                     moveLeft.add(course);
                     course.getSelect().setSelected(false);
-
                 }
             }
             rightTableData.addAll(moveRight);
             leftTableData.removeAll(moveRight);
             rightTableData.removeAll(moveLeft);
             leftTableData.addAll(moveLeft);
-
 
             User user = Main.LoggedInUser.getUser();
             String[] newSave = new String[leftTableData.size()];
@@ -200,47 +205,41 @@ public class ListOptionsPageController {
 
             user.setCourses(newSave);
             FileService.updateRecordCSV(user.getUserID(), user.getAllData());
-            this.courseListPageController.reloadData();
-
-
+            courseListPageController.reloadData();
         } else {
             for (Object item : leftTableView.getItems()) {
-                User user = (User) item;
-                if (user.getSelect().isSelected()) {
-                    moveRight.add(user);
-                    user.getSelect().setSelected(false);
+                User student = (User) item;
+                if (student.getSelect().isSelected()) {
+                    moveRight.add(student);
+                    student.getSelect().setSelected(false);
                 }
             }
             for (Object item : rightTableView.getItems()) {
-                User user = (User) item;
-                if (user.getSelect().isSelected()) {
-                    moveLeft.add(user);
-                    user.getSelect().setSelected(false);
+                User student = (User) item;
+                if (student.getSelect().isSelected()) {
+                    moveLeft.add(student);
+                    student.getSelect().setSelected(false);
                 }
             }
             rightTableData.addAll(moveRight);
             leftTableData.removeAll(moveRight);
             rightTableData.removeAll(moveLeft);
             leftTableData.addAll(moveLeft);
-            
+
             String[] newSave = new String[leftTableData.size()];
-
             for (int i = 0; i < newSave.length; i++) {
-                User user = (User) leftTableData.get(i);
-                newSave[i] = user.getUserID();
-                user.setCourses(new String[]{user.getCourses() + course.getCourseID()});
-
+                User student = (User) leftTableData.get(i);
+                newSave[i] = student.getUserID();
             }
-
             course.setUserIDs(newSave);
-            FileService.updateRecordCSV(course.getCourseID(), course.getAllData());
-            this.coursePageController.refreshPage();
-
+            FileService.updateRecordCSV(course.getCourseID(), course.getCourseData());
+            coursePageController.refreshPage();
         }
-        }
+    }
 
-    public void setProperties(TableColumn column, int width, String text, boolean centered) {
-        column.setMinWidth(width);
+    /* Sets table column properties */
+    private void setProperties(TableColumn column, int width, String text, boolean centered) {
+        column.setPrefWidth(width);
         column.setText(text);
         if (centered) {
             column.setStyle("-fx-alignment: CENTER;");

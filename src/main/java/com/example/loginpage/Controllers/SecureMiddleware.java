@@ -14,15 +14,15 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-// Secure class
-/*
- Used for all encryption and decryption throughout the program
- */
+/* Security utility class that provides encryption and authentication services.
+   Implements AES encryption, secure password hashing, and salt generation. */
 public abstract class SecureMiddleware {
     private static SecretKeySpec secretKey;
     private static byte[] key;
     final static String secret = "Tee(Hee)%PEe?Peepu*opoo!";
 
+    /* Initializes the encryption key from a provided string.
+       Creates a SHA-512 hash and formats it for AES encryption. */
     public static void setKey(String myKey) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest sha = null;
         key = myKey.getBytes("UTF-8");
@@ -32,6 +32,8 @@ public abstract class SecureMiddleware {
         secretKey = new SecretKeySpec(key, "AES");
     }
 
+    /* Encrypts data using AES encryption in ECB mode.
+       Converts input to UTF-8 bytes and returns Base64 encoded string. */
     public static String encrypt(String strToEncrypt, String secret)
             throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, UnsupportedEncodingException,
             IllegalBlockSizeException, BadPaddingException {
@@ -44,6 +46,8 @@ public abstract class SecureMiddleware {
         return Base64.getEncoder().encodeToString(finalCipher);
     }
 
+    /* Decrypts AES encrypted data from Base64 format.
+       Returns the original string using the provided secret key. */
     public static String decrypt(String strToDecrypt, String secret)
             throws NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, InvalidKeyException,
             IllegalBlockSizeException, BadPaddingException {
@@ -55,6 +59,8 @@ public abstract class SecureMiddleware {
         return new String(cipher.doFinal(finalByteString));
     }
 
+    /* Generates a cryptographically secure random salt.
+       Uses SHA1PRNG algorithm for reliable randomness. */
     public static byte[] getSalt() throws NoSuchAlgorithmException {
         SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
@@ -62,6 +68,8 @@ public abstract class SecureMiddleware {
         return salt;
     }
 
+    /* Creates a secure password hash using SHA-512 and salt.
+       Combines password with salt and formats as hexadecimal string. */
     public static String getSecurePassword(String passwordToHash, byte[] salt) throws NoSuchAlgorithmException {
         String generatedPassword = null;
         MessageDigest md = MessageDigest.getInstance("SHA-512");

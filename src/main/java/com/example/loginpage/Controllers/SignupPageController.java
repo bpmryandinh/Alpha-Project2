@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Random;
 
+/* Controller for handling new user registration */
 public class SignupPageController {
     // Stages and Scenes for the purpose of scene swapping
     private Stage parentStage;
@@ -31,14 +32,9 @@ public class SignupPageController {
     @FXML
     private PasswordField passwordTxtField;
 
-    /*
-    Submit button reads through the loginData file to take the past user data
-    and then appends the new encrypted data based on user input for the final
-    signup process.
-     */
+    /* Processes new user registration with encrypted data storage */
     @FXML
     public void submitButtonClick(ActionEvent actionEvent) throws IOException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-
         String fileName = "src/main/resources/data/userLoginData.csv";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = reader.readLine();
@@ -47,8 +43,6 @@ public class SignupPageController {
             line = "";
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-
-
 
         // Encrypts everything with the secret key or with salt if it is the password
         byte[] salt = SecureMiddleware.getSalt();
@@ -70,18 +64,22 @@ public class SignupPageController {
         this.parentStage = StageController.getInstance().mainScene;
     }
 
+    /* Sets the scene to return to */
     public void setBackScene(Scene scene) {
         this.backScene = scene;
     }
 
+    /* Returns to previous screen */
     private void switchScene() {
         parentStage.setScene(backScene);
     }
 
+    /* Handles back button navigation */
     public void backButtonClick(ActionEvent actionEvent) {
         switchScene();
     }
 
+    /* Clears all input fields */
     private void clearFXML(ActionEvent actionEvent) {
         emailTxtField.setText("");
         nameTxtField.setText("");

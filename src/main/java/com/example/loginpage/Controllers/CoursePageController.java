@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/* Controller that manages individual course details and student roster.
+   Handles student enrollment, course information display, and data modifications. */
 public class CoursePageController {
     private Stage parentStage;
     private Scene backScene;
@@ -83,26 +85,32 @@ public class CoursePageController {
     //endregion
 
 
+    @FXML
+    private Button editButton;
 
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
         courseID = "";
     }
 
-
+    /* Retrieves and formats student data for the course.
+       Returns an observable list of enrolled students. */
     public ObservableList<Student> loadPageData() {
-            String[] studentIDs = course.getUserIDs();
-            Student[] students = HashService.findStudents(studentIDs);
-            return FXCollections.observableArrayList(students);
+        String[] studentIDs = course.getUserIDs();
+        Student[] students = HashService.findStudents(studentIDs);
+        return FXCollections.observableArrayList(students);
     }
 
+    /* Initializes the course object for this page.
+       Fetches course data using the current course ID. */
     public void setCourseClass() {
         String[] sendCourse = {getCourseID()};
         Course[] courseReturn = HashService.findCourses(sendCourse);
         setCourse(courseReturn[0]);
     }
 
-
+    /* Updates the page display with current data.
+       Configures table columns and loads student information. */
     public void refreshPage() {
         userID.setCellValueFactory(new PropertyValueFactory<Student, String>("userID"));
         fname.setCellValueFactory(new PropertyValueFactory<Student, String>("fname"));
@@ -116,6 +124,8 @@ public class CoursePageController {
         setPageValues();
     }
 
+    /* Updates all UI elements with current course information.
+       Handles different views for students and professors. */
     public void setPageValues() {
         Professor professor = course.getCourseProfessor();
         navbarUserText.setText(Main.LoggedInUser.getuserType() + " View | " + "Welcome " + Main.LoggedInUser.getUser().getFname() + " " + Main.LoggedInUser.getUser().getLname() + " |");
@@ -126,13 +136,15 @@ public class CoursePageController {
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
 
         if (Objects.equals(Main.LoggedInUser.getuserType(), UserSession.Person.Student.name())) {
+            editButton.setDisable(true);
             fillStudentFields(Main.LoggedInUser.getUser());
         } else {
+            editButton.setDisable(false);
             studentTable.setRowFactory(tv -> {
                 TableRow<Student> row = new TableRow<>();
                 row.setOnMouseClicked(event -> {
                     if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY
-                            && event.getClickCount() == 2) {
+                            && event.getClickCount() == 1) {
 
                         Student selectedStudent = row.getItem();
                         fillStudentFields(selectedStudent);
@@ -143,7 +155,8 @@ public class CoursePageController {
         }
     }
 
-
+    /* Updates form fields with selected student's information.
+       Used for both viewing and editing student details. */
     public void fillStudentFields(User student) {
         studentIdLabel.setText(student.getUserID());
         fnameTextField.setText(student.getFname());
@@ -152,14 +165,9 @@ public class CoursePageController {
         emailTextField.setText(student.getEmail());
     }
 
-
-
-
-
-
-
+    /* Saves changes to student information.
+       Updates both UI and persistent storage. */
     public void onSaveButtonClicked(ActionEvent actionEvent) throws IOException {
-        //Get values
         String studentId = studentIdLabel.getText();
         String fname = fnameTextField.getText();
         String lname = lnameTextField.getText();
@@ -188,48 +196,69 @@ public class CoursePageController {
         refreshPage();
     }
 
+    /* Sets the scene to return to when navigating back.
+       Part of the navigation flow management. */
     public void setBackScene(Scene backScene) {
         this.backScene = backScene;
     }
 
+    /* Sets up the scene for modifying course enrollment.
+       Used when adding or removing students. */
     public void setListOptionsPageScene(Scene listOptionsPageScene) {
         this.listOptionsPageScene = listOptionsPageScene;
     }
 
+    /* Links the controller for enrollment modifications.
+       Enables communication with the list options interface. */
     public void setListOptionsPageController(ListOptionsPageController listOptionsPageController) {
         this.listOptionsPageController = listOptionsPageController;
     }
 
+    /* Sets the reference to this controller's main view.
+       Used for navigation and state management. */
     public void setSelfScene(Scene selfScene) {
         this.selfScene = selfScene;
     }
-    
+
+    /* Handles navigation back to previous view.
+       Returns to the course list or previous screen. */
     public void onBackButtonPressed(ActionEvent actionEvent) {
-        this.parentStage.setScene(this.backScene);
+        this.parentStage.setScene(backScene);
     }
 
+    /* Retrieves the current course's unique identifier.
+       Used for data lookup and management. */
     public String getCourseID() {
         return courseID;
     }
 
+    /* Sets the current course's unique identifier.
+       Updates the page context for a specific course. */
     public void setCourseID(String courseID) {
         this.courseID = courseID;
     }
 
+    /* Retrieves the current course object.
+       Provides access to course details and data. */
     public Course getCourse() {
         return course;
     }
 
+    /* Updates the current course object.
+       Refreshes the page with new course information. */
     public void setCourse(Course course) {
         this.course = course;
     }
 
+    /* Initiates the process of adding a new student to the course.
+       Navigates to student selection interface. */
     public void addStudentButtonPressed(ActionEvent actionEvent) {
         StageController.getInstance().mainScene.setScene(listOptionsPageScene);
-        listOptionsPageController.setCourse(this.course);
-        listOptionsPageController.setData(this.selfScene, "student");
+        listOptionsPageController.setData(this.selfScene, "students");
     }
 
+    /* Handles user logout action.
+       Returns to the application home screen. */
     public void onLogoutButtonPressed(ActionEvent actionEvent) {
         this.parentStage.setScene(Main.getHomeScene());
     }
