@@ -17,11 +17,11 @@ B1016,C3091;C7077,Emma,Lewis,Female,emma.lewis@example.com,3.91,"108 Laurel Ct N
 B1017,C6085;C2048,Benjamin,Walker,Male,benjamin.walker@example.com,3.64,"219 Dogwood Way Somewhere TN 37027",1995-09-17,555-789-0123,Senior
 B1018,C3012;C1056,Ava,Hall,Female,ava.hall@example.com,3.82,"320 Hickory Pl Anywhere MO 63101",1998-02-28,555-890-1234,Freshman
 B1019,C4023;C5034,Alexander,Young,Male,alexander.young@example.com,3.71,"431 Poplar St Elsewhere UT 84010",1997-11-09,555-901-2345,Junior
-B1020,C1024;C7077,Mia,Allen,Female,mia.allen@example.com,3.95,"542 Redbud Ave Here NM 87102",1996-08-16,555-012-3456,Sophomore
+B1020,C1024;C7077;,Mia,Allen,Female,mia.allen@example.com,3.95,"542 Redbud Ave Here NM 87102",1996-08-16,555-012-3456,Sophomore
 B1021,C8069;C1056,Ethan,King,Male,ethan.king@example.com,3.68,"653 Walnut Rd There LA 70001",1995-03-25,555-123-4567,Senior
 B1022,C3091;C6085,Charlotte,Wright,Female,charlotte.wright@example.com,3.83,"764 Chestnut Dr Everywhere KY 40202",1998-06-14,555-234-5678,Freshman
 B1023,C5034;C7077,Michael,Scott,Male,michael.scott@example.com,3.59,"875 Spruce Ln Nowhere OK 73008",1997-10-03,555-345-6789,Junior
-B1024,C4023;C8069,Harper,Green,Female,harper.green@example.com,3.87,"986 Oak Blvd Somewhere IA 50309",1996-04-12,555-456-7890,Sophomore
+B1024,C4023;C8069;,Harpers,Green,Female,harper.green@example.com,3.87,"986 Oak Blvd Somewhere IA 50309",1996-04-12,555-456-7890,Sophomore
 B1025,C3012;C6085,Daniel,Baker,Male,daniel.baker@example.com,3.74,"097 Pine Ct Anywhere AR 72201",1995-01-21,555-567-8901,Senior
 B1026,C5034;C1056,Abigail,Nelson,Female,abigail.nelson@example.com,3.96,"108 Maple Way Elsewhere NE 68102",1998-09-08,555-678-9012,Freshman
 B1027,C8069;C2050,David,Carter,Male,david.carter@example.com,3.65,"219 Elm Pl Here ID 83201",1997-12-19,555-789-0123,Junior

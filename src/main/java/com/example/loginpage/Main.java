@@ -83,6 +83,7 @@ public class Main extends Application {
         coursePageController.setListOptionsPageScene(listOptionsPageScene);
         coursePageController.setListOptionsPageController(listOptionsPageController);
         listOptionsPageController.setCourseListPageController(courseListPageController);
+        listOptionsPageController.setCoursePageController(coursePageController);
         stage.setScene(homeScene);
         stage.show();
 

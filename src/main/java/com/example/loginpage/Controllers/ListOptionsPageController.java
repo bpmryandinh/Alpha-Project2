@@ -41,6 +41,7 @@ public class ListOptionsPageController {
     private ObservableList<Object> leftTableData = FXCollections.observableArrayList();
     private ObservableList<Object> rightTableData = FXCollections.observableArrayList();
     private CourseListPageController courseListPageController;
+    private CoursePageController coursePageController;
 
     @FXML
     private Label navbarUserText;
@@ -72,6 +73,10 @@ public class ListOptionsPageController {
 
     public void setCourseListPageController(CourseListPageController courseListPageController) {
         this.courseListPageController = courseListPageController;
+    }
+
+    public void setCoursePageController(CoursePageController coursePageController) {
+        this.coursePageController = coursePageController;
     }
 
     public void setData(Scene rootScene, String pageType) {
@@ -218,18 +223,18 @@ public class ListOptionsPageController {
             rightTableData.removeAll(moveLeft);
             leftTableData.addAll(moveLeft);
             
-//            String[] newSave = new String[leftTableData.size()];
-//
-//            for (int i = 0; i < newSave.length; i++) {
-//                User user = (User) leftTableData.get(i);
-//                newSave[i] = user.getUserID();
-//                user.setCourses(new String[]{user.getCourses() + course.getCourseID()});
-//
-//            }
-//
-//            course.setUserIDs(newSave);
-//            FileService.updateRecordCSV(course.getCourseID(), course.getAllData());
-//            this.courseListPageController.reloadData();
+            String[] newSave = new String[leftTableData.size()];
+
+            for (int i = 0; i < newSave.length; i++) {
+                User user = (User) leftTableData.get(i);
+                newSave[i] = user.getUserID();
+                user.setCourses(new String[]{user.getCourses() + course.getCourseID()});
+
+            }
+
+            course.setUserIDs(newSave);
+            FileService.updateRecordCSV(course.getCourseID(), course.getAllData());
+            this.coursePageController.refreshPage();
 
         }
         }
