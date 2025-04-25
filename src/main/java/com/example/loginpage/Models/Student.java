@@ -36,4 +36,22 @@ public class Student extends User {
     public String getCoursesString() {
         return CoursesString;
     }
+
+
+    public String[] getStudentData() {
+        int offset = 0;
+        String[] data = new String[11];
+        for (int i = 0; i < (getData().length + 1); i++) {
+            if (i == 6) {
+                data[i] = getGPA();
+                offset += 1;
+            } else if (i == 9) {
+                data[i + offset] = getYear();
+                break;
+            }
+            data[i + offset] = getData()[i];
+
+        }
+        return data;
+    }
 }

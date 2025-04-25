@@ -36,6 +36,10 @@ public class UserSession {
         }
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
     public User getUser() {
         if (userType == Person.Student) {
             return this.student;

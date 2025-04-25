@@ -64,13 +64,12 @@ public class FileService {
         idInt = idInt - 1;
         String idBefore = String.valueOf(idInt);
 
-        if (idInt + 1 == 1001){
+        if (idInt == 1000){
             writer.write(writableData + "\n");
         }
-
         do {
             String line = read.nextLine();
-            if (line.contains(idBefore)) {
+            if (line.contains(idBefore) && idInt != 1000) {
                 writer.write(line + "\n");
                 writer.write(writableData + "\n");
             } else {

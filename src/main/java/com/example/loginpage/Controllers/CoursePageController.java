@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CoursePageController {
     private Stage parentStage;
@@ -24,7 +25,6 @@ public class CoursePageController {
     private String courseID;
     private Course course;
 
-    User currentUser = Main.LoggedInUser.getUser();
 //    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
 
     //region Label FXML
@@ -164,12 +164,12 @@ public class CoursePageController {
 
         String[] data = null;
         if (Main.LoggedInUser.userType == UserSession.Person.Student) {
-            currentUser.setUserID(studentId);
-            currentUser.setFname(fname);
-            currentUser.setLname(lname);
-            currentUser.setGender(gender);
-            currentUser.setEmail(email);
-            data = currentUser.getData();
+            Main.LoggedInUser.getStudent().setUserID(studentId);
+            Main.LoggedInUser.getStudent().setFname(fname);
+            Main.LoggedInUser.getStudent().setLname(lname);
+            Main.LoggedInUser.getStudent().setGender(gender);
+            Main.LoggedInUser.getStudent().setEmail(email);
+            data = Main.LoggedInUser.getStudent().getStudentData();
         } else {
             Student selectedstudent = HashService.findStudent(studentId);
             selectedstudent.setUserID(studentId);
@@ -177,7 +177,7 @@ public class CoursePageController {
             selectedstudent.setLname(lname);
             selectedstudent.setGender(gender);
             selectedstudent.setEmail(email);
-            data = selectedstudent.getData();
+            data = selectedstudent.getStudentData();
         }
 
         FileService.updateRecordCSV(studentId, data);

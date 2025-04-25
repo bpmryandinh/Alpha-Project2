@@ -23,7 +23,7 @@ public class User {
         this.birthday = birthday;
         this.phone = phone;
 
-
+        this.coursesRaw = coursesRaw;
     }
 
 
@@ -85,4 +85,6 @@ public class User {
     public String getPhone() {
         return phone;
     }
-    public String[] getData() {return new String[]{userID, coursesRaw, fname, lname, gender, email, address, birthday, phone};} }
+    public String[] getData() {
+        return new String[]{userID, coursesRaw, fname, lname, gender, email, address, birthday, phone}; }
+}
