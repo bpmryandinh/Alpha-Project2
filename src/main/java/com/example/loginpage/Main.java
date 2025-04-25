@@ -33,7 +33,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        LoggedInUser = new UserSession("salt", "B1001", "<EMAIL>", "test", "hash");
+//        LoggedInUser = new UserSession("salt", "B1001", "<EMAIL>", "test", "hash");
 
         // Creation of each fxml page
         StageController.setInstance(new StageController(), stage);
