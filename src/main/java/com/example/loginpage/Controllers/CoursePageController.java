@@ -1,28 +1,33 @@
 package com.example.loginpage.Controllers;
 
 import com.example.loginpage.Main;
-import com.example.loginpage.Models.Course;
-import com.example.loginpage.Models.Professor;
-import com.example.loginpage.Models.Student;
+import com.example.loginpage.Models.*;
+import com.example.loginpage.Services.FileService;
 import com.example.loginpage.Services.HashService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class CoursePageController {
     private Stage parentStage;
     private Scene backScene;
     private String courseID;
     private Course course;
+
+    User currentUser = Main.LoggedInUser.getUser();
 //    private ObservableList<User> studentTableData = FXCollections.observableArrayList();
 
+    //region Label FXML
     @FXML
     private Label navbarUserText;
     @FXML
@@ -35,7 +40,11 @@ public class CoursePageController {
     private Label courseInfoLabel;
     @FXML
     private Label professorInfoLabel;
+    @FXML
+    private Label studentIdLabel;
+    //endregion
 
+    //region Table FXML
     @FXML
     private TableView<Student> studentTable;
     @FXML
@@ -54,6 +63,22 @@ public class CoursePageController {
     private TableColumn<Student, String> courses;
     @FXML
     private TableColumn<Student, String> year;
+    //endregion
+
+    //region TextField FXML
+    @FXML
+    private TextField fnameTextField;
+    @FXML
+    private TextField lnameTextField;
+    @FXML
+    private TextField genderTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField gpaTextField;
+    //endregion
+
+
 
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
@@ -95,13 +120,72 @@ public class CoursePageController {
         courseIDLabel.setText(course.getCourseData()[2]);
         courseInfoLabel.setText(course.getCourseData()[3]);
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
+
+        if (Main.LoggedInUser.userType == UserSession.Person.Student) {
+            fillStudentFields(Main.LoggedInUser.getUser());
+        } else {
+            studentTable.setRowFactory(tv -> {
+                TableRow<Student> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY
+                            && event.getClickCount() == 2) {
+
+                        Student selectedStudent = row.getItem();
+                        fillStudentFields(selectedStudent);
+                    }
+                });
+                return row ;
+            });
+        }
     }
 
+
+    public void fillStudentFields(User student) {
+        studentIdLabel.setText(student.getUserID());
+        fnameTextField.setText(student.getFname());
+        lnameTextField.setText(student.getLname());
+        genderTextField.setText(student.getGender());
+        emailTextField.setText(student.getEmail());
+    }
+
+
+
+
+
+
+
+    public void onSaveButtonClicked(ActionEvent actionEvent) throws IOException {
+        //Get values
+        String studentId = studentIdLabel.getText();
+        String fname = fnameTextField.getText();
+        String lname = lnameTextField.getText();
+        String gender = genderTextField.getText();
+        String email = emailTextField.getText();
+
+        String[] data = null;
+        if (Main.LoggedInUser.userType == UserSession.Person.Student) {
+            currentUser.setUserID(studentId);
+            currentUser.setFname(fname);
+            currentUser.setLname(lname);
+            currentUser.setGender(gender);
+            currentUser.setEmail(email);
+            data = currentUser.getData();
+        } else {
+            Student selectedstudent = HashService.findStudent(studentId);
+            selectedstudent.setUserID(studentId);
+            selectedstudent.setFname(fname);
+            selectedstudent.setLname(lname);
+            selectedstudent.setGender(gender);
+            selectedstudent.setEmail(email);
+            data = selectedstudent.getData();
+        }
+
+        FileService.updateRecordCSV(studentId, data);
+    }
 
     public void setBackScene(Scene backScene) {
         this.backScene = backScene;
     }
-
 
     public void onBackButtonPressed(ActionEvent actionEvent) {
         this.parentStage.setScene(this.backScene);

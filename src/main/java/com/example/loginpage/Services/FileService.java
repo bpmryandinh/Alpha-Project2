@@ -92,11 +92,11 @@ public class FileService {
 
     private static File getFile(String id) {
         File CSVFile;
-        String idType = id.substring(0,0);
+        String idType = id.substring(0,1);
 
         switch (idType) {
             case "B":
-                CSVFile = new File("src/main/resources/data/students.csv");
+                CSVFile = new File("src/main/resources/data/users.csv");
                 break;
             case "P":
                 CSVFile = new File("src/main/resources/data/professors.csv");

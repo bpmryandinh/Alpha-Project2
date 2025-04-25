@@ -25,8 +25,13 @@ public class Main extends Application {
     and the scenes are all parsed into each other for the purpose of scene swapping
     in the future.
      */
+
+
     @Override
     public void start(Stage stage) throws IOException {
+
+        LoggedInUser = new UserSession("salt", "B1001", "<EMAIL>", "test", "hash");
+
         // Creation of each fxml page
         StageController.setInstance(new StageController(), stage);
 
@@ -76,7 +81,7 @@ public class Main extends Application {
         // For testing the CourseListLoader
 //        User[] user = HashService.findStudents(new String[]{testUserID});
 //        testUser = user[0];
-          LoggedInUser = new UserSession("salt", "P1005", "<EMAIL>", "test", "hash");
+          LoggedInUser = new UserSession("salt", "P1001", "<EMAIL>", "test", "hash");
 //        LoggedInUser.setUserID("B1030");
 //        LoggedInUser.setUser();
 

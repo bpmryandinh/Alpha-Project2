@@ -2,7 +2,7 @@ package com.example.loginpage.Models;
 
 import com.example.loginpage.Services.HashService;// A virtual user just for holding the users data temporarily and for future use.
 public class UserSession {
-    enum Person {
+    public enum Person {
         Student,
         Professor
     }

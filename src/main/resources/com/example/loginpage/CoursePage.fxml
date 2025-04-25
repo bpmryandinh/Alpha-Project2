@@ -95,14 +95,15 @@
                                   </TableView>
                                   <Pane layoutY="372.0" prefHeight="46.0" prefWidth="800.0" style="-fx-background-color: #42494f">
                                  <children>
-                                    <TextField layoutX="91.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="First Name" styleClass="tableInput" />
-                                    <TextField layoutX="178.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="Last Name" styleClass="tableInput" />
-                                    <TextField layoutX="265.0" layoutY="12.0" prefHeight="25.0" prefWidth="54.0" promptText="Gender" styleClass="tableInput" />
-                                    <TextField layoutX="328.0" layoutY="12.0" prefHeight="25.0" prefWidth="94.0" promptText="Email" styleClass="tableInput" />
-                                    <TextField layoutX="431.0" layoutY="12.0" prefHeight="25.0" prefWidth="43.0" promptText="GPA" styleClass="tableInput" />
+                                    <TextField fx:id="fnameTextField" layoutX="91.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="First Name" styleClass="tableInput" />
+                                    <TextField fx:id="lnameTextField" layoutX="178.0" layoutY="12.0" prefHeight="25.0" prefWidth="78.0" promptText="Last Name" styleClass="tableInput" />
+                                    <TextField fx:id="genderTextField" layoutX="265.0" layoutY="12.0" prefHeight="25.0" prefWidth="54.0" promptText="Gender" styleClass="tableInput" />
+                                    <TextField fx:id="emailTextField" layoutX="328.0" layoutY="12.0" prefHeight="25.0" prefWidth="94.0" promptText="Email" styleClass="tableInput" />
+                                    <TextField fx:id="gpaTextField" layoutX="431.0" layoutY="12.0" prefHeight="25.0" prefWidth="43.0" promptText="GPA" styleClass="tableInput" />
                                     <TextField layoutX="616.0" layoutY="12.0" prefHeight="25.0" prefWidth="118.0" promptText="Year" styleClass="tableInput" />
+                                    <Label fx:id="studentIdLabel" layoutX="21.0" layoutY="15.0" prefHeight="17.0" prefWidth="57.0" text="Student ID" />
                                  </children></Pane>
-                              <Button layoutX="743.0" layoutY="386.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" styleClass="modButton" text="Save" />
+                              <Button layoutX="743.0" layoutY="386.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="17.0" prefWidth="49.0" styleClass="modButton" text="Save" />
                               <Button layoutX="721.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Remove" />
                               <Button layoutX="650.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Add" />
 
