@@ -49,6 +49,10 @@ public class Course {
     public String[] getUserIDs() {
         return userIDs;
     }
+
+    public void setUserIDs(String[] userIDs) {
+        this.userIDs = userIDs;
+    }
     
     public Professor getCourseProfessor() {
         return courseProfessor;
@@ -69,6 +73,8 @@ public class Course {
     public void setSelect(CheckBox select) {
         this.select = select;
     }
+
+
 }
 
 /*

@@ -3,6 +3,7 @@ package com.example.loginpage.Controllers;
 import com.example.loginpage.Main;
 import com.example.loginpage.Models.Course;
 import com.example.loginpage.Models.User;
+import com.example.loginpage.Services.FileService;
 import com.example.loginpage.Services.HashService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -38,6 +40,7 @@ public class ListOptionsPageController {
     private ListOptions listOptions;
     private ObservableList<Object> leftTableData = FXCollections.observableArrayList();
     private ObservableList<Object> rightTableData = FXCollections.observableArrayList();
+    private CourseListPageController courseListPageController;
 
     @FXML
     private Label navbarUserText;
@@ -65,6 +68,10 @@ public class ListOptionsPageController {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void setCourseListPageController(CourseListPageController courseListPageController) {
+        this.courseListPageController = courseListPageController;
     }
 
     public void setData(Scene rootScene, String pageType) {
@@ -151,7 +158,7 @@ public class ListOptionsPageController {
         rightTableView.setItems(rightTableData);
     }
 
-    public void onConfirmButtonPressed(ActionEvent actionEvent) {
+    public void onConfirmButtonPressed(ActionEvent actionEvent) throws IOException {
         ArrayList<Object> moveRight = new ArrayList<>();
         ArrayList<Object> moveLeft = new ArrayList<>();
 
@@ -176,6 +183,21 @@ public class ListOptionsPageController {
             rightTableData.removeAll(moveLeft);
             leftTableData.addAll(moveLeft);
 
+
+            User user = Main.LoggedInUser.getUser();
+            String[] newSave = new String[leftTableData.size()];
+
+            for (int i = 0; i < newSave.length; i++) {
+                Course course = (Course) leftTableData.get(i);
+                newSave[i] = course.getCourseID();
+                course.setUserIDs(new String[]{course.getUserIDs() + user.getUserID()});
+            }
+
+            user.setCourses(newSave);
+            FileService.updateRecordCSV(user.getUserID(), user.getAllData());
+            this.courseListPageController.reloadData();
+
+
         } else {
             for (Object item : leftTableView.getItems()) {
                 User user = (User) item;
@@ -195,8 +217,21 @@ public class ListOptionsPageController {
             leftTableData.removeAll(moveRight);
             rightTableData.removeAll(moveLeft);
             leftTableData.addAll(moveLeft);
-        }
+            
+//            String[] newSave = new String[leftTableData.size()];
+//
+//            for (int i = 0; i < newSave.length; i++) {
+//                User user = (User) leftTableData.get(i);
+//                newSave[i] = user.getUserID();
+//                user.setCourses(new String[]{user.getCourses() + course.getCourseID()});
+//
+//            }
+//
+//            course.setUserIDs(newSave);
+//            FileService.updateRecordCSV(course.getCourseID(), course.getAllData());
+//            this.courseListPageController.reloadData();
 
+        }
         }
 
     public void setProperties(TableColumn column, int width, String text, boolean centered) {

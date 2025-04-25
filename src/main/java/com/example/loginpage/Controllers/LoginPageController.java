@@ -62,7 +62,7 @@ public class LoginPageController {
         boolean emailFound = false;
         int i = 0;
 
-        while (emailFound != true || i > lines.length) {
+        while (emailFound != true && i < lines.length - 1) {
              fileEmail = lines[i + 1];
              decryptedEmail = SecureMiddleware.decrypt(fileEmail, SecureMiddleware.secret);
 

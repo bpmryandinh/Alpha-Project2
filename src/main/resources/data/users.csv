@@ -1,4 +1,4 @@
-B1001,C5012;C1024;C3012,Johne,Doe,Male,john.doe@example.com,3.75,"123 Main St Anytown CA 94102",1995-05-15,555-123-4567,Sophomore
+B1001,C5012;C1024;C3012;,John,Doe,Male,john.doe@example.com,3.75,"123 Main St Anytown CA 94102",1995-05-15,555-123-4567,Sophomore
 B1002,C5012;C1024,Emily,Smith,Female,emily.smith@example.com,3.92,"456 Oak Ave Somewhere NY 10001",1996-08-22,555-234-5678,Junior
 B1003,C5012;C1024;C3012,Michael,Johnson,Male,michael.johnson@example.com,3.45,"789 Pine Rd Nowhere TX 75001",1997-02-10,555-345-6789,Freshman
 B1004,C5012;C3012;C2048,Sarah,Williams,Female,sarah.williams@example.com,3.88,"321 Elm Ln Anywhere FL 32003",1996-11-30,555-456-7890,Sophomore
@@ -8,7 +8,7 @@ B1007,C2048;C4023,Robert,Wilson,Male,robert.wilson@example.com,3.55,"135 Birch C
 B1008,C2048;C3091,Amanda,Martinez,Female,amanda.martinez@example.com,3.81,"246 Willow Way Everywhere OH 43004",1996-01-25,555-890-1234,Sophomore
 B1009,C3091;C4023,Daniel,Anderson,Male,daniel.anderson@example.com,3.63,"369 Spruce Pl Nowhere CO 80014",1995-12-08,555-901-2345,Senior
 B1010,C1024;C1056,Ashley,Taylor,Female,ashley.taylor@example.com,3.94,"482 Redwood St Somewhere MA 02108",1998-03-19,555-012-3456,Freshman
-B1011,C2048;C1056,Matthew,Thomas,Male,matthew.thomas@example.com,3.72,"591 Sequoia Ave Anywhere NC 27513",1997-06-27,555-123-4567,Junior
+B1011,C2048;C1056;,Matthew,Thomas,Male,matthew.thomas@example.com,3.72,"591 Sequoia Ave Anywhere NC 27513",1997-06-27,555-123-4567,Junior
 B1012,C3012;C4023,Olivia,Jackson,Female,olivia.jackson@example.com,3.85,"634 Sycamore Rd Elsewhere AZ 85001",1996-10-14,555-234-5678,Sophomore
 B1013,C3091;C7077,James,White,Male,james.white@example.com,3.58,"765 Magnolia Dr Here PA 19019",1995-04-03,555-345-6789,Senior
 B1014,C2048;C1056,Sophia,Harris,Female,sophia.harris@example.com,3.89,"876 Juniper Ln There MI 48075",1998-07-22,555-456-7890,Freshman

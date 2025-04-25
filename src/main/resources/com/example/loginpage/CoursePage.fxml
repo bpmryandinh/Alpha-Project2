@@ -103,7 +103,7 @@
                                     <TextField layoutX="616.0" layoutY="12.0" prefHeight="25.0" prefWidth="118.0" promptText="Year" styleClass="tableInput" />
                                     <Label fx:id="studentIdLabel" layoutX="21.0" layoutY="15.0" prefHeight="17.0" prefWidth="57.0" text="Student ID" />
                                  </children></Pane>
-                              <Button layoutX="743.0" layoutY="383.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="50.0" styleClass="modButton" text="Save" />
+                              <Button layoutX="743.0" layoutY="383.0" mnemonicParsing="false" onAction="#onSaveButtonClicked" prefHeight="17.0" prefWidth="50.0" styleClass="modButton" text="Save" />
                               <Button layoutX="722.0" layoutY="5.0" mnemonicParsing="false" onAction="#addStudentButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Edit" />
 
                               </children></AnchorPane>

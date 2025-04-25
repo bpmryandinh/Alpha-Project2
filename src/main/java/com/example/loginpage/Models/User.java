@@ -43,36 +43,83 @@ public class User {
     private String[] splitCourses(String coursesRaw) {
         return coursesRaw.split(";");
     }
-    public String[] getCourses() {
-        return Courses;
-    }
+
     public String getUserID() {
         return userID;
     }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String[] getCourses() {
+        return Courses;
+    }
+
+    public void setCourses(String[] courses) {
+        Courses = courses;
+    }
+
     public String getFname() {
         return fname;
     }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
     public String getLname() {
         return lname;
     }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
     public String getGender() {
         return gender;
     }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getEmail() {
         return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getBirthday() {
         return birthday;
     }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
     public String getPhone() {
         return phone;
     }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public CheckBox getSelect() {
         return select;
     }
+
     public void setSelect(CheckBox select) {
         this.select = select;
     }
