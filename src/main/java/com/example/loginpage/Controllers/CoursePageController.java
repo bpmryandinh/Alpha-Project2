@@ -124,7 +124,7 @@ public class CoursePageController {
         courseInfoLabel.setText(course.getCourseData()[3]);
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
 
-        if (Main.LoggedInUser.userType == UserSession.Person.Student) {
+        if (Main.LoggedInUser.getuserType() == UserSession.Person.Student.name()) {
             fillStudentFields(Main.LoggedInUser.getUser());
         } else {
             studentTable.setRowFactory(tv -> {
@@ -166,13 +166,13 @@ public class CoursePageController {
         String email = emailTextField.getText();
 
         String[] data = null;
-        if (Main.LoggedInUser.userType == UserSession.Person.Student) {
+        if (Main.LoggedInUser.getuserType() == UserSession.Person.Student.name()) {
             Main.LoggedInUser.getStudent().setUserID(studentId);
             Main.LoggedInUser.getStudent().setFname(fname);
             Main.LoggedInUser.getStudent().setLname(lname);
             Main.LoggedInUser.getStudent().setGender(gender);
             Main.LoggedInUser.getStudent().setEmail(email);
-            data = Main.LoggedInUser.getStudent().getStudentData();
+            data = Main.LoggedInUser.getStudent().getAllData();
         } else {
             Student selectedstudent = HashService.findStudent(studentId);
             selectedstudent.setUserID(studentId);
@@ -180,7 +180,7 @@ public class CoursePageController {
             selectedstudent.setLname(lname);
             selectedstudent.setGender(gender);
             selectedstudent.setEmail(email);
-            data = selectedstudent.getStudentData();
+            data = selectedstudent.getAllData();
         }
 
         FileService.updateRecordCSV(studentId, data);
