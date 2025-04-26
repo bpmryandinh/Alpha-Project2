@@ -13,6 +13,30 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/*
+    Instances of Logins
+
+    Professors
+    ID: P1002
+    Email: test@gmail.com
+    Password: test
+
+    ID: P1001
+    Email: test3@gmail.com
+    Password: test3
+
+    Students
+    ID: B1020
+    Email: test2@gmail.com
+    Password: test2
+
+    ID: B1048
+    Email: test4@gmail.com
+    Password: test4
+
+ */
+
 public class Main extends Application {
     // User is stored so that anything can access it if needed when they are logged in.
     public static UserSession LoggedInUser;
