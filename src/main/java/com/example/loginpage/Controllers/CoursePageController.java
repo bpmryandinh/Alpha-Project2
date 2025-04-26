@@ -125,25 +125,32 @@ public class CoursePageController {
         courseInfoLabel.setText(course.getCourseData()[3]);
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
 
+
+        /*
+        If the Logged-In User is a student, fillStudentFields() is called with the logged-in user
+        This means that the TextFields to update records is locked to being only the info of the logged-in student
+        Meaning that if you're logged in as a student you can ONLY edit your own record.
+         */
         if (Objects.equals(Main.LoggedInUser.getuserType(), UserSession.Person.Student.name())) {
             fillStudentFields(Main.LoggedInUser.getUser());
-        } else {
-            studentTable.setRowFactory(tv -> {
-                TableRow<Student> row = new TableRow<>();
-                row.setOnMouseClicked(event -> {
+        } else { //If the Logged-In user is a professor, the fillStudentFields() is called with the Student selected from the studentTable
+            studentTable.setRowFactory(tv -> { //Creates a studentTable row factory using a lambda function
+                TableRow<Student> row = new TableRow<>();   //creates a new TableRow of Student Data Type
+                row.setOnMouseClicked(event -> {    //Sets the row when mouse is clicked (new lambda Function)
                     if (! row.isEmpty() && event.getButton()==MouseButton.PRIMARY
-                            && event.getClickCount() == 2) {
+                            && event.getClickCount() == 2) {    //Makes it have to be a double click
 
-                        Student selectedStudent = row.getItem();
-                        fillStudentFields(selectedStudent);
+                        Student selectedStudent = row.getItem();    //Stores the selected row as a Student Type
+                        fillStudentFields(selectedStudent);     //Calls fillStudentFields() with the selectedStudent variable
                     }
                 });
-                return row ;
+                return row ;    //  returns row for the second lambda function
             });
         }
     }
 
 
+    //Fills student label/fields with the data from the passed in User
     public void fillStudentFields(User student) {
         studentIdLabel.setText(student.getUserID());
         fnameTextField.setText(student.getFname());
@@ -152,14 +159,8 @@ public class CoursePageController {
         emailTextField.setText(student.getEmail());
     }
 
-
-
-
-
-
-
-    public void onSaveButtonClicked(ActionEvent actionEvent) throws IOException {
-        //Get values
+    //Returns a String[] with updated student data
+    public String[] updateUserData(Student student) {
         String studentId = studentIdLabel.getText();
         String fname = fnameTextField.getText();
         String lname = lnameTextField.getText();
@@ -167,23 +168,32 @@ public class CoursePageController {
         String email = emailTextField.getText();
 
         String[] data = null;
+
+        //Sets Student data to whatever is written in the text fields
+        student.setUserID(studentId);
+        student.setFname(fname);
+        student.setLname(lname);
+        student.setGender(gender);
+        student.setEmail(email);
+
+        //Gets (now updated) user data from the Student Class
+        data = student.getAllData();
+        return data;
+    }
+
+    public void onSaveButtonClicked(ActionEvent actionEvent) throws IOException {
+        String studentId = studentIdLabel.getText();
+        String[] data;
+
+        //If logged-in user is a student, updateUserData() is called using LoggedInUser
         if (Main.LoggedInUser.getuserType() == UserSession.Person.Student.name()) {
-            Main.LoggedInUser.getStudent().setUserID(studentId);
-            Main.LoggedInUser.getStudent().setFname(fname);
-            Main.LoggedInUser.getStudent().setLname(lname);
-            Main.LoggedInUser.getStudent().setGender(gender);
-            Main.LoggedInUser.getStudent().setEmail(email);
-            data = Main.LoggedInUser.getStudent().getAllData();
-        } else {
+            data = updateUserData(Main.LoggedInUser.getStudent());
+        } else {    //If logged-in user is a professor, updateUserData() is called using the student from the studentID Label
             Student selectedstudent = HashService.findStudent(studentId);
-            selectedstudent.setUserID(studentId);
-            selectedstudent.setFname(fname);
-            selectedstudent.setLname(lname);
-            selectedstudent.setGender(gender);
-            selectedstudent.setEmail(email);
-            data = selectedstudent.getAllData();
+            data = updateUserData(selectedstudent);
         }
 
+        //calls updateRecordCSV() using data and Student ID from label
         FileService.updateRecordCSV(studentId, data);
         refreshPage();
     }
