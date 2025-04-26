@@ -89,6 +89,7 @@ public class CoursePageController {
 
 
 
+
     public CoursePageController() {
         this.parentStage = StageController.getInstance().mainScene;
         courseID = "";
@@ -131,7 +132,6 @@ public class CoursePageController {
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
 
         //Set the list of years as the options for the ComboBox
-        yearComboBox.setValue(" ");
         ObservableList<String> items =
                 FXCollections.observableArrayList(yearChoices);
         yearComboBox.setItems(items);
