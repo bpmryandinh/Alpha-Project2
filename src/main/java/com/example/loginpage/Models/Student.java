@@ -42,5 +42,11 @@ public class Student extends User {
         return CoursesString;
     }
 
+    public void setGPA(String GPA) {
+        this.GPA = GPA;
+    }
 
+    public void setYear(String year) {
+        this.year = year;
+    }
 }

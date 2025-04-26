@@ -82,6 +82,11 @@ public class CoursePageController {
     private TextField gpaTextField;
     //endregion
 
+    @FXML
+    private ComboBox<String> yearComboBox;
+
+    private final String[] yearChoices = {"Freshman", "Sophomore", "Junior", "Senior"};
+
 
 
     public CoursePageController() {
@@ -125,6 +130,11 @@ public class CoursePageController {
         courseInfoLabel.setText(course.getCourseData()[3]);
         professorInfoLabel.setText("Hi, Welcome to my course " + course.getCourseName().toLowerCase() + "! My name is Professor " + professor.getFname() + " " + professor.getLname() + " | This is my contact info if you need to get in touch | " + professor.getEmail() + " | " + professor.getPhone());
 
+        //Set the list of years as the options for the ComboBox
+        yearComboBox.setValue(" ");
+        ObservableList<String> items =
+                FXCollections.observableArrayList(yearChoices);
+        yearComboBox.setItems(items);
 
         /*
         If the Logged-In User is a student, fillStudentFields() is called with the logged-in user
@@ -132,7 +142,7 @@ public class CoursePageController {
         Meaning that if you're logged in as a student you can ONLY edit your own record.
          */
         if (Objects.equals(Main.LoggedInUser.getuserType(), UserSession.Person.Student.name())) {
-            fillStudentFields(Main.LoggedInUser.getUser());
+            fillStudentFields(Main.LoggedInUser.getStudent());
         } else { //If the Logged-In user is a professor, the fillStudentFields() is called with the Student selected from the studentTable
             studentTable.setRowFactory(tv -> { //Creates a studentTable row factory using a lambda function
                 TableRow<Student> row = new TableRow<>();   //creates a new TableRow of Student Data Type
@@ -151,12 +161,14 @@ public class CoursePageController {
 
 
     //Fills student label/fields with the data from the passed in User
-    public void fillStudentFields(User student) {
+    public void fillStudentFields(Student student) {
         studentIdLabel.setText(student.getUserID());
         fnameTextField.setText(student.getFname());
         lnameTextField.setText(student.getLname());
         genderTextField.setText(student.getGender());
         emailTextField.setText(student.getEmail());
+        gpaTextField.setText(student.getGPA());
+        yearComboBox.setValue(student.getYear());
     }
 
     //Returns a String[] with updated student data
@@ -165,7 +177,9 @@ public class CoursePageController {
         String fname = fnameTextField.getText();
         String lname = lnameTextField.getText();
         String gender = genderTextField.getText();
+        String gpa = gpaTextField.getText();
         String email = emailTextField.getText();
+        String year = yearComboBox.getValue();
 
         String[] data = null;
 
@@ -174,7 +188,9 @@ public class CoursePageController {
         student.setFname(fname);
         student.setLname(lname);
         student.setGender(gender);
+        student.setGPA(gpa);
         student.setEmail(email);
+        student.setYear(year);
 
         //Gets (now updated) user data from the Student Class
         data = student.getAllData();
